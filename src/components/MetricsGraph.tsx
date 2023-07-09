@@ -37,6 +37,11 @@ const MetricsGraph = ({ heading, metric }: MetricsGraphProps) => {
               </div>
             </div>
           </div>
+          <div className="flex-shrink-0 w-full h-min flex justify-start items-end overflow-visible relative p-0 content-end flex-nowrap gap-4 rounded-none">
+            <p className="flex-shrink-0 w-auto h-auto whitespace-pre relative font-Balgin-Display font-bold text-[#0f1728] text-3xl leading-[38px]">
+              {metric}
+            </p>
+          </div>
         </div>
       </div>
     </div>
