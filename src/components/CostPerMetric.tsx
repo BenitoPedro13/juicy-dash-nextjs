@@ -19,7 +19,7 @@ const CostPerMetric = ({ heading, sigla, metric, costPerMetric }: CostPerMetricP
   const [siglaActive, setSiglaActive] = useState(false);
 
   return (
-    <div className="box-border max-w-[360px] w-1/3 h-min flex flex-col justify-start items-start p-6 shadow-metrics hover:shadow-metrics-hover bg-white overflow-visible content-start flex-nowrap gap-6 rounded-xl border-black border">
+    <div className="box-border w-full h-min flex flex-col justify-start items-start p-6 shadow-metrics hover:shadow-metrics-hover bg-white overflow-visible content-start flex-nowrap gap-6 rounded-xl border-black border">
       <div className="flex-shrink-0 w-full h-min flex flex-col justify-center items-start overflow-visible relative p-0 content-start flex-nowrap gap-5 rounded-none">
         <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-4 rounded-none">
           <div className="flex-shrink-0 flex-grow w-auto h-full flex flex-col justify-center items-start overflow-visible relative p-0 content-start flex-nowrap gap-1 rounded-none">

@@ -15,7 +15,7 @@ type MetricsProps = {
 
 const Metrics = ({ icone, heading, metric }: MetricsProps) => {
   return (
-    <div className="box-border w-1/4 h-min flex justify-start items-center p-4 shadow-metrics hover:shadow-metrics-hover bg-white overflow-visible content-center flex-nowrap gap-[10px] rounded-xl border-black border">
+    <div className="box-border w-full h-min flex justify-start items-center p-4 shadow-metrics hover:shadow-metrics-hover bg-white overflow-visible content-center flex-nowrap gap-[10px] rounded-xl border-black border">
       {icone ? (
         <Image
           src={icone}
