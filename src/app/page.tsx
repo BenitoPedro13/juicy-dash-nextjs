@@ -172,7 +172,7 @@ export default function Home() {
             <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none"></div>
           </div>
         </div>
-        <div className="box-border flex-shrink-0 w-[28%] h-min flex flex-col justify-start items-center pt-8 pr-8 pb-12 bg-white overflow-visible content-center flex-nowrap gap-[28px] rounded-none z-10">
+        <div className="box-border flex-shrink-0 w-[28%] h-min flex flex-col justify-start items-center pt-8 pr-8 pb-12 bg-transparent overflow-visible content-center flex-nowrap gap-[28px] rounded-none z-10">
           <div className="flex-shrink-0 w-full h-[68px] mb-[48px] flex justify-end items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
             <div className="flex-shrink-0 w-min h-min flex justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-3 rounded-none">
               <div className="flex-shrink-0 w-[338px] h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-2 rounded-none">
