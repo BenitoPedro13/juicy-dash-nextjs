@@ -3,8 +3,14 @@ import metricsIcon from "@/../public/metricsIcon.png";
 import buserLogo from "@/../public/buser-logo.webp"
 import Link from "next/link";
 import Image from "next/image";
-import { inter } from "./layout";
+
 import Metrics from "@/components/Metrics";
+
+import { Inter } from 'next/font/google'
+// import { Plus_Jakarta_Sans } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
+// const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] })
 
 
 
@@ -48,13 +54,13 @@ export default function Home() {
                 </li>
                 <li>
                   <Link href={"/"}>
-                    <p className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-medium font-[${inter.className} text-lg leading-5]`}>
+                    <p className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-medium ${inter.className} text-lg leading-5]`}>
                       Campanha
                     </p>
                   </Link>
                 </li>
                 <li>
-                  <p className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-medium font-[${inter.className} text-lg leading-5]`}>
+                  <p className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-medium ${inter.className} text-lg leading-5]`}>
                     Experiências Buser
                   </p>
                 </li>

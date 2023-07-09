@@ -1,7 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import { jakarta } from "@/app/layout";
 import Image, { StaticImageData } from "next/image";
 import React from "react";
+// import { Inter } from 'next/font/google'
+import { Plus_Jakarta_Sans } from 'next/font/google'
+
+// const inter = Inter({ subsets: ['latin'] })
+const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] })
 
 type MetricsProps = {
   icone?: StaticImageData;
