@@ -7,6 +7,7 @@ import Image from "next/image";
 import Metrics from "@/components/Metrics";
 
 import { Inter } from 'next/font/google'
+import CostPerMetric from "@/components/CostPerMetric";
 // import { Plus_Jakarta_Sans } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -41,8 +42,8 @@ export default function Home() {
         </div>
       </div>
       <div className="w-full h-min flex flex-row justify-start items-start bg-white overflow-hidden p-0 pl-[82px] content-start flex-nowrap gap-0 rounded-none absolute">
-        <div className="box-border flex-shrink-0 w-min h-min flex flex-col justify-start items-center pt-8 pb-12 overflow-visible content-center flex-nowrap gap-[28px] rounded-none">
-          <div className="border-box flex-shrink-0 w-[979px] h-auto flex flex-col justify-center items-start px-8 overflow-visible relative content-start flex-nowrap gap-3 rounded-none">
+        <div className="box-border flex-shrink-0 w-min max-w-[979px] h-min flex flex-col justify-start items-center pt-8 pb-12 overflow-visible content-center flex-nowrap gap-[28px] rounded-none">
+          <div className="box-border flex-shrink-0 w-[979px] h-auto flex flex-col justify-center items-start px-8 overflow-visible relative content-start flex-nowrap gap-3 rounded-none">
             <div className="breadcrumbs text-lg text-[#475466]">
               <ul>
                 <li>
@@ -71,12 +72,21 @@ export default function Home() {
               <span className="flex-shrink-0 w-full h-auto whitespace-pre-wrap break-words relative font-Balgin-Display text-[#0f1728] text-[40px] font-semibold">Helio</span>
             </div>
           </div>
-          <div className="border-box flex-shrink-0 w-full h-[97px] flex flex-col justify-center items-start px-[22px] overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
+          <div className="box-border flex-shrink-0 w-full h-[97px] flex flex-col justify-center items-start px-[22px] overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
             <div className="flex-shrink-0 w-full h-auto flex justify-start items-center p-0 overflow-visible relative content-center flex-nowrap gap-5 rounded-none">
-              <Metrics heading="Total Creators" metric="8"/>
+              <Metrics icone={metricsIcon} heading="Total Creators" metric="8"/>
               <Metrics icone={metricsIcon} heading="Total Posts" metric="17"/>
               <Metrics icone={metricsIcon} heading="Total Feed" metric="578.061"/>
               <Metrics icone={metricsIcon} heading="Total Stories" metric="50.208"/>
+            </div>
+          </div>
+          <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-6 rounded-none">
+            <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
+              <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-5 rounded-none">
+                <CostPerMetric sigla="CPE" heading="Engajamento" metric="2.71%" costPerMetric="0.08" />
+                <CostPerMetric sigla="CPV" heading="Views" metric="0" costPerMetric="0.08" />
+                <CostPerMetric sigla="CPC" heading="Cliques" metric="379" costPerMetric="0.08" />
+              </div>
             </div>
           </div>
         </div>
