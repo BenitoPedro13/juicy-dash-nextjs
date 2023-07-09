@@ -1,5 +1,7 @@
+"use cliente"
 import React from "react";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import LineGraph from "./LineGraph";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -10,7 +12,6 @@ type MetricsGraphProps = {
 
 const MetricsGraph = ({ heading, metric }: MetricsGraphProps) => {
   return (
-    <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-0 rounded-none">
       <div className="box-border w-full h-min flex flex-col justify-start items-start shadow-metrics hover:shadow-metrics-hover bg-white overflow-hidden p-0 content-start flex-nowrap gap-0 rounded-xl border-black border">
         <div className="box-border w-full h-min flex flex-col justify-start items-start p-6 overflow-visible relative content-start flex-nowrap gap-5 rounded-none">
           <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-2 rounded-none">
@@ -36,15 +37,15 @@ const MetricsGraph = ({ heading, metric }: MetricsGraphProps) => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="flex-shrink-0 w-full h-min flex justify-start items-end overflow-visible relative p-0 content-end flex-nowrap gap-4 rounded-none">
+            <div className="flex-shrink-0 w-full h-min flex justify-start items-end overflow-visible relative p-0 content-end flex-nowrap gap-4 rounded-none">
             <p className="flex-shrink-0 w-auto h-auto whitespace-pre relative font-Balgin-Display font-bold text-[#0f1728] text-3xl leading-[38px]">
               {metric}
             </p>
           </div>
+          </div>
+          <LineGraph/>
         </div>
       </div>
-    </div>
   );
 };
 

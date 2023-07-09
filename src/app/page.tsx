@@ -156,7 +156,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <MetricsGraph heading="Interações" metric="58.567"/>
+          <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-0 rounded-none">
+            <MetricsGraph heading="Interações" metric="58.567"/>
+          </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-6 rounded-none">
             <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
               <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-5 rounded-none">
