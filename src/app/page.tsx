@@ -62,8 +62,8 @@ export default function Home() {
         </div>
       </div>
       <div className="w-full h-min flex flex-row justify-start items-start bg-white overflow-hidden p-0 pl-[82px] content-start flex-nowrap gap-0 rounded-none absolute">
-        <div className="box-border flex-shrink-0 w-min max-w-[979px] h-min flex flex-col justify-start items-center pt-8 pb-12 overflow-visible content-center flex-nowrap gap-[28px] rounded-none">
-          <div className="box-border flex-shrink-0 w-[979px] h-auto flex flex-col justify-center items-start px-8 overflow-visible relative content-start flex-nowrap gap-3 rounded-none">
+        <div className="box-border flex-shrink-0 w-[72%] h-min flex flex-col justify-start items-center pt-8 pb-12 overflow-visible content-center flex-nowrap gap-[28px] rounded-none">
+          <div className="box-border flex-shrink-0 w-full h-auto flex flex-col justify-center items-start px-8 overflow-visible relative content-start flex-nowrap gap-3 rounded-none">
             <div className="breadcrumbs text-lg text-[#475466]">
               <ul>
                 <li>
@@ -157,33 +157,53 @@ export default function Home() {
             </div>
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-0 rounded-none">
-            <MetricsGraph heading="Interações" metric="58.567"/>
+            <MetricsGraph heading="Interações" metric="58.567" />
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-6 rounded-none">
             <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
               <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-5 rounded-none">
-                <Metrics
-                  heading="Engajamento Tik Tok"
-                  metric="0"
-                />
-                <Metrics
-                  heading="Cliques no Link Tik Tok"
-                  metric="0"
-                />
-                <Metrics
-                  heading="Impressoes"
-                  metric="116.553"
-                />
+                <Metrics heading="Engajamento Tik Tok" metric="0" />
+                <Metrics heading="Cliques no Link Tik Tok" metric="0" />
+                <Metrics heading="Impressoes" metric="116.553" />
               </div>
             </div>
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-6 rounded-none">
-            <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
-              
-            </div>
+            <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none"></div>
           </div>
         </div>
-        <div className="box-border flex-shrink-0 w-[379px] h-min flex flex-col justify-start items-center pt-8 pr-8 pb-12 bg-white overflow-visible content-center flex-nowrap gap-[22px] rounded-none"></div>
+        <div className="box-border flex-shrink-0 w-[28%] h-min flex flex-col justify-start items-center pt-8 pr-8 pb-12 bg-white overflow-visible content-center flex-nowrap gap-[22px] rounded-none z-10">
+          <div className="flex-shrink-0 w-full h-[68px] mb-[54px] flex justify-end items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
+            <div className="flex-shrink-0 w-min h-min flex justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-3 rounded-none">
+              <div className="flex-shrink-0 w-[338px] h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-2 rounded-none">
+                <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-[6px] rounded-none">
+                  <div className="box-border flex-shrink-0 w-full h-min flex justify-start items-center py-[10px] px-[14px] shadow-cost-per-metrics bg-white overflow-hidden relative content-center flex-nowrap gap-2 rounded-lg border border-black">
+                    <div className="flex-shrink-0 flex-grow w-auto h-min flex justify-start items-center overflow-visible releative p-0 content-center flex-nowrap gap-2 rounded-none">
+                      <div className="flex-shrink-0 w-5 h-5 block overflow-hidden relative aspect-square rounded-none"></div>
+                      <p
+                        className={`flex-shrink-0 w-auto h-auto whitespace-pre relative ${inter.className} text-[#101828] text-base text-center`}
+                      >
+                        Atualizado em 30/06/2023 21:55
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <Image
+              src={buserLogo}
+              width={67}
+              height={67}
+              alt="Buser Logo"
+              className="btn btn-circle btn-outline border-black border-[1px] border-solid"
+            />
+          </div>
+          <Metrics heading="Investimento Total Inicial" metric="R$165.700,00" />
+          <Metrics
+            heading="Investimento Executado Estimado"
+            metric="R$22.566,39"
+          />
+        </div>
       </div>
     </main>
   );
