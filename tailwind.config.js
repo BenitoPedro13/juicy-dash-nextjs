@@ -12,12 +12,16 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      boxShadow: {
+        'metrics': '2px 2px 2px 0px rgba(16, 24, 40, 0.06);',
+        'metrics-hover': '2px 2px 0px 0px #000000;'
+      },
       fontFamily: {
         'Balgin': 'Balgin',
         'Balgin-Text': 'Balgin Text',
         'Balgin-Expanded': 'Balgin Expanded',
+        'Balgin-Display': 'Balgin Display',
         'Inter': '__Inter_0ec1f4',
-        'Jakarta': '__Plus_Jakarta_Sans_fd0c7c',
       }
     },
   },
