@@ -8,7 +8,8 @@ import Metrics from "@/components/Metrics";
 
 import { Inter } from "next/font/google";
 import CostPerMetric from "@/components/CostPerMetric";
-import MetricsGraph from "@/components/MetricsGraph";
+import MetricsLineGraph from "@/components/MetricsLineGraph";
+import MetricsDoughnutGraph from "@/components/MetricsDoughnutGraph";
 // import { Plus_Jakarta_Sans } from 'next/font/google'
 
 const inter = Inter({ subsets: ["latin"] });
@@ -157,7 +158,7 @@ export default function Home() {
             </div>
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-0 rounded-none">
-            <MetricsGraph heading="Interações" metric="58.567" />
+            <MetricsLineGraph heading="Interações" metric="58.567" />
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-6 rounded-none">
             <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
@@ -203,6 +204,7 @@ export default function Home() {
             heading="Investimento Executado Estimado"
             metric="R$22.566,39"
           />
+          <MetricsDoughnutGraph heading="Alcance Bruto" metric="578.061"/>
         </div>
       </div>
     </main>
