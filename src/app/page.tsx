@@ -10,6 +10,7 @@ import { Inter } from "next/font/google";
 import CostPerMetric from "@/components/CostPerMetric";
 import MetricsLineGraph from "@/components/MetricsLineGraph";
 import MetricsDoughnutGraph from "@/components/MetricsDoughnutGraph";
+import CreatorsTable from "@/components/CreatorsTable";
 // import { Plus_Jakarta_Sans } from 'next/font/google'
 
 const inter = Inter({ subsets: ["latin"] });
@@ -140,19 +141,19 @@ export default function Home() {
                   sigla="CPE"
                   heading="Engajamento"
                   metric="2,71%"
-                  costPerMetric="R$0,08"
+                  costPerMetric="R$ 0,08"
                 />
                 <CostPerMetric
                   sigla="CPV"
                   heading="Views"
                   metric="0"
-                  costPerMetric="R$0,08"
+                  costPerMetric="R$ 0,08"
                 />
                 <CostPerMetric
                   sigla="CPC"
                   heading="Cliques"
                   metric="379"
-                  costPerMetric="R$15,97"
+                  costPerMetric="R$ 15,97"
                 />
               </div>
             </div>
@@ -171,7 +172,7 @@ export default function Home() {
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-6 rounded-none">
             <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
-              
+              <CreatorsTable/>
             </div>
           </div>
         </div>
@@ -201,10 +202,10 @@ export default function Home() {
               className="btn btn-circle btn-outline border-black border-[1px] border-solid"
             />
           </div>
-          <Metrics heading="Investimento Total Inicial" metric="R$165.700,00" />
+          <Metrics heading="Investimento Total Inicial" metric="R$ 165.700,00" />
           <Metrics
             heading="Investimento Executado Estimado"
-            metric="R$22.566,39"
+            metric="R$ 22.566,39"
           />
           <MetricsDoughnutGraph heading="Alcance Bruto" metric="578.061"/>
         </div>
