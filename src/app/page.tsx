@@ -10,7 +10,7 @@ import { Inter } from "next/font/google";
 import CostPerMetric from "@/components/CostPerMetric";
 import MetricsLineGraph from "@/components/MetricsLineGraph";
 import MetricsDoughnutGraph from "@/components/MetricsDoughnutGraph";
-import CreatorsTable from "@/components/CreatorsTable";
+import CreatorsTable from "@/components/CreatorsTable/CreatorsTable";
 // import { Plus_Jakarta_Sans } from 'next/font/google'
 
 const inter = Inter({ subsets: ["latin"] });

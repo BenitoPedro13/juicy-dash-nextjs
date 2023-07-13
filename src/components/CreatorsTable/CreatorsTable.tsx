@@ -1,5 +1,6 @@
 import React from "react";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import CreatorsTableRow from "./CreatorsTableRow";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
@@ -64,7 +65,7 @@ const CreatorsTable = () => {
       <div className="overflow-x-auto w-full">
         <table className="table">
           <thead>
-            <tr className="border-box flex-shrink-0 w-full h-min px-6 py-3 bg-[#f8f9fb] overflow-visible relative content-center flex-nowrap gap-[5px] rounded-none border-b border-[#eaecf0]">
+            <tr className="border-box flex-shrink-0 w-full h-min bg-[#f8f9fb] overflow-visible relative content-center flex-nowrap gap-[5px] rounded-none border-b border-[#eaecf0]">
               <th className={`flex-shrink-0 w-auto max-w-[215px] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Creator</th>
               <th className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Cidade</th>
               <th  className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Publicações</th>
@@ -77,36 +78,15 @@ const CreatorsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
-            <tr>
-              <td>
-                <div className="flex items-center space-x-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src="/tailwind-css-component-profile-2@56w.png"
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">Hart Hagerty</div>
-                    <div className="text-sm opacity-50">United States</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                Zemlak, Daniel and Leannon
-                <br />
-                <span className="badge badge-ghost badge-sm">
-                  Desktop Support Technician
-                </span>
-              </td>
-              <td>Purple</td>
-              <th>
-                <button className="btn btn-ghost btn-xs">details</button>
-              </th>
-            </tr>
+            <CreatorsTableRow />
+            <CreatorsTableRow />
+            <CreatorsTableRow />
+            <CreatorsTableRow />
+            <CreatorsTableRow />
+            <CreatorsTableRow />
+            <CreatorsTableRow />
+            <CreatorsTableRow />
+            <CreatorsTableRow />
           </tbody>
         </table>
       </div>
