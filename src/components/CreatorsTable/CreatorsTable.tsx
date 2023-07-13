@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 const CreatorsTable = () => {
   return (
-    <div className="box-border w-full h-[339px] flex flex-col justify-start items-start bg-white overflow-hidden p-0 content-start flex-nowrap gap-0 rounded-xl border border-black">
+    <div className="box-border w-full h-[339px] flex flex-col justify-start items-start bg-white overflow-hidden p-0 content-start flex-nowrap gap-0 rounded-xl border border-black shadow-metrics hover:shadow-metrics-hover">
       <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-o content-start flex-nowrap gap-5 rounded-none">
         <div className="box-border flex-shrink-0 w-full h-min flex justify-start items-center pt-5 px-6 overflow-visible relative content-center flex-nowrap gap-4 rounded-none">
           <img
@@ -62,9 +62,9 @@ const CreatorsTable = () => {
           ></path>
         </svg>
       </div>
-      <div className="overflow-x-auto w-full">
+      <div className="overflow-x-auto w-full no-scrollbar">
         <table className="table">
-          <thead>
+          <thead className="sticky top-0 z-10 bg-white">
             <tr className="border-box flex-shrink-0 w-full h-min bg-[#f8f9fb] overflow-visible relative content-center flex-nowrap gap-[5px] rounded-none border-b border-[#eaecf0]">
               <th className={`flex-shrink-0 w-auto max-w-[215px] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Creator</th>
               <th className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Cidade</th>
