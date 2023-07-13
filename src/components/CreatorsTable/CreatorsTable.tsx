@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import { motion } from "framer-motion";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import CreatorsTableRow from "./CreatorsTableRow";
 
@@ -9,17 +9,21 @@ const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
 
 const CreatorsTable = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
-  const toggleOpen = () => setOpen(!open)
+  const toggleOpen = () => setOpen(!open);
 
   return (
     <motion.div
-    className={`box-border w-full flex flex-col justify-start items-start bg-white overflow-hidden p-0 content-start flex-nowrap gap-0 rounded-xl border border-black shadow-metrics hover:shadow-metrics-hover`}
-    initial={false}
-    animate={{ height: open ? "fit-content" : "335px" }}
-    transition={{ duration: 0.3, ease: "linear" }}
-  >
+      className="box-border w-full flex flex-col justify-start items-start bg-white overflow-hidden p-0 content-start flex-nowrap gap-0 rounded-xl border border-black"
+      initial={false}
+      animate={{
+        boxShadow: "2px 2px 2px 0px rgba(16, 24, 40, 0.06)",
+        height: open ? "fit-content" : "335px",
+      }}
+      transition={{ duration: 0.3, ease: "linear" }}
+      whileHover={{ boxShadow: "2px 2px 0px 0px #000000" }}
+    >
       <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-o content-start flex-nowrap gap-5 rounded-none">
         <div className="box-border flex-shrink-0 w-full h-min flex justify-start items-center pt-5 px-6 overflow-visible relative content-center flex-nowrap gap-4 rounded-none">
           <img
@@ -41,12 +45,12 @@ const CreatorsTable = () => {
             </p>
           </div>
           <div className="flex-shrink-0 w-min h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
-          <motion.div
+            <motion.div
               onClick={toggleOpen}
               className="btn btn-ghost box-border flex-shrink-0 w-min h-auto flex justify-center items-center py-[10px] px-[8px] shadow-cost-per-metrics bg-white overflow-hidden self-stretch relative content-center flex-nowrap gap-2 rounded-lg border border-solid border-[#cfd4dc]"
               initial={false}
               animate={{ rotate: open ? -90 : 0 }}
-              transition={{ duration: 0.3, ease: 'linear' }}
+              transition={{ duration: 0.3, ease: "linear" }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -84,15 +88,51 @@ const CreatorsTable = () => {
         <table className="table">
           <thead className="sticky top-0 z-10 bg-white">
             <tr className="border-box flex-shrink-0 w-full h-min bg-[#f8f9fb] overflow-visible relative content-center flex-nowrap gap-[5px] rounded-none border-b border-[#eaecf0]">
-              <th className={`flex-shrink-0 w-auto max-w-[215px] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Creator</th>
-              <th className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Cidade</th>
-              <th  className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Publicações</th>
-              <th  className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Impressões</th>
-              <th  className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Interações</th>
-              <th  className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Clicks</th>
-              <th  className={`flex-shrink-0 w-auto h-auto relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Video Views</th>
-              <th  className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>CPE</th>
-              <th  className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>...</th>
+              <th
+                className={`flex-shrink-0 w-auto max-w-[215px] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+              >
+                Creator
+              </th>
+              <th
+                className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+              >
+                Cidade
+              </th>
+              <th
+                className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+              >
+                Publicações
+              </th>
+              <th
+                className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+              >
+                Impressões
+              </th>
+              <th
+                className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+              >
+                Interações
+              </th>
+              <th
+                className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+              >
+                Clicks
+              </th>
+              <th
+                className={`flex-shrink-0 w-auto h-auto relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+              >
+                Video Views
+              </th>
+              <th
+                className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+              >
+                CPE
+              </th>
+              <th
+                className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+              >
+                ...
+              </th>
             </tr>
           </thead>
           <tbody>

@@ -1,8 +1,9 @@
-"use cliente";
+"use client";
 import React from "react";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import LineGraph from "./LineGraph";
 import DoughnutGraph from "./DoughnutGraph";
+import { motion } from "framer-motion";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -16,7 +17,13 @@ const MetricsDoughnutGraph = ({
   metric,
 }: MetricsDoughnutGraphProps) => {
   return (
-    <div className="box-border w-full h-min flex flex-col justify-start items-start shadow-metrics hover:shadow-metrics-hover bg-white overflow-hidden p-0 content-start flex-nowrap gap-0 rounded-xl border-black border">
+    <motion.div 
+      className="box-border w-full h-min flex flex-col justify-start items-start shadow-metrics hover:shadow-metrics-hover bg-white overflow-hidden p-0 content-start flex-nowrap gap-0 rounded-xl border-black border"
+      initial={false}
+      whileHover={{ boxShadow: '2px 2px 0px 0px #000000' }}
+      animate={{ boxShadow: '2px 2px 2px 0px rgba(16, 24, 40, 0.06)' }}
+      transition={{ duration: 0.3, ease: 'linear' }}
+    >
       <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start p-6 overflow-visible relative content-start flex-nowrap gap-5 rounded-none">
         <div className="flex-shrink-0 w-full h-min flex flex-col justify-center items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
           <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-5 rounded-none">
@@ -58,7 +65,7 @@ const MetricsDoughnutGraph = ({
         </div>
         <DoughnutGraph />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

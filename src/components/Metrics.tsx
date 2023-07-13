@@ -1,11 +1,11 @@
+"use client"
 /* eslint-disable @next/next/no-img-element */
-import Image, { StaticImageData } from "next/image";
-import React from "react";
-// import { Inter } from 'next/font/google'
-import { Plus_Jakarta_Sans } from 'next/font/google'
+import Image, { StaticImageData } from 'next/image';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 
-// const inter = Inter({ subsets: ['latin'] })
-const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] })
+const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] });
 
 type MetricsProps = {
   icone?: StaticImageData;
@@ -15,7 +15,13 @@ type MetricsProps = {
 
 const Metrics = ({ icone, heading, metric }: MetricsProps) => {
   return (
-    <div className="box-border w-full min-w-[200px] h-min flex justify-start items-center p-4 shadow-metrics hover:shadow-metrics-hover bg-white overflow-visible content-center flex-nowrap gap-[10px] rounded-xl border-black border">
+    <motion.div
+      className="box-border w-full min-w-[200px] h-min flex justify-start items-center p-4 bg-white overflow-visible content-center flex-nowrap gap-[10px] rounded-xl border-black border"
+      initial={false}
+      whileHover={{ boxShadow: '2px 2px 0px 0px #000000' }}
+      animate={{ boxShadow: '2px 2px 2px 0px rgba(16, 24, 40, 0.06)' }}
+      transition={{ duration: 0.3, ease: 'linear' }}
+    >
       {icone ? (
         <Image
           src={icone}
@@ -38,7 +44,7 @@ const Metrics = ({ icone, heading, metric }: MetricsProps) => {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
