@@ -139,20 +139,20 @@ export default function Home() {
                 <CostPerMetric
                   sigla="CPE"
                   heading="Engajamento"
-                  metric="2.71%"
-                  costPerMetric="R$0.08"
+                  metric="2,71%"
+                  costPerMetric="R$0,08"
                 />
                 <CostPerMetric
                   sigla="CPV"
                   heading="Views"
                   metric="0"
-                  costPerMetric="R$0.08"
+                  costPerMetric="R$0,08"
                 />
                 <CostPerMetric
                   sigla="CPC"
                   heading="Cliques"
                   metric="379"
-                  costPerMetric="R$15.97"
+                  costPerMetric="R$15,97"
                 />
               </div>
             </div>
@@ -170,7 +170,9 @@ export default function Home() {
             </div>
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-6 rounded-none">
-            <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none"></div>
+            <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
+              
+            </div>
           </div>
         </div>
         <div className="box-border flex-shrink-0 w-[28%] h-min flex flex-col justify-start items-center pt-8 pr-8 pb-12 bg-transparent overflow-visible content-center flex-nowrap gap-[28px] rounded-none z-10">
