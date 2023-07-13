@@ -61,19 +61,19 @@ const CreatorsTable = () => {
           ></path>
         </svg>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto w-full">
         <table className="table">
-          {/* head */}
           <thead>
-            <tr>
-              <th>Creator</th>
-              <th>Cidade</th>
-              <th>Publicações</th>
-              <th>Impressões</th>
-              <th>Interações</th>
-              <th>Clicks</th>
-              <th>Video Views</th>
-              <th>CPE</th>
+            <tr className="border-box flex-shrink-0 w-full h-min px-6 py-3 bg-[#f8f9fb] overflow-visible relative content-center flex-nowrap gap-[5px] rounded-none border-b border-[#eaecf0]">
+              <th className={`flex-shrink-0 w-auto max-w-[215px] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Creator</th>
+              <th className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Cidade</th>
+              <th  className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Publicações</th>
+              <th  className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Impressões</th>
+              <th  className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Interações</th>
+              <th  className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Clicks</th>
+              <th  className={`flex-shrink-0 w-auto h-auto relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>Video Views</th>
+              <th  className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>CPE</th>
+              <th  className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}>...</th>
             </tr>
           </thead>
           <tbody>
