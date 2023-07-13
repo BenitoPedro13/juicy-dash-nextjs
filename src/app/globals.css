@@ -30,7 +30,23 @@
 }
 
 @font-face {
-  font-family: "Balgin Text";
+  font-family: "Balgin Regular";
+  src: url("/fonts/Studio_Sun_-_Balgin_Regular.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Balgin Text Bold";
+  src: url("/fonts/Studio_Sun_-_Balgin_Text_Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Balgin Text Old";
   src: url("/fonts/BalgintextBold.otf") format("opentype");
   font-weight: bold;
   font-style: normal;
@@ -38,7 +54,7 @@
 }
 
 @font-face {
-  font-family: "Balgin Text";
+  font-family: "Balgin Text Old";
   src: url("/fonts/BalgintextRegular.otf") format("opentype");
   font-weight: bold;
   font-style: normal;

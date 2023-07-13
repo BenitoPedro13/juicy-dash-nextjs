@@ -20,9 +20,9 @@ module.exports = {
       },
       fontFamily: {
         'Balgin': 'Balgin',
-        'Balgin-Text': 'Balgin Text',
+        'Balgin-Text': 'Balgin Regular',
         'Balgin-Expanded': 'Balgin Expanded',
-        'Balgin-Display': 'Balgin Display',
+        'Balgin-Display': 'Balgin Text Bold',
         'Inter': '__Inter_0ec1f4',
       }
     },
