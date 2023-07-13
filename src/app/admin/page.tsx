@@ -3,7 +3,7 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import jsonServerProvider from 'ra-data-json-server';
 
-const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
+const dataProvider = jsonServerProvider('https://juicy-backend.vercel.app');
 
 const AdminApp = () => {
   const [Admin, setAdmin] = useState<React.JSX.Element | undefined>(undefined);
@@ -13,9 +13,7 @@ const AdminApp = () => {
       const { Admin, Resource, ListGuesser, EditGuesser } = await import('react-admin');
       setAdmin(() => (
         <Admin dataProvider={dataProvider}>
-          <Resource name="users" list={ListGuesser} edit={EditGuesser} recordRepresentation="name" />
-          <Resource name="posts" list={ListGuesser} edit={EditGuesser} recordRepresentation="title" />
-          <Resource name="comments" list={ListGuesser} edit={EditGuesser} />
+          <Resource name="categories" list={ListGuesser} edit={EditGuesser} recordRepresentation="name" />
         </Admin>
       ));
     };
