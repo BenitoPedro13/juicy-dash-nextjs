@@ -64,7 +64,7 @@ export default function Home() {
         </div>
       </div>
       <div className="w-full h-min flex flex-row justify-start items-start bg-white overflow-hidden p-0 pl-[82px] content-start flex-nowrap gap-0 rounded-none absolute">
-        <div className="box-border flex-shrink-0 w-[72%] h-min flex flex-col justify-start items-center pt-8 pb-12 overflow-visible content-center flex-nowrap gap-[28px] rounded-none">
+        <div className="box-border flex-shrink-0 w-[calc(100%-379px)] h-min flex flex-col justify-start items-center pt-8 pb-12 overflow-visible content-center flex-nowrap gap-[28px] rounded-none">
           <div className="box-border flex-shrink-0 w-full h-auto flex flex-col justify-center items-start px-8 overflow-visible relative content-start flex-nowrap gap-3 rounded-none">
             <div className="breadcrumbs text-lg text-[#475466]">
               <ul>
@@ -176,7 +176,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="box-border flex-shrink-0 w-[28%] h-min flex flex-col justify-start items-center pt-8 pr-8 pb-12 bg-transparent overflow-visible content-center flex-nowrap gap-[28px] rounded-none z-10">
+        <div className="box-border flex-shrink-0 w-[379px] h-min flex flex-col justify-start items-center pt-8 pr-8 pb-12 bg-transparent overflow-visible content-center flex-nowrap gap-[28px] rounded-none z-10">
           <div className="flex-shrink-0 w-full h-[68px] mb-[48px] flex justify-end items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
             <div className="flex-shrink-0 w-min h-min flex justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-3 rounded-none">
               <div className="flex-shrink-0 w-[338px] h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-2 rounded-none">
