@@ -1,3 +1,5 @@
+"use client"
+
 import logo from "@/../public/favicon.png";
 import metricsIcon from "@/../public/metricsIcon.png";
 import buserLogo from "@/../public/buser-logo.webp";
@@ -11,12 +13,44 @@ import CostPerMetric from "@/components/CostPerMetric";
 import MetricsLineGraph from "@/components/MetricsLineGraph";
 import MetricsDoughnutGraph from "@/components/MetricsDoughnutGraph";
 import CreatorsTable from "@/components/CreatorsTable/CreatorsTable";
+import useDataStore, { Influencer } from "@/store";
+import { useEffect } from "react";
 // import { Plus_Jakarta_Sans } from 'next/font/google'
 
 const inter = Inter({ subsets: ["latin"] });
 // const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] })
 
+function parseUpdatedAt(updatedAt: string) {
+  const date = new Date(updatedAt);
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const year = date.getFullYear().toString().slice(-2);
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+
+  return `${day}/${month}/${year} ${hours}:${minutes}`;
+}
+
 export default function Home() {
+  const fetchData = useDataStore((state) => state.fetchData);
+  const data = useDataStore((state) => state.data);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  const totalInfluencers = (data: Influencer[]) => `${data.length}`;
+  const total = (data: Influencer[], dataKey: keyof Influencer) => {
+    let count = 0;
+
+    for (let i = 0; i < data.length; i++) {
+      const element = data[i];
+      count = +element[`${dataKey}`];
+    }
+
+    return `${count}`
+  }
+
   return (
     <main>
       <div className="w-[82px] h-[100vh] flex flex-row justify-start items-start bg-white overflow-hidden z-1 p-0 content-start flex-nowrap gap-0 fixed rounded-none border-[#475466] border-solid border-r z-10">
@@ -119,18 +153,18 @@ export default function Home() {
               <Metrics
                 icone={metricsIcon}
                 heading="Total Creators"
-                metric="8"
+                metric={totalInfluencers(data)}
               />
-              <Metrics icone={metricsIcon} heading="Total Posts" metric="17" />
+              <Metrics icone={metricsIcon} heading="Total Posts" metric={total(data, 'posts')} />
               <Metrics
                 icone={metricsIcon}
                 heading="Total Feed"
-                metric="578.061"
+                metric={total(data, 'impressions')}
               />
               <Metrics
                 icone={metricsIcon}
                 heading="Total Stories"
-                metric="50.208"
+                metric={total(data, 'interactions')}
               />
             </div>
           </div>
@@ -140,33 +174,33 @@ export default function Home() {
                 <CostPerMetric
                   sigla="CPE"
                   heading="Engajamento"
-                  metric="2,71%"
-                  costPerMetric="R$ 0,08"
+                  metric="0"
+                  costPerMetric={`${data[0]?.cpe}`}
                 />
                 <CostPerMetric
                   sigla="CPV"
                   heading="Views"
-                  metric="0"
-                  costPerMetric="R$ 0,08"
+                  metric={total(data, 'videoViews')}
+                  costPerMetric={`${data[0]?.cpv}`}
                 />
                 <CostPerMetric
                   sigla="CPC"
                   heading="Cliques"
-                  metric="379"
-                  costPerMetric="R$ 15,97"
+                  metric={total(data, 'clicks')}
+                  costPerMetric={`${data[0]?.cpc}`}
                 />
               </div>
             </div>
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-0 rounded-none">
-            <MetricsLineGraph heading="Interações" metric="58.567" />
+            <MetricsLineGraph heading="Interações" metric={total(data, 'interactions')} />
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-6 rounded-none">
             <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
               <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-5 rounded-none">
-                <Metrics heading="Engajamento Tik Tok" metric="0" />
-                <Metrics heading="Cliques no Link Tik Tok" metric="0" />
-                <Metrics heading="Impressoes" metric="116.553" />
+                <Metrics heading="Engajamento Tik Tok" metric={total(data, 'videoViews')} />
+                <Metrics heading="Cliques no Link Tik Tok" metric={total(data, 'clicks')} />
+                <Metrics heading="Impressoes" metric={total(data, 'impressions')} />
               </div>
             </div>
           </div>
@@ -187,7 +221,7 @@ export default function Home() {
                       <p
                         className={`flex-shrink-0 w-auto h-auto whitespace-pre relative ${inter.className} text-[#101828] text-base text-center`}
                       >
-                        Atualizado em 30/06/2023 21:55
+                        Atualizado em {parseUpdatedAt(data[0]?.updatedAt)}
                       </p>
                     </div>
                   </div>
@@ -207,7 +241,7 @@ export default function Home() {
             heading="Investimento Executado Estimado"
             metric="R$ 22.566,39"
           />
-          <MetricsDoughnutGraph heading="Alcance Bruto" metric="578.061"/>
+          <MetricsDoughnutGraph heading="Alcance Bruto" metric={total(data, 'impressions')}/>
         </div>
       </div>
     </main>
