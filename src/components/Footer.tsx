@@ -11,7 +11,169 @@ const Footer = (props: Props) => {
   return (
     <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-6 rounded-none">
       <footer className="box-border w-full h-min flex flex-col justify-start items-center pt-16 pb-12 bg-white overflow-visible content-center flex-nowrap gap-16 rounded-none">
-        <div className="box-border flex-shrink-0 flex-grow w-auto h-min flex flex-col justify-start items-start px-8 overflow-visible relative content-start flex-nowrap gap-12 rounded-none"></div>
+        <div className="box-border flex-shrink-0 flex-grow w-auto h-min flex flex-col justify-start items-start px-8 overflow-visible relative content-start flex-nowrap gap-12 rounded-none">
+          <div className="flex-shrink-0 w-full h-min flex justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-16 rounded-none">
+            <div className="flex-shrink-0 w-[320px] h-min flex flex-col justify-start overflow-visible relative p-0 content-start flex-nowrap gap-[15px] rounded-none">
+              <p
+                className={`flex-shrink-0 w-full h-auto whitespace-pre-wrap break-words relative ${jakarta.className} text-[#475466] text-base`}
+              >
+                Juicy Dashboard v0.1 Alfa
+              </p>
+              <Link href="/">
+                <Image src={logo} width={134} height={undefined} alt="Logo" />
+              </Link>
+              <p
+                className={`flex-shrink-0 w-full h-auto whitespace-pre-wrap break-words relative ${jakarta.className} text-[#475466] text-base`}
+              >
+                Nosso propósito é democratizar a economia criativa com um
+                incrível pacote de ferramentas que vão deixar o seu dia a dia
+                muito mais rápido e divertido!
+              </p>
+            </div>
+            <div className="flex-shrink-0 flex-grow w-auto h-min flex justify-start overflow-visible relative p-0 content-start flex-nowrap gap-8 rounded-none">
+              <div className="flex-shrink-0 flex-grow w-auto h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-4 rounded-none">
+                <p
+                  className={`flex-shrink-0 w-full h-auto whitespace-pre-wrap break-words relative font-semibold ${jakarta.className} text-[#667084] text-sm`}
+                >
+                  Product
+                </p>
+                <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-3 rounded-none">
+                  <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                    <div className="flex-shrink-0 w-fit h-min flex justify-start items-center overflow-hidden relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                    <Link
+                        href="https://welcome.juicy.space/lab"
+                        target="_blank"
+                      >
+                        <p className="flex-shrink-0 w-auto h-auto whitespace-pre-wrap relative leading-[1.2] text-black font-semibold">
+                          Juicy Lab
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                    <div className="flex-shrink-0 w-fit h-min flex justify-start items-center overflow-hidden relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                      <Link
+                        href="https://welcome.juicy.space/log"
+                        target="_blank"
+                      >
+                        <p className="flex-shrink-0 w-auto h-auto whitespace-pre-wrap relative leading-[1.2] text-black font-semibold">
+                          Juicy Log
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                    <div className="flex-shrink-0 w-fit h-min flex justify-start items-center overflow-hidden relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                      <Link
+                        href="https://juicyapp.com.br"
+                        target="_blank"
+                      >
+                        <p className="flex-shrink-0 w-auto h-auto whitespace-pre-wrap relative leading-[1.2] text-black font-semibold">
+                          Juicy App 
+                        </p>
+                      </Link>
+                    </div>
+                    <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 relative px-2 py-0.5 rounded-2xl bg-[#f9f5ff] mix-blend-multiply">
+                      <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-xs leading-[18px] font-medium text-center text-[#ff77ef]">
+                        New
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex-shrink-0 flex-grow w-auto h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-4 rounded-none">
+                <p
+                  className={`flex-shrink-0 w-full h-auto whitespace-pre-wrap break-words relative font-semibold ${jakarta.className} text-[#667084] text-sm`}
+                >
+                  Social
+                </p>
+                <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-3 rounded-none">
+                  <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                    <div className="flex-shrink-0 w-fit h-min flex justify-start items-center overflow-hidden relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                    <Link
+                        href="https://twitter.com/juicy_space"
+                        target="_blank"
+                      >
+                        <p className="flex-shrink-0 w-auto h-auto whitespace-pre-wrap relative leading-[1.2] text-black font-semibold">
+                          Twitter
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                    <div className="flex-shrink-0 w-fit h-min flex justify-start items-center overflow-hidden relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                      <Link
+                        href="https://www.linkedin.com/company/juicy-space/"
+                        target="_blank"
+                      >
+                        <p className="flex-shrink-0 w-auto h-auto whitespace-pre-wrap relative leading-[1.2] text-black font-semibold">
+                          LinkedIn
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                    <div className="flex-shrink-0 w-fit h-min flex justify-start items-center overflow-hidden relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                      <Link
+                        href="https://www.instagram.com/juicy.space/"
+                        target="_blank"
+                      >
+                        <p className="flex-shrink-0 w-auto h-auto whitespace-pre-wrap relative leading-[1.2] text-black font-semibold">
+                          Instagram
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex-shrink-0 flex-grow w-auto h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-4 rounded-none">
+                <p
+                  className={`flex-shrink-0 w-full h-auto whitespace-pre-wrap break-words relative font-semibold ${jakarta.className} text-[#667084] text-sm`}
+                >
+                  Legal
+                </p>
+                <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-3 rounded-none">
+                  <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                    <div className="flex-shrink-0 w-fit h-min flex justify-start items-center overflow-hidden relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                    <Link
+                        href="https://juicyapp.com.br/terms/privacy"
+                        target="_blank"
+                      >
+                        <p className="flex-shrink-0 w-auto h-auto whitespace-pre-wrap relative leading-[1.2] text-black font-semibold">
+                          Terms
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                    <div className="flex-shrink-0 w-fit h-min flex justify-start items-center overflow-hidden relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                      <Link
+                        href="https://juicyapp.com.br/terms/privacy"
+                        target="_blank"
+                      >
+                        <p className="flex-shrink-0 w-auto h-auto whitespace-pre-wrap relative leading-[1.2] text-black font-semibold">
+                          Privacy
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                    <div className="flex-shrink-0 w-fit h-min flex justify-start items-center overflow-hidden relative p-0 content-center flex-nowrap gap-2 rounded-none">
+                      <Link
+                        href="https://juicyapp.com.br/terms/cookies"
+                        target="_blank"
+                      >
+                        <p className="flex-shrink-0 w-auto h-auto whitespace-pre-wrap relative leading-[1.2] text-black font-semibold">
+                          Cookies
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="box-border flex-shrink-0 flex-grow w-auto h-min flex flex-col justify-start items-start px-8 overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
           <div className="box-border flex-shrink-0 w-full h-min flex justify-start items-center pt-8 overflow-visible relative content-center flex-nowrap gap-8 rounded-none border-[#eaecf0] border-solid border-t">
             <p
@@ -61,158 +223,7 @@ const Footer = (props: Props) => {
     //   <div className="box-border flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-12 py-12 bg-white">
     //     <div className="box-border flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 gap-8 px-4">
     //       <div className="box-border flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 gap-8">
-    //         <div className="box-border flex flex-col justify-start items-start flex-grow basis-full relative gap-4">
-    //           <p className={`${jakarta.className} whitespace-pre-wrap flex-grow-0 flex-shrink-0 self-stretch text-sm leading-5 font-semibold text-left text-[#667085]`}>
-    //             Product
-    //           </p>
-    //           <div className="box-border flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 gap-3">
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Overview
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Features
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Solutions
-    //                 </p>
-    //               </div>
-    //               <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 relative px-2 py-0.5 rounded-2xl bg-[#ecfdf3] mix-blend-multiply">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-xs leading-[18px] font-medium text-center text-[#027a48]">
-    //                   New
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Tutorials
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Pricing
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Releases
-    //                 </p>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //         <div className="box-border flex flex-col justify-start items-start flex-grow basis-full relative gap-4">
-    //           <p className={`${jakarta.className} whitespace-pre-wrap flex-grow-0 flex-shrink-0 self-stretch text-sm leading-5 font-semibold text-left text-[#667085]`}>
-    //             Social
-    //           </p>
-    //           <div className="box-border flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 gap-3">
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Twitter
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   LinkedIn
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Facebook
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   GitHub
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   AngelList
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Dribbble
-    //                 </p>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //         <div className="box-border flex flex-col justify-start items-start flex-grow basis-full relative gap-4">
-    //           <p className={`${jakarta.className} whitespace-pre-wrap flex-grow-0 flex-shrink-0 self-stretch text-sm leading-5 font-semibold text-left text-[#667085]`}>
-    //             Legal
-    //           </p>
-    //           <div className="box-border flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 gap-3">
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Terms
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Privacy
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Cookies
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Licenses
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Settings
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div className="box-border flex justify-start items-center flex-grow-0 flex-shrink-0 gap-2">
-    //               <div className="box-border flex justify-center items-center flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2">
-    //                 <p className="whitespace-pre-wrap flex-grow-0 flex-shrink-0 text-base leading-6 font-semibold text-left text-[#475467]">
-    //                   Contact
-    //                 </p>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
+
     //       </div>
     //     </div>
     //     <div className="box-border flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 gap-8 px-4">
