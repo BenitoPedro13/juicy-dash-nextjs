@@ -11,8 +11,8 @@ const Footer = (props: Props) => {
   return (
     <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-6 rounded-none">
       <footer className="box-border w-full h-min flex flex-col justify-start items-center pt-16 pb-12 bg-white overflow-visible content-center flex-nowrap gap-16 rounded-none">
-        <div className="box-border flex-shrink-0 flex-grow w-auto h-min flex flex-col justify-start items-start px-8 overflow-visible relative content-start flex-nowrap gap-12 rounded-none">
-          <div className="flex-shrink-0 w-full h-min flex justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-16 rounded-none">
+        <div className="box-border flex-shrink-0 flex-grow w-full h-min flex flex-col justify-start items-start px-8 overflow-visible relative content-start flex-nowrap gap-12 rounded-none">
+          <div className="flex-shrink-0 w-full h-min flex md:flex-row flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-16 rounded-none">
             <div className="flex-shrink-0 w-[320px] h-min flex flex-col justify-start overflow-visible relative p-0 content-start flex-nowrap gap-[15px] rounded-none">
               <p
                 className={`flex-shrink-0 w-full h-auto whitespace-pre-wrap break-words relative ${jakarta.className} text-[#475466] text-base`}
@@ -177,11 +177,11 @@ const Footer = (props: Props) => {
         <div className="box-border flex-shrink-0 flex-grow w-auto h-min flex flex-col justify-start items-start px-8 overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
           <div className="box-border flex-shrink-0 w-full h-min flex justify-start items-center pt-8 overflow-visible relative content-center flex-nowrap gap-8 rounded-none border-[#eaecf0] border-solid border-t">
             <p
-              className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${jakarta.className} text-[#475466] text-base`}
+              className={`flex-shrink-0 flex-grow w-fit  h-auto whitespace-pre-wrap break-words relative ${jakarta.className} text-[#475466] text-base`}
             >
               © 2023 Juicy Technology. Todos os direitos reservados.
             </p>
-            <div className="flex-shrink-0 w-min h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-6 rounded-none">
+            <div className="flex-shrink-0 w-min h-min hidden sm:flex  justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-6 rounded-none">
               <svg
                 viewBox="0 0 24 24"
                 aria-hidden="true"
