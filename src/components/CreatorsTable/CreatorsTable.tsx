@@ -24,15 +24,48 @@ const CreatorsTable = () => {
       transition={{ duration: 0.3, ease: "linear" }}
       whileHover={{ boxShadow: "2px 2px 0px 0px #000000" }}
     >
-      <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-o content-start flex-nowrap gap-5 rounded-none">
-        <div className="box-border flex-shrink-0 w-full h-min flex justify-start items-center pt-5 px-6 overflow-visible relative content-center flex-nowrap gap-4 rounded-none">
-          <img
-            src="/performanceIcon.png"
-            alt="Performance Icon"
-            width="40"
-            height="40"
-          />
-          <div className="flex-shrink-0 flex-grow w-auto h-full flex flex-col justify-center items-start overflow-visible relative p-0 content-start flex-nowrap gap-1 rounded-none">
+      <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap sm:gap-5 gap-0 rounded-none">
+        <div className="box-border flex-shrink-0 w-full h-min flex sm:flex-row flex-col justify-start sm:items-center items-start xl:pt-5 xl:pb-0 py-5 px-6 overflow-visible relative sm:content-center content-start flex-nowrap gap-4 rounded-none">
+            <img
+              src="/performanceIcon.png"
+              alt="Performance Icon"
+              width="40"
+              height="40"
+              className="hidden sm:block"
+            />
+          <div className="sm:hidden flex w-full h-min flex-shrink-0 justify-between items-center flex-nowrap">
+            <img
+              src="/performanceIcon.png"
+              alt="Performance Icon"
+              width="40"
+              height="40"
+            />
+            <div className="flex-shrink-0 w-min h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
+              <motion.div
+                onClick={toggleOpen}
+                className="btn btn-ghost box-border flex-shrink-0 w-min h-auto flex justify-center items-center py-[10px] px-[8px] shadow-cost-per-metrics bg-white overflow-hidden self-stretch relative content-center flex-nowrap gap-2 rounded-lg border border-solid border-[#cfd4dc]"
+                initial={false}
+                animate={{ rotate: open ? -90 : 0 }}
+                transition={{ duration: 0.3, ease: "linear" }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="#2d3442"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 19.5L8.25 12l7.5-7.5"
+                  />
+                </svg>
+              </motion.div>
+            </div>
+          </div>
+          <div className="flex-shrink-0 flex-grow w-auto sm:h-full h-[52px] flex flex-col justify-center items-start overflow-visible relative p-0 content-start flex-nowrap gap-1 rounded-none">
             <h3
               className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative font-semibold ${jakarta.className} text-[#0f1728] text-lg`}
             >
@@ -44,30 +77,30 @@ const CreatorsTable = () => {
               Acompanhe a tabela de todos os dados dos seus creators
             </p>
           </div>
-          <div className="flex-shrink-0 w-min h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
-            <motion.div
-              onClick={toggleOpen}
-              className="btn btn-ghost box-border flex-shrink-0 w-min h-auto flex justify-center items-center py-[10px] px-[8px] shadow-cost-per-metrics bg-white overflow-hidden self-stretch relative content-center flex-nowrap gap-2 rounded-lg border border-solid border-[#cfd4dc]"
-              initial={false}
-              animate={{ rotate: open ? -90 : 0 }}
-              transition={{ duration: 0.3, ease: "linear" }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="#2d3442"
-                className="w-6 h-6"
+          <div className="hidden sm:flex flex-shrink-0 w-min h-min justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
+              <motion.div
+                onClick={toggleOpen}
+                className="btn btn-ghost box-border flex-shrink-0 w-min h-auto flex justify-center items-center py-[10px] px-[8px] shadow-cost-per-metrics bg-white overflow-hidden self-stretch relative content-center flex-nowrap gap-2 rounded-lg border border-solid border-[#cfd4dc]"
+                initial={false}
+                animate={{ rotate: open ? -90 : 0 }}
+                transition={{ duration: 0.3, ease: "linear" }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
-            </motion.div>
-          </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="#2d3442"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 19.5L8.25 12l7.5-7.5"
+                  />
+                </svg>
+              </motion.div>
+            </div>
         </div>
         <svg
           width="1098"

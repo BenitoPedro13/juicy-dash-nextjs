@@ -58,13 +58,13 @@ export default function Home() {
       <div className="w-full h-full flex xl:flex-row flex-col justify-start items-start bg-white overflow-hidden p-0 xl:pl-[82px] content-start flex-nowrap gap-0 rounded-none">
         <div className="box-border flex-shrink-0 xl:w-[calc(100%-379px)] w-full h-min flex flex-col justify-start items-center xl:pt-8 xl:pb-12 py-[15px] overflow-visible content-center flex-nowrap xl:gap-[28px] gap-[15px] rounded-none">
           <div className="box-border flex-shrink-0 w-full xl:h-auto h-min flex flex-col justify-center items-start xl:px-8 px-[15px] overflow-visible relative content-start flex-nowrap gap-3 rounded-none">
-            <div className="breadcrumbs text-lg text-[#475466]">
+            <div className="breadcrumbs xl:text-lg text-sm text-[#475466]">
               <ul>
                 <li>
                   <Link href={"/"}>
                     <svg
-                      width="18"
-                      height="19"
+                      width="15"
+                      height="16"
                       viewBox="-1 -1 18 19"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +82,7 @@ export default function Home() {
                 <li>
                   <Link href={"/"}>
                     <p
-                      className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-medium ${inter.className} text-lg leading-5]`}
+                      className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-medium ${inter.className} xl:text-lg text-sm xl:leading-5]`}
                     >
                       Campanha
                     </p>
@@ -90,7 +90,7 @@ export default function Home() {
                 </li>
                 <li>
                   <p
-                    className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-medium ${inter.className} text-lg leading-5]`}
+                    className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-medium ${inter.className} xl:text-lg text-sm xl:leading-5]]`}
                   >
                     Experiências Buser
                   </p>
@@ -163,7 +163,7 @@ export default function Home() {
             </div>
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] px-[15px] content-start flex-nowrap gap-6 rounded-none">
-            <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
+            <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-6 rounded-none">
               <CreatorsTable/>
             </div>
           </div>
