@@ -53,7 +53,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className="w-[82px] h-[100vh] flex flex-row justify-start items-start bg-white overflow-hidden z-1 p-0 content-start flex-nowrap gap-0 fixed rounded-none border-[#475466] border-solid border-r z-10">
+      <div className="hidden w-[82px] h-[100vh] xl:flex flex-row justify-start items-start bg-white overflow-hidden z-1 p-0 content-start flex-nowrap gap-0 fixed rounded-none border-[#475466] border-solid border-r z-10">
         <div className="w-[81px] h-[100vh] flex flex-col justify-between items-start overflow-visible flex-grow flex-shrink-0 relative p-0 content-start flex-nowrap rounded-none">
           <nav className="navbar box-border flex-shrink-0 w-100 h-min flex flex-col justify-start items-center pt-8 overflow-visible relative content-center flex-nowrap gap-6 rounded-none">
             <Link href="/">
@@ -97,7 +97,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-full h-min flex flex-row justify-start items-start bg-white overflow-hidden p-0 pl-[82px] content-start flex-nowrap gap-0 rounded-none absolute">
+      <div className="w-full h-min flex flex-row justify-start items-start bg-white overflow-hidden p-0 xl:pl-[82px] content-start flex-nowrap gap-0 rounded-none absolute">
         <div className="box-border flex-shrink-0 xl:w-[calc(100%-379px)] w-full h-min flex flex-col justify-start items-center pt-8 pb-12 overflow-visible content-center flex-nowrap gap-[28px] rounded-none">
           <div className="box-border flex-shrink-0 w-full h-auto flex flex-col justify-center items-start px-8 overflow-visible relative content-start flex-nowrap gap-3 rounded-none">
             <div className="breadcrumbs text-lg text-[#475466]">
