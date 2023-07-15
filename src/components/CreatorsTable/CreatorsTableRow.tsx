@@ -24,8 +24,8 @@ const CreatorsTableRow = ({ data }: CreatorsTableRowProps) => {
                     </div>
                   </div>
                   <div className="flex-shrink-0 w-min h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-0 rounded-none">
-                    <h5 className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-medium ${inter.className} text-[#0f1728] text-sm`}>{data.influencer}</h5>
-                    <p className={`flex-shrink-0 w-auto h-auto whitespace-pre relative ${inter.className} text-[#475466] text-sm`}>{data.username}</p>
+                    <h5 className={`flex-shrink-0 w-auto h-auto whitespace-nowrap relative font-medium ${inter.className} text-[#0f1728] text-sm`}>{data.influencer}</h5>
+                    <p className={`flex-shrink-0 w-auto h-auto whitespace-nowrap relative ${inter.className} text-[#475466] text-sm`}>{data.username}</p>
                   </div>
                 </div>
               </td>
@@ -33,31 +33,31 @@ const CreatorsTableRow = ({ data }: CreatorsTableRowProps) => {
                 <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.city}</p>
               </td>
               <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.posts}</p>
+                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.posts}</p>
               </td>
               <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.impressions}</p>
+                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.impressions}</p>
               </td>
               <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.interactions}</p>
+                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.interactions}</p>
               </td>
               <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.clicks}</p>
+                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.clicks}</p>
               </td>
               <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.videoViews}</p>
+                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.videoViews}</p>
               </td>
               <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.cpe}</p>
+                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.cpe}</p>
               </td>
               <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.cpc}</p>
+                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.cpc}</p>
               </td>
               <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.cpv}</p>
+                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.cpv}</p>
               </td>
               <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.ctr}</p>
+                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.ctr}</p>
               </td>
               <th>
                 <button className="btn btn-ghost p-0 text-xs h-6 min-h-[24px] !bg-transparent">
