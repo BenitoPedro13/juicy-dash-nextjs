@@ -16,7 +16,7 @@ type MetricsProps = {
 const Metrics = ({ icone, heading, metric }: MetricsProps) => {
   return (
     <motion.div
-      className="box-border w-full min-w-[200px] h-min flex justify-start items-center p-4 bg-white overflow-visible content-center flex-nowrap gap-[10px] rounded-xl border-black border"
+      className="box-border w-full sm:min-w-[200px] h-min flex justify-start items-center p-4 bg-white overflow-visible content-center flex-nowrap gap-[10px] rounded-xl border-black border"
       initial={false}
       whileHover={{ boxShadow: '2px 2px 0px 0px #000000' }}
       animate={{ boxShadow: '2px 2px 2px 0px rgba(16, 24, 40, 0.06)' }}
