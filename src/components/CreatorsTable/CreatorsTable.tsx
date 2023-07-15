@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import CreatorsTableRow from "./CreatorsTableRow";
+import useDataStore from "@/store";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
 
 const CreatorsTable = () => {
+  const data = useDataStore((state) => state.data);
   const [open, setOpen] = useState(false);
 
   const toggleOpen = () => setOpen(!open);
@@ -164,20 +166,31 @@ const CreatorsTable = () => {
               <th
                 className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
               >
+                CPC
+              </th>
+              <th
+                className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+              >
+                CPV
+              </th>
+              <th
+                className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+              >
+                CTR
+              </th>
+              <th
+                className={`flex-shrink-0 w-auto h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+              >
                 ...
               </th>
             </tr>
           </thead>
           <tbody>
-            <CreatorsTableRow />
-            <CreatorsTableRow />
-            <CreatorsTableRow />
-            <CreatorsTableRow />
-            <CreatorsTableRow />
-            <CreatorsTableRow />
-            <CreatorsTableRow />
-            <CreatorsTableRow />
-            <CreatorsTableRow />
+            {
+              data.map(item => {
+                return <CreatorsTableRow data={item} key={item.id}/>
+              })
+            }
           </tbody>
         </table>
       </div>
