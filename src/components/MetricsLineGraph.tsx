@@ -14,7 +14,7 @@ type MetricsGraphProps = {
 const MetricsGraph = ({ heading, metric }: MetricsGraphProps) => {
   return (
       <motion.div 
-        className="box-border w-full h-min flex flex-col justify-start items-start shadow-metrics hover:shadow-metrics-hover bg-white overflow-hidden p-0 content-start flex-nowrap gap-0 rounded-xl border-black border"
+        className="box-border w-full h-min flex flex-col justify-start items-start shadow-metrics hover:shadow-metrics-hover bg-white xl:overflow-hidden overflow-visible p-0 content-start flex-nowrap xl:gap-0 gap-6 rounded-xl border-black border"
         initial={false}
         whileHover={{ boxShadow: '2px 2px 0px 0px #000000' }}
         animate={{ boxShadow: '2px 2px 2px 0px rgba(16, 24, 40, 0.06)' }}

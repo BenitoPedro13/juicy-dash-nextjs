@@ -98,7 +98,7 @@ export default function Home() {
         </div>
       </div>
       <div className="w-full h-min flex flex-row justify-start items-start bg-white overflow-hidden p-0 pl-[82px] content-start flex-nowrap gap-0 rounded-none absolute">
-        <div className="box-border flex-shrink-0 w-[calc(100%-379px)] h-min flex flex-col justify-start items-center pt-8 pb-12 overflow-visible content-center flex-nowrap gap-[28px] rounded-none">
+        <div className="box-border flex-shrink-0 xl:w-[calc(100%-379px)] w-full h-min flex flex-col justify-start items-center pt-8 pb-12 overflow-visible content-center flex-nowrap gap-[28px] rounded-none">
           <div className="box-border flex-shrink-0 w-full h-auto flex flex-col justify-center items-start px-8 overflow-visible relative content-start flex-nowrap gap-3 rounded-none">
             <div className="breadcrumbs text-lg text-[#475466]">
               <ul>
@@ -148,8 +148,8 @@ export default function Home() {
               </span>
             </div>
           </div>
-          <div className="box-border flex-shrink-0 w-full h-[97px] flex flex-col justify-center items-start px-[22px] overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
-            <div className="flex-shrink-0 w-full h-auto flex justify-start items-center p-0 overflow-visible relative content-center flex-nowrap gap-5 rounded-none">
+          <div className="box-border flex-shrink-0 w-full xl:h-[97px] h-min flex flex-col xl:justify-center justify-start items-start xl:px-[22px] px-[15px] overflow-visible relative content-start flex-nowrap xl:gap-[22px] gap-6 rounded-none">
+            <div className="flex-shrink-0 w-full xl:h-auto h-min xl:flex grid xl:justify-start xl:items-center grid-cols-metric auto-rows-fr grid-rows-2 p-0 overflow-visible relative content-center flex-nowrap xl:gap-5 gap-[10px] rounded-none">
               <Metrics
                 icone={metricsIcon}
                 heading="Total Creators"
@@ -168,9 +168,9 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-6 rounded-none">
-            <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
-              <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-5 rounded-none">
+          <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] p-0 content-start flex-nowrap gap-6 rounded-none">
+            <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start px-[15px] overflow-visible relative content-start flex-nowrap xl:gap-[22px] gap-6 rounded-none">
+              <div className="flex-shrink-0 flex-grow xl:flex-grow-0 w-full h-min flex xl:flex-row flex-col justify-start items-center overflow-visible relative p-0 content-center flex-nowrap xl:gap-5 gap-[15px] rounded-none">
                 <CostPerMetric
                   sigla="CPE"
                   heading="Engajamento"
@@ -192,12 +192,12 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-0 rounded-none">
+          <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] px-[15px] content-start flex-nowrap xl:gap-0 gap-6 rounded-none">
             <MetricsLineGraph heading="Interações" metric={total(data, 'interactions')} />
           </div>
-          <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-6 rounded-none">
-            <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
-              <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-5 rounded-none">
+          <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] p-0 content-start flex-nowrap gap-6 rounded-none">
+            <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start xl:p-0 px-[15px] overflow-visible relative content-start flex-nowrap xl:gap-[22px] gap-6 rounded-none">
+              <div className="flex-shrink-0 w-full h-min flex xl:flex-row flex-col justify-start items-center overflow-visible relative p-0 content-center flex-nowrap xl:gap-5 gap-[15px] rounded-none">
                 <Metrics heading="Engajamento Tik Tok" metric={total(data, 'videoViews')} />
                 <Metrics heading="Cliques no Link Tik Tok" metric={total(data, 'clicks')} />
                 <Metrics heading="Impressoes" metric={total(data, 'impressions')} />
@@ -210,7 +210,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="box-border flex-shrink-0 w-[379px] h-min flex flex-col justify-start items-center pt-8 pr-8 pb-12 bg-transparent overflow-visible content-center flex-nowrap gap-[28px] rounded-none z-10">
+        <div className="hidden box-border flex-shrink-0 w-[379px] h-min xl:flex flex-col justify-start items-center pt-8 pr-8 pb-12 bg-transparent overflow-visible content-center flex-nowrap gap-[28px] rounded-none z-10">
           <div className="flex-shrink-0 w-full h-[68px] mb-[48px] flex justify-end items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
             <div className="flex-shrink-0 w-min h-min flex justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-3 rounded-none">
               <div className="flex-shrink-0 w-[338px] h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-2 rounded-none">
