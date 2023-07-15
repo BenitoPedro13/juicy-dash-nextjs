@@ -1,6 +1,5 @@
 "use client"
 
-import logo from "@/../public/favicon.png";
 import metricsIcon from "@/../public/metricsIcon.png";
 import buserLogo from "@/../public/buser-logo.webp";
 import Link from "next/link";
@@ -56,9 +55,9 @@ export default function Home() {
   return (
     <main>
       <SidenavDesktop />
-      <div className="w-full h-full flex flex-row justify-start items-start bg-white overflow-hidden p-0 xl:pl-[82px] content-start flex-nowrap gap-0 rounded-none">
-        <div className="box-border flex-shrink-0 xl:w-[calc(100%-379px)] w-full h-min flex flex-col justify-start items-center pt-8 pb-12 overflow-visible content-center flex-nowrap gap-[28px] rounded-none">
-          <div className="box-border flex-shrink-0 w-full h-auto flex flex-col justify-center items-start px-8 overflow-visible relative content-start flex-nowrap gap-3 rounded-none">
+      <div className="w-full h-full flex xl:flex-row flex-col justify-start items-start bg-white overflow-hidden p-0 xl:pl-[82px] content-start flex-nowrap gap-0 rounded-none">
+        <div className="box-border flex-shrink-0 xl:w-[calc(100%-379px)] w-full h-min flex flex-col justify-start items-center xl:pt-8 xl:pb-12 py-[15px] overflow-visible content-center flex-nowrap xl:gap-[28px] gap-[15px] rounded-none">
+          <div className="box-border flex-shrink-0 w-full xl:h-auto h-min flex flex-col justify-center items-start xl:px-8 px-[15px] overflow-visible relative content-start flex-nowrap gap-3 rounded-none">
             <div className="breadcrumbs text-lg text-[#475466]">
               <ul>
                 <li>
@@ -114,16 +113,16 @@ export default function Home() {
                 heading="Total Creators"
                 metric={totalInfluencers(data)}
               />
-              <Metrics icone={metricsIcon} heading="Total Posts" metric={total(data, 'posts')} />
+              <Metrics icone={metricsIcon} heading="Total Posts" metric={`28`} />
               <Metrics
                 icone={metricsIcon}
                 heading="Total Feed"
-                metric={total(data, 'impressions')}
+                metric={`19`}
               />
               <Metrics
                 icone={metricsIcon}
                 heading="Total Stories"
-                metric={total(data, 'interactions')}
+                metric={`9`}
               />
             </div>
           </div>
@@ -170,7 +169,7 @@ export default function Home() {
           </div>
           <Footer/>
         </div>
-        <div className="hidden box-border flex-shrink-0 w-[379px] h-min xl:flex flex-col justify-start items-center pt-8 pr-8 pb-12 bg-transparent overflow-visible content-center flex-nowrap gap-[28px] rounded-none z-10">
+        <div className="hidden box-border flex-shrink-0 xl:w-[379px] w-auto flex-grow h-min xl:flex flex-col justify-start items-center pt-8 pr-8 pb-12 bg-transparent overflow-visible content-center flex-nowrap gap-[28px] rounded-none z-10">
           <div className="flex-shrink-0 w-full h-[68px] mb-[48px] flex justify-end items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
             <div className="flex-shrink-0 w-min h-min flex justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-3 rounded-none">
               <div className="flex-shrink-0 w-[338px] h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-2 rounded-none">

@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className="bg-white h-[72px] border-b border-gray-100 shadow-header lg:h-20 xl:hidden">
       <div className="flex flex-col justify-center items-center p-0 absolute h-[72px] left-0 right-0 top-0 lg:h-20">
-        <div className="flex flex-row justify-between items-center pr-3 pl-4 h-10 w-[100%] max-w-7xl lg:px-8">
+        <div className="flex flex-row justify-between items-center pr-3 pl-4 h-10 w-[100%] lg:px-8">
           <div className="flex flex-row items-center gap-10 lg:gap-[94px]">
             <div className="flex flex-row items-start p-0 h-8 w-auto cursor-pointer">
               <div className="h-8 w-auto">
