@@ -162,7 +162,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative px-[22px] content-start flex-nowrap gap-6 rounded-none">
+          <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] px-[15px] content-start flex-nowrap gap-6 rounded-none">
             <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-[22px] rounded-none">
               <CreatorsTable/>
             </div>
