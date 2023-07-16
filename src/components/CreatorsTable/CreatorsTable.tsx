@@ -1,5 +1,3 @@
-"use client";
-
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";

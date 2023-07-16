@@ -16,6 +16,7 @@ import CreatorsTable from "@/components/CreatorsTable/CreatorsTable";
 import useDataStore, { Influencer } from "@/store";
 import { useEffect } from "react";
 import Footer from "@/components/Footer";
+import FinancialMetrics from "@/components/FinancialMetrics/FinancialMetrics";
 // import { Plus_Jakarta_Sans } from 'next/font/google'
 
 const inter = Inter({ subsets: ["latin"] });
@@ -219,6 +220,7 @@ export default function Home() {
             heading="Alcance Bruto"
             metric={total(data, "impressions")}
           />
+          <FinancialMetrics/>
         </div>
       </div>
     </main>

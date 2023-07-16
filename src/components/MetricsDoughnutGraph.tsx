@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import LineGraph from "./LineGraph";

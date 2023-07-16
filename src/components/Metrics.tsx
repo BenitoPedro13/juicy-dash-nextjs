@@ -1,4 +1,3 @@
-"use client"
 /* eslint-disable @next/next/no-img-element */
 import Image, { StaticImageData } from 'next/image';
 import React from 'react';
