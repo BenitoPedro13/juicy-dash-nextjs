@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import Footer from "@/components/Footer";
 import FinancialMetrics from "@/components/FinancialMetrics/FinancialMetrics";
 import ContactCTA from "@/components/CTA/ContactCTA";
+import AttachmentsTable from "@/components/AttachmentsTable/AttachmentsTable";
 // import { Plus_Jakarta_Sans } from 'next/font/google'
 
 const inter = Inter({ subsets: ["latin"] });
@@ -181,6 +182,11 @@ export default function Home() {
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] px-[15px] content-start flex-nowrap gap-6 rounded-none">
             <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-6 rounded-none">
               <CreatorsTable />
+            </div>
+          </div>
+          <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] px-[15px] content-start flex-nowrap gap-6 rounded-none">
+            <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-6 rounded-none">
+              <AttachmentsTable />
             </div>
           </div>
           <div className="xl:hidden box-border flex-shrink-0 xl:w-[379px] w-full flex-grow h-min flex flex-col justify-start items-center xl:pt-8 xl:pr-8 pb-10 px-[15px] bg-transparent overflow-visible content-center flex-nowrap xl:gap-[28px] gap-[15px] rounded-none z-10">
