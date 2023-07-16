@@ -48,7 +48,7 @@ const CostPerMetric = ({ heading, sigla, metric, costPerMetric }: CostPerMetricP
       </div>
       <div className="flex-shrink-0 w-full h-min flex justify-start items-end overflow-visible relative p-0 content-end flex-nowrap gap-4 rounded-none">
         <div className="flex-shrink-0 flex-grow w-auto h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-4 rounded-none">
-          <p className="flex-shrink-0 w-[168px] h-auto whitespace-pre-wrap break-words relative font-Balgin-Display font-bold text-[#0f1728] text-3xl leading-[38px]">
+          <p className="flex-shrink-0 w-full h-auto whitespace-pre-wrap break-words relative font-Balgin-Display font-bold text-[#0f1728] text-3xl leading-[38px]">
             { !siglaActive ? metric : costPerMetric}
           </p>
         </div>

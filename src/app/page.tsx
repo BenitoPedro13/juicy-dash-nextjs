@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import metricsIcon from "@/../public/metricsIcon.png";
 import buserLogo from "@/../public/buser-logo.webp";
@@ -23,11 +23,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 function parseUpdatedAt(updatedAt: string) {
   const date = new Date(updatedAt);
-  const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const year = date.getFullYear().toString().slice(-2);
-  const hours = date.getHours().toString().padStart(2, '0');
-  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const hours = date.getHours().toString().padStart(2, "0");
+  const minutes = date.getMinutes().toString().padStart(2, "0");
 
   return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
@@ -46,11 +46,11 @@ export default function Home() {
 
     for (let i = 0; i < data.length; i++) {
       const element = data[i];
-      count = +element[`${dataKey}`];
+      count += Number.parseInt((element[`${dataKey}`] as string).replaceAll('.', ''));
     }
 
-    return `${count}`
-  }
+    return count.toLocaleString('PT-BR', { style: 'currency', currency: 'BRL' });;
+  };
 
   return (
     <main>
@@ -113,12 +113,12 @@ export default function Home() {
                 heading="Total Creators"
                 metric={totalInfluencers(data)}
               />
-              <Metrics icone={metricsIcon} heading="Total Posts" metric={`28`} />
               <Metrics
                 icone={metricsIcon}
-                heading="Total Feed"
-                metric={`19`}
+                heading="Total Posts"
+                metric={`28`}
               />
+              <Metrics icone={metricsIcon} heading="Total Feed" metric={`19`} />
               <Metrics
                 icone={metricsIcon}
                 heading="Total Stories"
@@ -138,36 +138,48 @@ export default function Home() {
                 <CostPerMetric
                   sigla="CPV"
                   heading="Views"
-                  metric={total(data, 'videoViews')}
+                  metric={total(data, "videoViews")}
                   costPerMetric={`${data[0]?.cpv}`}
                 />
                 <CostPerMetric
                   sigla="CPC"
                   heading="Cliques"
-                  metric={total(data, 'clicks')}
+                  metric={total(data, "clicks")}
                   costPerMetric={`${data[0]?.cpc}`}
                 />
               </div>
             </div>
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] px-[15px] content-start flex-nowrap xl:gap-0 gap-6 rounded-none">
-            <MetricsLineGraph heading="Interações" metric={total(data, 'interactions')} />
+            <MetricsLineGraph
+              heading="Interações"
+              metric={total(data, "interactions")}
+            />
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] p-0 content-start flex-nowrap gap-6 rounded-none">
             <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start xl:p-0 px-[15px] overflow-visible relative content-start flex-nowrap xl:gap-[22px] gap-6 rounded-none">
               <div className="flex-shrink-0 w-full h-min flex xl:flex-row flex-col justify-start items-center overflow-visible relative p-0 content-center flex-nowrap xl:gap-5 gap-[15px] rounded-none">
-                <Metrics heading="Engajamento Tik Tok" metric={total(data, 'videoViews')} />
-                <Metrics heading="Cliques no Link Tik Tok" metric={total(data, 'clicks')} />
-                <Metrics heading="Impressoes" metric={total(data, 'impressions')} />
+                <Metrics
+                  heading="Engajamento Tik Tok"
+                  metric={total(data, "videoViews")}
+                />
+                <Metrics
+                  heading="Cliques no Link Tik Tok"
+                  metric={total(data, "clicks")}
+                />
+                <Metrics
+                  heading="Impressoes"
+                  metric={total(data, "impressions")}
+                />
               </div>
             </div>
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] px-[15px] content-start flex-nowrap gap-6 rounded-none">
             <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative content-start flex-nowrap gap-6 rounded-none">
-              <CreatorsTable/>
+              <CreatorsTable />
             </div>
           </div>
-          <Footer/>
+          <Footer />
         </div>
         <div className="hidden box-border flex-shrink-0 xl:w-[379px] w-auto flex-grow h-min xl:flex flex-col justify-start items-center pt-8 pr-8 pb-12 bg-transparent overflow-visible content-center flex-nowrap gap-[28px] rounded-none z-10">
           <div className="flex-shrink-0 w-full h-[68px] mb-[48px] flex justify-end items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
@@ -195,12 +207,18 @@ export default function Home() {
               className="btn btn-circle btn-outline border-black border-[1px] border-solid"
             />
           </div>
-          <Metrics heading="Investimento Total Inicial" metric="R$ 165.700,00" />
+          <Metrics
+            heading="Investimento Total Inicial"
+            metric="R$ 165.700,00"
+          />
           <Metrics
             heading="Investimento Executado Estimado"
             metric="R$ 22.566,39"
           />
-          <MetricsDoughnutGraph heading="Alcance Bruto" metric={total(data, 'impressions')}/>
+          <MetricsDoughnutGraph
+            heading="Alcance Bruto"
+            metric={total(data, "impressions")}
+          />
         </div>
       </div>
     </main>

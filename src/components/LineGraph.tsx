@@ -14,6 +14,7 @@ import {
     Legend,
     Filler,
 } from "chart.js"
+import useDataStore from "@/store"
 
 ChartJS.register(
     ArcElement,
@@ -27,28 +28,6 @@ ChartJS.register(
     Filler
 )
 
-const chartData = {
-    labels: [
-        "Renan Keller",
-        "Joãozinho",
-        "Qual Rolê | Uberlândia",
-        "Janelas de Ouro Preto",
-        "Helo Teixeira",
-        "Julia Zaneti",
-        "Dicas São Sebastião",
-        "Cola em Sampa",
-    ],
-    datasets: [
-        {
-            label: "Interações",
-            data: [9404, 40315, 0, 0, 180, 277, 0, 32],
-            fill: "start",
-            borderColor: "#E624CF",
-            borderWidth: 8,
-        },
-    ],
-}
-
 const css = `.chartContainer::-webkit-scrollbar {
                     display: none;
                     -ms-overflow-style: none;  /* IE and Edge */
@@ -56,7 +35,23 @@ const css = `.chartContainer::-webkit-scrollbar {
                 }`
 
 export default function LineGraph() {
+    const data = useDataStore((state) => state.data);
     const chartRef = useRef(null)
+
+    
+
+    const chartData = {
+        labels: data.map(item => item.influencer),
+        datasets: [
+            {
+                label: "Interações",
+                data: data.map(item => Number.parseInt(item.interactions.replaceAll(".", ""))),
+                fill: "start",
+                borderColor: "#E624CF",
+                borderWidth: 8,
+            },
+        ],
+    }
 
     const chartOptions = {
         responsive: true,
