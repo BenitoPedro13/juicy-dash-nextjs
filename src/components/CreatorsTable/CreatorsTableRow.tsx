@@ -1,6 +1,8 @@
 import React from "react";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import { Influencer } from "@/store";
+import Image from "next/image";
+import avatar from '@/../public/avatar.jpeg'
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
@@ -16,10 +18,12 @@ const CreatorsTableRow = ({ data }: CreatorsTableRowProps) => {
                 <div className="flex-shrink-0 flex justify-start items-center overflow-visible content-center flex-nowrap p-0 gap-[6px]">
                   <div className="avatar">
                     <div className="mask mask-squircle w-[38px] h-[38px] aspect-square block rounded-full">
-                      <img
+                      <Image
                         // src={data.profilePictureUrl}
-                        src="/avatar.jpeg"
+                        src={avatar}
                         alt="Avatar Picture"
+                        width={38}
+                        height={38}
                       />
                     </div>
                   </div>
