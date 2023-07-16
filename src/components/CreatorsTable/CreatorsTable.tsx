@@ -41,7 +41,7 @@ const CreatorsTable = () => {
               alt="Performance Icon"
               width={40}
               height={40}
-              className="hidden sm:block"
+              className="sm:hidden block"
             />
             <div className="flex-shrink-0 w-min h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
               <motion.div
