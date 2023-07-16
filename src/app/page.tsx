@@ -48,10 +48,12 @@ export default function Home() {
 
     for (let i = 0; i < data.length; i++) {
       const element = data[i];
-      count += Number.parseInt((element[`${dataKey}`] as string).replaceAll('.', ''));
+      count += Number.parseInt(
+        (element[`${dataKey}`] as string).replaceAll(".", "")
+      );
     }
 
-    return count.toLocaleString('PT-BR');
+    return count.toLocaleString("PT-BR");
   };
 
   return (
@@ -118,7 +120,7 @@ export default function Home() {
               <Metrics
                 icone={metricsIcon}
                 heading="Total Posts"
-                metric={total(data, 'posts')}
+                metric={total(data, "posts")}
               />
               <Metrics icone={metricsIcon} heading="Total Feed" metric={`6`} />
               <Metrics
@@ -181,6 +183,22 @@ export default function Home() {
               <CreatorsTable />
             </div>
           </div>
+          <div className="xl:hidden box-border flex-shrink-0 xl:w-[379px] w-full flex-grow h-min flex flex-col justify-start items-center xl:pt-8 xl:pr-8 pb-10 px-[15px] bg-transparent overflow-visible content-center flex-nowrap xl:gap-[28px] gap-[15px] rounded-none z-10">
+            <MetricsDoughnutGraph
+              heading="Alcance Bruto"
+              metric={total(data, "impressions")}
+            />
+            <Metrics
+              heading="Investimento Total Inicial"
+              metric="R$ 165.700,00"
+            />
+            <Metrics
+              heading="Investimento Executado Estimado"
+              metric="R$ 22.566,39"
+            />
+            <FinancialMetrics />
+            <ContactCTA />
+          </div>
           <Footer />
         </div>
         <div className="hidden box-border flex-shrink-0 xl:w-[379px] w-auto flex-grow h-min xl:flex flex-col justify-start items-center pt-8 pr-8 pb-12 bg-transparent overflow-visible content-center flex-nowrap gap-[28px] rounded-none z-10">
@@ -221,8 +239,8 @@ export default function Home() {
             heading="Alcance Bruto"
             metric={total(data, "impressions")}
           />
-          <FinancialMetrics/>
-          <ContactCTA/>
+          <FinancialMetrics />
+          <ContactCTA />
         </div>
       </div>
     </main>
