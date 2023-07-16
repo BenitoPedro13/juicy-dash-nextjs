@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans } from 'next/font/google'
 import juicyGrapeArt from '@/../public/juicy-artwork-grape.webp'
 import juicyCoconutArt from '@/../public/juicy-artwork-coconut.svg'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 const jakarta = Plus_Jakarta_Sans({subsets: ['latin']});
 
@@ -23,7 +24,7 @@ const ContactCTA = () => {
                     alt='Juicy Coconut Art Figure'
                     width={202}
                     height={204}
-                    className='block overflow-visible absolute'
+                    className='block overflow-visible absolute top-2'
                 />
                 <Image
                     src={juicyGrapeArt}
@@ -43,6 +44,15 @@ const ContactCTA = () => {
                     <p className="flex-shrink-0 w-fit h-auto whitespace-pre-wrap break-words relative text-[#475466] text-sm">
                         Nós adorariamos te ouvir e ajudar em sua campanha Juicy.
                     </p>
+                </div>
+                <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-3 rounded-none">
+                    <Link 
+                        href={'https://welcome.juicy.space'}
+                        target='_blank'
+                        className='btn btn-ghost box-border flex-shrink-0 w-full h-min flex justify-center items-center px-4 py-[10px] shadow-cost-per-metrics bg-transparent overflow-hidden relative content-center flex-nowrap gap-2 rounded-lg border border-solid border-[#cfd4dc]'
+                    >
+                        <p className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-semibold ${jakarta.className} text-[#344053] text-sm`}>Saber mais</p>
+                    </Link>
                 </div>
             </div>
         </div>
