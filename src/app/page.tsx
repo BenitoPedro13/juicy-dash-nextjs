@@ -49,7 +49,7 @@ export default function Home() {
       count += Number.parseInt((element[`${dataKey}`] as string).replaceAll('.', ''));
     }
 
-    return count.toLocaleString('PT-BR', { style: 'currency', currency: 'BRL' });;
+    return count.toLocaleString('PT-BR');
   };
 
   return (
@@ -116,13 +116,13 @@ export default function Home() {
               <Metrics
                 icone={metricsIcon}
                 heading="Total Posts"
-                metric={`28`}
+                metric={total(data, 'posts')}
               />
-              <Metrics icone={metricsIcon} heading="Total Feed" metric={`19`} />
+              <Metrics icone={metricsIcon} heading="Total Feed" metric={`6`} />
               <Metrics
                 icone={metricsIcon}
                 heading="Total Stories"
-                metric={`9`}
+                metric={`11`}
               />
             </div>
           </div>

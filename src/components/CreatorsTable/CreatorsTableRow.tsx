@@ -25,7 +25,7 @@ const CreatorsTableRow = ({ data }: CreatorsTableRowProps) => {
                   </div>
                   <div className="flex-shrink-0 w-min h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-0 rounded-none">
                     <h5 className={`flex-shrink-0 w-auto h-auto whitespace-nowrap relative font-medium ${inter.className} text-[#0f1728] text-sm`}>{data.influencer}</h5>
-                    <p className={`flex-shrink-0 w-auto h-auto whitespace-nowrap relative ${inter.className} text-[#475466] text-sm`}>{data.username}</p>
+                    <p className={`flex-shrink-0 w-auto h-auto whitespace-nowrap relative ${inter.className} text-[#475466] text-sm`}>@{data.username}</p>
                   </div>
                 </div>
               </td>
