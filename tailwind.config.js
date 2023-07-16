@@ -23,6 +23,7 @@ module.exports = {
         'metrics-hover': '2px 2px 0px 0px #000000;',
         'cost-per-metrics': '0px 1px 2px 0px rgba(16, 24, 40, 0.05);',
         'financial-metrics': '0px 1px 2px 0px rgba(0, 0, 0, 0.25);',
+        'contact-cta': '0px 1px 2px 0px rgba(16, 24, 40, 0.06), 0px 1px 3px 0px rgba(16, 24, 40, 0.10000000149011612);'
       },
       fontFamily: {
         'Balgin': 'Balgin',

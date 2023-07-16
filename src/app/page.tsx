@@ -17,6 +17,7 @@ import useDataStore, { Influencer } from "@/store";
 import { useEffect } from "react";
 import Footer from "@/components/Footer";
 import FinancialMetrics from "@/components/FinancialMetrics/FinancialMetrics";
+import ContactCTA from "@/components/CTA/ContactCTA";
 // import { Plus_Jakarta_Sans } from 'next/font/google'
 
 const inter = Inter({ subsets: ["latin"] });
@@ -221,6 +222,7 @@ export default function Home() {
             metric={total(data, "impressions")}
           />
           <FinancialMetrics/>
+          <ContactCTA/>
         </div>
       </div>
     </main>
