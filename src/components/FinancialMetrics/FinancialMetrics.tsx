@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import performanceIcon from '@/../public/performanceIcon.png'
+import Image from "next/image";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import React from "react";
 import FinancialMetric from "./FinancialMetric";
@@ -15,12 +17,13 @@ const FinancialMetrics = () => {
       transition={{ duration: 0.3, ease: "linear" }}
     >
       <div className="box-border flex-shrink-0 flex-grow w-auto h-fit flex justify-start items-center p-4 overflow-visible relative content-center flex-nowrap gap-[10px] rounded-none border-b border-solid border-[#222]">
-        <img
-          src="/performanceIcon.png"
-          alt="Performance Icon"
-          width="40"
-          height="40"
-        />
+            <Image
+              src={performanceIcon}
+              alt="Performance Icon"
+              width={40}
+              height={40}
+              className="hidden sm:block"
+            />
         <div className="flex-shrink-0 flex-grow w-full h-min flex flex-col justify-center items-start overflow-visible relative p-0 content-start flex-nowrap gap-1 rounded-none">
             <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative font-semibold ${jakarta.className} text-[#0f1728] text-lg`}>Métricas Financeiras</p>
             <p className="flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative text-[#475466] text-sm">Acompanhe os dados financeiros de sua campanha</p>

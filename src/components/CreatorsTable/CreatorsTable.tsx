@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
+import performanceIcon from '@/../public/performanceIcon.png'
+import Image from "next/image";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import CreatorsTableRow from "./CreatorsTableRow";
 import useDataStore from "@/store";
@@ -26,19 +28,20 @@ const CreatorsTable = () => {
     >
       <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap sm:gap-5 gap-0 rounded-none">
         <div className="box-border flex-shrink-0 w-full h-min flex sm:flex-row flex-col justify-start sm:items-center items-start xl:pt-5 xl:pb-0 py-5 px-6 overflow-visible relative sm:content-center content-start flex-nowrap gap-4 rounded-none">
-            <img
-              src="/performanceIcon.png"
+            <Image
+              src={performanceIcon}
               alt="Performance Icon"
-              width="40"
-              height="40"
+              width={40}
+              height={40}
               className="hidden sm:block"
             />
           <div className="sm:hidden flex w-full h-min flex-shrink-0 justify-between items-center flex-nowrap">
-            <img
-              src="/performanceIcon.png"
+          <Image
+              src={performanceIcon}
               alt="Performance Icon"
-              width="40"
-              height="40"
+              width={40}
+              height={40}
+              className="hidden sm:block"
             />
             <div className="flex-shrink-0 w-min h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
               <motion.div
