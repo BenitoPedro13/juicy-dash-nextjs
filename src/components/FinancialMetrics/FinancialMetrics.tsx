@@ -16,13 +16,13 @@ const FinancialMetrics = () => {
       animate={{ boxShadow: "2px 2px 2px 0px rgba(16, 24, 40, 0.06)" }}
       transition={{ duration: 0.3, ease: "linear" }}
     >
-      <div className="box-border flex-shrink-0 flex-grow w-auto h-fit flex justify-start items-center p-4 overflow-visible relative content-center flex-nowrap gap-[10px] rounded-none border-b border-solid border-[#222]">
+      <div className="box-border flex-shrink-0 flex-grow w-full h-fit flex justify-start items-center p-4 overflow-visible relative content-center flex-nowrap gap-[10px] rounded-none border-b border-solid border-[#222]">
         <Image
           src={performanceIcon}
           alt="Performance Icon"
           width={40}
           height={40}
-          className="hidden sm:block"
+          className="block"
         />
         <div className="flex-shrink-0 flex-grow w-full h-min flex flex-col justify-center items-start overflow-visible relative p-0 content-start flex-nowrap gap-1 rounded-none">
           <p

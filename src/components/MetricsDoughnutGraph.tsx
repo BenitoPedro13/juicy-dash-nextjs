@@ -23,7 +23,7 @@ const MetricsDoughnutGraph = ({
       animate={{ boxShadow: '2px 2px 2px 0px rgba(16, 24, 40, 0.06)' }}
       transition={{ duration: 0.3, ease: 'linear' }}
     >
-      <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-start p-6 overflow-visible relative content-start flex-nowrap gap-5 rounded-none">
+      <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-start items-center p-6 overflow-visible relative content-start flex-nowrap gap-5 rounded-none">
         <div className="flex-shrink-0 w-full h-min flex flex-col justify-center items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
           <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-5 rounded-none">
             <div className="flex-shrink-0 w-full h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-4 rounded-none">

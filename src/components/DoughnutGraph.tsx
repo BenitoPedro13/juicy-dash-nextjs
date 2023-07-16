@@ -48,5 +48,5 @@ export default function DoughnutGraph() {
         ],
     }
 
-    return <Doughnut style={{ overflow: "hidden" }} data={chartData} />
+    return <Doughnut className="overflow-hidden max-w-[380px] max-h-[380px]" data={chartData} />
 }
