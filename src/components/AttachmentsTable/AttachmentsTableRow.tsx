@@ -4,8 +4,8 @@ import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import { Attachment } from "@/store";
 import Image from "next/image";
 import fileIcon from '@/../public/fileIcon.svg'
-import { parseUpdatedAt } from "@/app/page";
 import Link from "next/link";
+import { parseUpdatedAt } from "../../../utils/utils";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
