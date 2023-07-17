@@ -48,7 +48,7 @@ const useDataStore = create<DataState>((set) => ({
   },
   fetchAttachment: async () => {
     try {
-      const response = await fetch('http://localhost:3000/attachments/'); // Replace with your API endpoint
+      const response = await fetch('https://benitopedro.tech/attachments/'); // Replace with your API endpoint
       const attachments: Attachment[] = await response.json();
       set({ attachments });
     } catch (error) {

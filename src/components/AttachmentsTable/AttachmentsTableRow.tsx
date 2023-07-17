@@ -28,15 +28,6 @@ function formatFileSize(fileSize: number): string {
 }
 
 const AttachmentsTableRow = ({ data }: AttachmentsTableRowProps) => {
-  const [downloadUrl, setDownloadUrl] = useState('');
-
-  const handleDownload = () => {
-    // Generate a unique identifier
-    const uniqueId = Math.random().toString(36).substring(7);
-
-    // Set the download URL with the unique identifier
-    setDownloadUrl(`http://localhost:3000/public/${data.uniqueFilename}?downloadId=${uniqueId}`);
-  };
 
   return (
             <tr>
@@ -66,9 +57,9 @@ const AttachmentsTableRow = ({ data }: AttachmentsTableRowProps) => {
               </td>
               <th>
                 <button className="btn btn-ghost p-0 text-xs h-6 min-h-[24px] !bg-transparent">
-                  {/* <Link href={downloadUrl} target='_blank' onClick={handleDownload}> */}
+                  <Link href={`https://benitopedro.tech/public/${data.uniqueFilename}`} target='_blank'>
                     <p className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-semibold ${jakarta.className} text-[#ff77ef] text-sm`}>baixar</p>
-                  {/* </Link> */}
+                  </Link>
                 </button>
               </th>
             </tr>
