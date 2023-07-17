@@ -19,21 +19,11 @@ import Footer from "@/components/Footer";
 import FinancialMetrics from "@/components/FinancialMetrics/FinancialMetrics";
 import ContactCTA from "@/components/CTA/ContactCTA";
 import AttachmentsTable from "@/components/AttachmentsTable/AttachmentsTable";
+import { parseUpdatedAt } from "../../utils/utils";
 // import { Plus_Jakarta_Sans } from 'next/font/google'
 
 const inter = Inter({ subsets: ["latin"] });
 // const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] })
-
-export function parseUpdatedAt(updatedAt: string) {
-  const date = new Date(updatedAt);
-  const day = date.getDate().toString().padStart(2, "0");
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const year = date.getFullYear().toString().slice(-2);
-  const hours = date.getHours().toString().padStart(2, "0");
-  const minutes = date.getMinutes().toString().padStart(2, "0");
-
-  return `${day}/${month}/${year} ${hours}:${minutes}`;
-}
 
 export default function Home() {
   const fetchData = useDataStore((state) => state.fetchData);
