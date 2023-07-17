@@ -1,20 +1,65 @@
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import attachmentsIcon from "@/../public/attachmentsIcon.png";
 import Image from "next/image";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import AttachmentsTableRow from "./AttachmentsTableRow";
-import useDataStore from "@/store";
+import useDataStore, { Attachment } from "@/store";
 import FileUploadButton from "../FileUploadButton";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
 
+// id: number;
+// uniqueFilename: string;
+// originalFilename: string;
+// fileSize: number;
+// createdAt: string;
+// updatedAt: string;
+
 const AttachmentsTable = () => {
-  const attachments = useDataStore((state) => state.attachments);
+  const globalAttachments = useDataStore((state) => state.attachments);
+  const [attachments, setAttachments] = useState([...globalAttachments]);
   const [open, setOpen] = useState(false);
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc"); // Initial sort order
+  const [sortColumn, setSortColumn] =
+    useState<keyof Attachment>("originalFilename"); // Initial sort column
 
   const toggleOpen = () => setOpen(!open);
+
+  const handleSort = (column: keyof Attachment) => {
+    if (sortColumn === column) {
+      // If the same column is clicked, toggle the sort order
+      setSortOrder((prevSortOrder) =>
+        prevSortOrder === "asc" ? "desc" : "asc"
+      );
+    } else {
+      // If a different column is clicked, set the column and initial sort order
+      setSortColumn(column);
+      setSortOrder("asc");
+    }
+  };
+
+  useEffect(() => {
+    const sortedAttachments = [...globalAttachments].sort((a, b) => {
+      if (sortColumn === "originalFilename") {
+        return a.originalFilename.localeCompare(b.originalFilename);
+      } else if (sortColumn === "fileSize") {
+        return a.fileSize - b.fileSize;
+      } else if (sortColumn === "createdAt") {
+        const dateA = new Date(a.createdAt);
+        const dateB = new Date(b.createdAt);
+        return dateA.getTime() - dateB.getTime();
+      }
+      return 0;
+    });
+
+    if (sortOrder === "desc") {
+      sortedAttachments.reverse();
+    }
+
+    setAttachments(sortedAttachments);
+  }, [globalAttachments, sortColumn, sortOrder]);
 
   return (
     <motion.div
@@ -44,9 +89,9 @@ const AttachmentsTable = () => {
               height={40}
               className="sm:hidden block"
             />
-            
+
             <div className="flex-shrink-0 w-min h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
-              <FileUploadButton/>
+              <FileUploadButton />
               <motion.div
                 onClick={toggleOpen}
                 className="btn btn-ghost box-border flex-shrink-0 w-min h-auto flex justify-center items-center py-[10px] px-[8px] shadow-cost-per-metrics bg-white overflow-hidden self-stretch relative content-center flex-nowrap gap-2 rounded-lg border border-solid border-[#cfd4dc]"
@@ -84,7 +129,7 @@ const AttachmentsTable = () => {
             </p>
           </div>
           <div className="hidden sm:flex flex-shrink-0 w-min h-min justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
-            <FileUploadButton/>
+            <FileUploadButton />
             <motion.div
               onClick={toggleOpen}
               className="btn btn-ghost box-border flex-shrink-0 w-min h-auto flex justify-center items-center py-[10px] px-[8px] shadow-cost-per-metrics bg-white overflow-hidden self-stretch relative content-center flex-nowrap gap-2 rounded-lg border border-solid border-[#cfd4dc]"
@@ -129,17 +174,20 @@ const AttachmentsTable = () => {
           <thead className="sticky top-0 z-10 bg-white">
             <tr className="border-box flex-shrink-0 w-full h-min bg-[#f8f9fb] overflow-visible relative content-center flex-nowrap gap-[5px] rounded-none border-b border-[#eaecf0]">
               <th
-                className={`flex-shrink-0 w-[40%] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+                className={`cursor-pointer flex-shrink-0 w-[40%] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+                onClick={() => handleSort("originalFilename")}
               >
                 Nome do Arquivo
               </th>
               <th
-                className={`flex-shrink-0 w-[calc(30%-45px)] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+                className={`cursor-pointer flex-shrink-0 w-[calc(30%-45px)] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+                onClick={() => handleSort("fileSize")}
               >
                 Tamanho
               </th>
               <th
-                className={`flex-shrink-0 w-[calc(30%-45px)] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+                className={`cursor-pointer flex-shrink-0 w-[calc(30%-45px)] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+                onClick={() => handleSort("createdAt")}
               >
                 Data de Envio
               </th>
