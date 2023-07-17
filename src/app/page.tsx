@@ -24,7 +24,7 @@ import AttachmentsTable from "@/components/AttachmentsTable/AttachmentsTable";
 const inter = Inter({ subsets: ["latin"] });
 // const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] })
 
-function parseUpdatedAt(updatedAt: string) {
+export function parseUpdatedAt(updatedAt: string) {
   const date = new Date(updatedAt);
   const day = date.getDate().toString().padStart(2, "0");
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -37,11 +37,13 @@ function parseUpdatedAt(updatedAt: string) {
 
 export default function Home() {
   const fetchData = useDataStore((state) => state.fetchData);
+  const fetchAttachment = useDataStore((state) => state.fetchAttachment);
   const data = useDataStore((state) => state.data);
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+    fetchAttachment()
+  }, [fetchData, fetchAttachment]);
 
   const totalInfluencers = (data: Influencer[]) => `${data.length}`;
   const total = (data: Influencer[], dataKey: keyof Influencer) => {

@@ -1,17 +1,43 @@
-import React from "react";
+
+import React, { useState } from "react";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
-import { Influencer } from "@/store";
+import { Attachment } from "@/store";
 import Image from "next/image";
-import avatar from '@/../public/avatar.jpeg'
+import fileIcon from '@/../public/fileIcon.svg'
+import { parseUpdatedAt } from "@/app/page";
+import Link from "next/link";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
 
 type AttachmentsTableRowProps = {
-  data: Influencer
+  data: Attachment
+}
+
+function formatFileSize(fileSize: number): string {
+  const KB = 1024;
+  const MB = KB * KB;
+
+  if (fileSize >= MB) {
+    return `${(fileSize / MB).toFixed(2)} MB`;
+  } else if (fileSize >= KB) {
+    return `${(fileSize / KB).toFixed(2)} KB`;
+  } else {
+    return `${fileSize} bytes`;
+  }
 }
 
 const AttachmentsTableRow = ({ data }: AttachmentsTableRowProps) => {
+  const [downloadUrl, setDownloadUrl] = useState('');
+
+  const handleDownload = () => {
+    // Generate a unique identifier
+    const uniqueId = Math.random().toString(36).substring(7);
+
+    // Set the download URL with the unique identifier
+    setDownloadUrl(`http://localhost:3000/public/${data.uniqueFilename}?downloadId=${uniqueId}`);
+  };
+
   return (
             <tr>
               <td>
@@ -19,55 +45,30 @@ const AttachmentsTableRow = ({ data }: AttachmentsTableRowProps) => {
                   <div className="avatar">
                     <div className="mask mask-squircle w-[38px] h-[38px] aspect-square block rounded-full">
                       <Image
-                        // src={data.profilePictureUrl}
-                        src={avatar}
-                        alt="Avatar Picture"
+                        src={fileIcon}
+                        alt="File Icon"
                         width={38}
                         height={38}
                       />
                     </div>
                   </div>
                   <div className="flex-shrink-0 w-min h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap gap-0 rounded-none">
-                    <h5 className={`flex-shrink-0 w-auto h-auto whitespace-nowrap relative font-medium ${inter.className} text-[#0f1728] text-sm`}>{data.influencer}</h5>
-                    <p className={`flex-shrink-0 w-auto h-auto whitespace-nowrap relative ${inter.className} text-[#475466] text-sm`}>@{data.username}</p>
+                    <h5 className={`flex-shrink-0 w-auto h-auto whitespace-nowrap relative font-medium ${inter.className} text-[#0f1728] text-sm`}>{data.originalFilename}</h5>
+                    <p className={`flex-shrink-0 w-auto h-auto whitespace-nowrap relative ${inter.className} text-[#475466] text-sm`}>{formatFileSize(data.fileSize)}</p>
                   </div>
                 </div>
               </td>
               <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.city}</p>
+                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${inter.className} text-[#475466] text-sm`}>{formatFileSize(data.fileSize)}</p>
               </td>
               <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.posts}</p>
-              </td>
-              <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.impressions}</p>
-              </td>
-              <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.interactions}</p>
-              </td>
-              <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.clicks}</p>
-              </td>
-              <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.videoViews}</p>
-              </td>
-              <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.cpe}</p>
-              </td>
-              <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.cpc}</p>
-              </td>
-              <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.cpv}</p>
-              </td>
-              <td>
-                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{data.ctr}</p>
+                <p className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}>{parseUpdatedAt(data.updatedAt)}</p>
               </td>
               <th>
                 <button className="btn btn-ghost p-0 text-xs h-6 min-h-[24px] !bg-transparent">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#475466" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                    </svg>
+                  {/* <Link href={downloadUrl} target='_blank' onClick={handleDownload}> */}
+                    <p className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-semibold ${jakarta.className} text-[#ff77ef] text-sm`}>baixar</p>
+                  {/* </Link> */}
                 </button>
               </th>
             </tr>

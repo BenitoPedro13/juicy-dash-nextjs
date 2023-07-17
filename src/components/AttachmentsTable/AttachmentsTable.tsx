@@ -10,8 +10,8 @@ const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
 
 const AttachmentsTable = () => {
-  const data = useDataStore((state) => state.data);
-  const [open, setOpen] = useState(true);
+  const attachments = useDataStore((state) => state.attachments);
+  const [open, setOpen] = useState(false);
 
   const toggleOpen = () => setOpen(!open);
 
@@ -125,28 +125,33 @@ const AttachmentsTable = () => {
           <thead className="sticky top-0 z-10 bg-white">
             <tr className="border-box flex-shrink-0 w-full h-min bg-[#f8f9fb] overflow-visible relative content-center flex-nowrap gap-[5px] rounded-none border-b border-[#eaecf0]">
               <th
-                className={`flex-shrink-0 w-[80%] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+                className={`flex-shrink-0 w-[40%] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
               >
                 Nome do Arquivo
               </th>
               <th
-                className={`flex-shrink-0 w-[15%] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+                className={`flex-shrink-0 w-[calc(30%-45px)] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+              >
+                Tamanho
+              </th>
+              <th
+                className={`flex-shrink-0 w-[calc(30%-45px)] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
               >
                 Data de Envio
               </th>
               <th
-                className={`flex-shrink-0 w-[5%] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+                className={`flex-shrink-0 w-[90px]  h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px] text-center`}
               >
                 ...
               </th>
             </tr>
           </thead>
           <tbody>
-            {/* {
-              data.map(item => {
+            {
+              attachments.map(item => {
                 return <AttachmentsTableRow data={item} key={item.id}/>
               })
-            } */}
+            }
           </tbody>
         </table>
       </div>
