@@ -1,6 +1,8 @@
-import React, { useRef } from 'react';
+import useDataStore from "@/store";
+import React, { useRef } from "react";
 
 const FileUploadButton = () => {
+  const fetchAttachment = useDataStore((store) => store.fetchAttachment);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleButtonClick = () => {
@@ -16,18 +18,19 @@ const FileUploadButton = () => {
 
   const uploadFile = (file: File) => {
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append("file", file);
 
-    fetch('https://benitopedro.tech/attachments/', {
-      method: 'POST',
+    fetch("https://benitopedro.tech/attachments/", {
+      method: "POST",
       body: formData,
     })
       .then(async (response) => {
         const res = await response.json();
-        console.log('upload response:', res);
+        console.log("upload response:", res);
+        await fetchAttachment()
       })
       .catch((error) => {
-        console.log('upload error:', error);
+        console.log("upload error:", error);
       });
   };
 
@@ -38,7 +41,7 @@ const FileUploadButton = () => {
         type="file"
         ref={fileInputRef}
         onChange={handleFileChange}
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
       />
     </div>
   );
