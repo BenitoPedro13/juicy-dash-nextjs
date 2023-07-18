@@ -80,7 +80,7 @@ const AttachmentsTable = () => {
             />
 
             <div className="flex-shrink-0 w-min h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
-              <FileUploadButton />
+              <FileUploadButton attachments={attachments} setAttachments={setAttachments} />
               <motion.div
                 onClick={toggleOpen}
                 className="btn btn-ghost box-border flex-shrink-0 w-min h-auto flex justify-center items-center py-[10px] px-[8px] shadow-cost-per-metrics bg-white overflow-hidden self-stretch relative content-center flex-nowrap gap-2 rounded-lg border border-solid border-[#cfd4dc]"
@@ -118,7 +118,7 @@ const AttachmentsTable = () => {
             </p>
           </div>
           <div className="hidden sm:flex flex-shrink-0 w-min h-min justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
-            <FileUploadButton />
+            <FileUploadButton attachments={attachments} setAttachments={setAttachments} />
             <motion.div
               onClick={toggleOpen}
               className="btn btn-ghost box-border flex-shrink-0 w-min h-auto flex justify-center items-center py-[10px] px-[8px] shadow-cost-per-metrics bg-white overflow-hidden self-stretch relative content-center flex-nowrap gap-2 rounded-lg border border-solid border-[#cfd4dc]"

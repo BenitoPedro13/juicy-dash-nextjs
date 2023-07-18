@@ -1,10 +1,15 @@
-import useDataStore from "@/store";
+import useDataStore, { Attachment } from "@/store";
 import { motion } from "framer-motion";
 import React, { useRef } from "react";
 
-const FileUploadButton = () => {
-  const fetchAttachment = useDataStore((store) => store.fetchAttachment);
+type FileUploadButtonProps = {
+  attachments: Attachment[],
+  setAttachments: React.Dispatch<React.SetStateAction<Attachment[]>>
+}
+
+const FileUploadButton = ({attachments, setAttachments}: FileUploadButtonProps) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const newAttachments = [...attachments];
 
   const handleButtonClick = () => {
     fileInputRef.current?.click();
@@ -26,8 +31,10 @@ const FileUploadButton = () => {
       body: formData,
     })
       .then(async (response) => {
-        const res = await response.json();
-        await fetchAttachment();
+        const res: Attachment = await response.json();
+        console.log('res json: ', res)
+        newAttachments.unshift(res)
+        setAttachments(newAttachments)
       })
       .catch((error) => {
         console.log("upload error:", error);
