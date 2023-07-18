@@ -27,7 +27,6 @@ const FileUploadButton = () => {
     })
       .then(async (response) => {
         const res = await response.json();
-        console.log("upload response:", res);
         await fetchAttachment();
       })
       .catch((error) => {

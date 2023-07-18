@@ -7,6 +7,7 @@ import AttachmentsTableRow from "./AttachmentsTableRow";
 import useDataStore, { Attachment } from "@/store";
 import FileUploadButton from "../FileUploadButton";
 import TableSortingIcon from "../TableSortingIcon";
+import { handleSort } from "../../../utils/utils";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
@@ -27,19 +28,6 @@ const AttachmentsTable = () => {
     useState<keyof Attachment>("originalFilename"); // Initial sort column
 
   const toggleOpen = () => setOpen(!open);
-
-  const handleSort = (column: keyof Attachment) => {
-    if (sortColumn === column) {
-      // If the same column is clicked, toggle the sort order
-      setSortOrder((prevSortOrder) =>
-        prevSortOrder === "asc" ? "desc" : "asc"
-      );
-    } else {
-      // If a different column is clicked, set the column and initial sort order
-      setSortColumn(column);
-      setSortOrder("asc");
-    }
-  };
 
   useEffect(() => {
     const sortedAttachments = [...globalAttachments].sort((a, b) => {
@@ -176,7 +164,7 @@ const AttachmentsTable = () => {
             <tr className="border-box flex-shrink-0 w-full h-min bg-[#f8f9fb] overflow-visible relative content-center flex-nowrap gap-[5px] rounded-none border-b border-[#eaecf0]">
               <th
                 className={`cursor-pointer flex-shrink-0 w-[40%] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
-                onClick={() => handleSort("originalFilename")}
+                onClick={() => handleSort("originalFilename", sortColumn, setSortColumn, setSortOrder)}
               >
                 <div className="flex justify-start items-center gap-6">
                   Nome do Arquivo
@@ -189,7 +177,7 @@ const AttachmentsTable = () => {
               </th>
               <th
                 className={`cursor-pointer flex-shrink-0 w-[calc(30%-45px)] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
-                onClick={() => handleSort("fileSize")}
+                onClick={() => handleSort("fileSize", sortColumn, setSortColumn, setSortOrder)}
               >
                 <div className="flex justify-start items-center gap-6">
                   Tamanho
@@ -202,7 +190,7 @@ const AttachmentsTable = () => {
               </th>
               <th
                 className={`cursor-pointer flex-shrink-0 w-[calc(30%-45px)] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
-                onClick={() => handleSort("createdAt")}
+                onClick={() => handleSort("createdAt", sortColumn, setSortColumn, setSortOrder)}
               >
                 <div className="flex justify-start items-center gap-6">
                   Data de Envio
