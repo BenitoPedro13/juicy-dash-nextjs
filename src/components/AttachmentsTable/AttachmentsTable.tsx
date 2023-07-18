@@ -6,6 +6,7 @@ import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import AttachmentsTableRow from "./AttachmentsTableRow";
 import useDataStore, { Attachment } from "@/store";
 import FileUploadButton from "../FileUploadButton";
+import TableSortingIcon from "../TableSortingIcon";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
@@ -177,19 +178,40 @@ const AttachmentsTable = () => {
                 className={`cursor-pointer flex-shrink-0 w-[40%] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
                 onClick={() => handleSort("originalFilename")}
               >
-                Nome do Arquivo
+                <div className="flex justify-start items-center gap-6">
+                  Nome do Arquivo
+                  <TableSortingIcon
+                    sortColumn={sortColumn}
+                    sortOrder={sortOrder}
+                    actualColumn={"originalFilename"}
+                  />
+                </div>
               </th>
               <th
                 className={`cursor-pointer flex-shrink-0 w-[calc(30%-45px)] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
                 onClick={() => handleSort("fileSize")}
               >
-                Tamanho
+                <div className="flex justify-start items-center gap-6">
+                  Tamanho
+                  <TableSortingIcon
+                    sortColumn={sortColumn}
+                    sortOrder={sortOrder}
+                    actualColumn={"fileSize"}
+                  />
+                </div>
               </th>
               <th
                 className={`cursor-pointer flex-shrink-0 w-[calc(30%-45px)] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
                 onClick={() => handleSort("createdAt")}
               >
-                Data de Envio
+                <div className="flex justify-start items-center gap-6">
+                  Data de Envio
+                  <TableSortingIcon
+                    sortColumn={sortColumn}
+                    sortOrder={sortOrder}
+                    actualColumn={"createdAt"}
+                  />
+                </div>
               </th>
               <th
                 className={`flex-shrink-0 w-[90px]  h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px] text-center`}
