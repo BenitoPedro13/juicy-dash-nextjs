@@ -29,13 +29,16 @@ export interface Attachment {
   createdAt: string;
   updatedAt: string;
 }
+
 export interface Session {
   isAuthenticated: boolean;
   user: {
     name?: string;
     email?: string;
-    campaign?: campaign;
+    campaignName?: string;
     userId?: number;
+    estimatedExecutedInvestment?: number,
+    totalInitialInvestment?: number,
   };
 }
 
