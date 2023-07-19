@@ -142,7 +142,7 @@ export default function Home() {
                   sigla="CPE"
                   heading="Engajamento"
                   metric="0"
-                  costPerMetric={`${data[0]?.cpe}`}
+                  costPerMetric={total(data, "cpe")}
                 />
                 <CostPerMetric
                   sigla="CPV"
@@ -200,11 +200,11 @@ export default function Home() {
             />
             <Metrics
               heading="Investimento Total Inicial"
-              metric="R$ 165.700,00"
+              metric={`${session.user.totalInitialInvestment}`}
             />
             <Metrics
               heading="Investimento Executado Estimado"
-              metric="R$ 22.566,39"
+              metric={`${session.user.estimatedExecutedInvestment}`}
             />
             <FinancialMetrics />
             <ContactCTA />
@@ -239,11 +239,11 @@ export default function Home() {
           </div>
           <Metrics
             heading="Investimento Total Inicial"
-            metric="R$ 165.700,00"
+            metric={`${session.user.totalInitialInvestment}`}
           />
           <Metrics
             heading="Investimento Executado Estimado"
-            metric="R$ 22.566,39"
+            metric={`${session.user.estimatedExecutedInvestment}`}
           />
           <MetricsDoughnutGraph
             heading="Alcance Bruto"
