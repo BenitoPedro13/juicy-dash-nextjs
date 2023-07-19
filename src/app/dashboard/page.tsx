@@ -98,8 +98,8 @@ export default function Home() {
                   <p
                     className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-medium ${inter.className} xl:text-lg text-sm xl:leading-5]]`}
                   >
-                    {session.user.campaign}
-                    {/* Experiências Buser */}
+                    {/* {session.user.campaign?.name} */}
+                    Experiências Buser
                   </p>
                 </li>
               </ul>
