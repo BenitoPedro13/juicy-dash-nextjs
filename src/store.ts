@@ -80,7 +80,7 @@ const useDataStore = create<DataState>((set) => ({
   },
   signIn: async (loginFormData: LoginFormData) => {
     try {
-      const response = await fetch("http://localhost:3000/auth/login", {
+      const response = await fetch("https://benitopedro.tech/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -117,7 +117,7 @@ const useDataStore = create<DataState>((set) => ({
   },
   getUserByToken: async (access_token: string) => {
     try {
-      const response = await fetch("http://localhost:3000/auth/user", {
+      const response = await fetch("https://benitopedro.tech/auth/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -151,7 +151,7 @@ const useDataStore = create<DataState>((set) => ({
   attachments: [],
   fetchData: async (access_token: string) => {
     try {
-      const response = await fetch("http://localhost:3000/csvs/data", {
+      const response = await fetch("https://benitopedro.tech/csvs/data", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${access_token}`, // Set the token in the Authorization header
@@ -165,7 +165,7 @@ const useDataStore = create<DataState>((set) => ({
   },
   fetchAttachment: async (access_token: string) => {
     try {
-      const response = await fetch("http://localhost:3000/attachments/", {
+      const response = await fetch("https://benitopedro.tech/attachments/", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${access_token}`, // Set the token in the Authorization header

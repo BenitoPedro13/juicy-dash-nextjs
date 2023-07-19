@@ -30,7 +30,7 @@ const FileUploadButton = ({
     const formData = new FormData();
     formData.append("file", file);
 
-    fetch("http://localhost:3000/attachments/", {
+    fetch("https://benitopedro.tech/attachments/", {
       headers: {
         Authorization: `Bearer ${access_token}`, // Set the token in the Authorization header
       },
