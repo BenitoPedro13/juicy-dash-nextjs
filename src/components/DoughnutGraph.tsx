@@ -12,7 +12,7 @@ ChartJS.register(ArcElement, Tooltip, Legend)
  * @framerSupportedLayoutHeight fixed
  */
 export default function DoughnutGraph() {
-    const data = useDataStore((state) => state.data);
+    const {data} = useDataStore((state) => state.data);
 
     const chartData = {
         labels: data.map(item => item.influencer),

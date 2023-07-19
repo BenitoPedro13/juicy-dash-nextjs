@@ -30,7 +30,7 @@ const inter = Inter({ subsets: ["latin"] });
 // }
 
 const CreatorsTable = () => {
-  const globalData = useDataStore((state) => state.data);
+  const {data: globalData} = useDataStore((state) => state.data);
   const [data, setData] = useState([...globalData]);
   const [open, setOpen] = useState(false);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc"); // Initial sort order

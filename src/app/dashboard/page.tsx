@@ -31,7 +31,7 @@ export default function Home() {
   const session = useDataStore((state) => state.session);
   const fetchData = useDataStore((state) => state.fetchData);
   const fetchAttachment = useDataStore((state) => state.fetchAttachment);
-  const data = useDataStore((state) => state.data);
+  const {data, updatedAt} = useDataStore((state) => state.data);
   const router = useRouter();
 
   useEffect(() => {
@@ -222,7 +222,7 @@ export default function Home() {
                       <p
                         className={`flex-shrink-0 w-auto h-auto whitespace-pre relative ${inter.className} text-[#101828] text-base text-center`}
                       >
-                        Atualizado em {parseUpdatedAt(data[0]?.updatedAt)}
+                        Atualizado em {parseUpdatedAt(updatedAt)}
                       </p>
                     </div>
                   </div>

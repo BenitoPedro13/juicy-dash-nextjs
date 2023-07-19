@@ -57,7 +57,7 @@ const AttachmentsTableRow = ({ data }: AttachmentsTableRowProps) => {
               </td>
               <th>
                 <button className="btn btn-ghost p-0 text-xs h-6 min-h-[24px] !bg-transparent">
-                  <Link href={`https://benitopedro.tech/public/${data.uniqueFilename}`} target='_blank'>
+                  <Link href={`http://localhost:3000/public/${data.uniqueFilename}`} target='_blank'>
                     <p className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-semibold ${jakarta.className} text-[#ff77ef] text-sm`}>baixar</p>
                   </Link>
                 </button>

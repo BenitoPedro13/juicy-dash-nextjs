@@ -33,7 +33,7 @@ const css = `.chartContainer::-webkit-scrollbar {
                 }`
 
 export default function LineGraph() {
-    const data = useDataStore((state) => state.data);
+    const {data} = useDataStore((state) => state.data);
     const chartRef = useRef(null)
 
     

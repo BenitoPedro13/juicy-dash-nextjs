@@ -21,6 +21,11 @@ export interface Influencer {
   updatedAt: string;
 }
 
+type InfluencerData = {
+  data: Influencer[];
+  updatedAt: string;
+}
+
 export interface Attachment {
   id: number;
   uniqueFilename: string;
@@ -39,6 +44,8 @@ export interface Session {
     userId?: number;
     estimatedExecutedInvestment?: number,
     totalInitialInvestment?: number,
+    createdAt: string;
+    updatedAt: string;
   };
 }
 
@@ -51,7 +58,7 @@ interface DataState {
   session: Session;
   signIn: (loginFormData: LoginFormData) => Promise<boolean>;
   getUserByToken: (access_token: string) => Promise<boolean>;
-  data: Influencer[];
+  data: InfluencerData;
   attachments: Attachment[];
   fetchData: (access_token: string) => Promise<void>;
   fetchAttachment: (access_token: string) => Promise<void>;
@@ -60,11 +67,20 @@ interface DataState {
 const useDataStore = create<DataState>((set) => ({
   session: {
     isAuthenticated: false,
-    user: {},
+    user: {
+      name: '',
+      email: '',
+      campaignName: 'string',
+      userId: NaN,
+      estimatedExecutedInvestment: 0,
+      totalInitialInvestment: 0,
+      createdAt: '',
+      updatedAt: '',
+    },
   },
   signIn: async (loginFormData: LoginFormData) => {
     try {
-      const response = await fetch("https://benitopedro.tech/auth/login", {
+      const response = await fetch("http://localhost:3000/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -101,7 +117,7 @@ const useDataStore = create<DataState>((set) => ({
   },
   getUserByToken: async (access_token: string) => {
     try {
-      const response = await fetch("https://benitopedro.tech/auth/user", {
+      const response = await fetch("http://localhost:3000/auth/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -128,11 +144,14 @@ const useDataStore = create<DataState>((set) => ({
       return false;
     }
   },
-  data: [],
+  data: {
+    updatedAt: '',
+    data: []
+  },
   attachments: [],
   fetchData: async (access_token: string) => {
     try {
-      const response = await fetch("https://benitopedro.tech/csvs/data", {
+      const response = await fetch("http://localhost:3000/csvs/data", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${access_token}`, // Set the token in the Authorization header
@@ -146,7 +165,7 @@ const useDataStore = create<DataState>((set) => ({
   },
   fetchAttachment: async (access_token: string) => {
     try {
-      const response = await fetch("https://benitopedro.tech/attachments/", {
+      const response = await fetch("http://localhost:3000/attachments/", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${access_token}`, // Set the token in the Authorization header
