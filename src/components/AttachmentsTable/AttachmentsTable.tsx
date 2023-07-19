@@ -22,15 +22,33 @@ const inter = Inter({ subsets: ["latin"] });
 const AttachmentsTable = () => {
   const globalAttachments = useDataStore((state) => state.attachments);
   const [attachments, setAttachments] = useState([...globalAttachments]);
-  const [open, setOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const itemsPerPage = 5; // Set the number of items per page
+  const totalPages = Math.ceil(attachments.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const [currentAttachments, setCurrentAttachments] = useState(
+    attachments.slice(indexOfFirstItem, indexOfLastItem)
+  );
+  // const [open, setOpen] = useState(false);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc"); // Initial sort order
   const [sortColumn, setSortColumn] =
     useState<keyof Attachment>("originalFilename"); // Initial sort column
 
-  const toggleOpen = () => setOpen(!open);
+  // const toggleOpen = () => setOpen(!open);
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   useEffect(() => {
-    const sortedAttachments = [...globalAttachments].sort((a, b) => {
+    // Update attachments whenever globalAttachments changes
+    setAttachments([...globalAttachments]);
+  }, [globalAttachments]);
+
+  useEffect(() => {
+    const sortedAttachments = attachments.sort((a, b) => {
       if (sortColumn === "originalFilename") {
         return a.originalFilename.localeCompare(b.originalFilename);
       } else if (sortColumn === "fileSize") {
@@ -47,8 +65,15 @@ const AttachmentsTable = () => {
       sortedAttachments.reverse();
     }
 
-    setAttachments(sortedAttachments);
-  }, [globalAttachments, sortColumn, sortOrder]);
+    // Update currentAttachments based on the currentPage and itemsPerPage
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentAttachments = sortedAttachments.slice(
+      indexOfFirstItem,
+      indexOfLastItem
+    );
+    setCurrentAttachments(currentAttachments);
+  }, [attachments, currentPage, sortColumn, sortOrder, itemsPerPage]);
 
   return (
     <motion.div
@@ -56,7 +81,7 @@ const AttachmentsTable = () => {
       initial={false}
       animate={{
         boxShadow: "2px 2px 2px 0px rgba(16, 24, 40, 0.06)",
-        height: open ? "fit-content" : "335px",
+        height: (currentAttachments.length / itemsPerPage) < 1 ? "fit-content" : "fit-content",
       }}
       transition={{ duration: 0.3, ease: "linear" }}
       whileHover={{ boxShadow: "2px 2px 0px 0px #000000" }}
@@ -80,8 +105,11 @@ const AttachmentsTable = () => {
             />
 
             <div className="flex-shrink-0 w-min h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
-              <FileUploadButton attachments={attachments} setAttachments={setAttachments} />
-              <motion.div
+              <FileUploadButton
+                attachments={currentAttachments}
+                setAttachments={setCurrentAttachments}
+              />
+              {/* <motion.div
                 onClick={toggleOpen}
                 className="btn btn-ghost box-border flex-shrink-0 w-min h-auto flex justify-center items-center py-[10px] px-[8px] shadow-cost-per-metrics bg-white overflow-hidden self-stretch relative content-center flex-nowrap gap-2 rounded-lg border border-solid border-[#cfd4dc]"
                 initial={false}
@@ -102,7 +130,7 @@ const AttachmentsTable = () => {
                     d="M15.75 19.5L8.25 12l7.5-7.5"
                   />
                 </svg>
-              </motion.div>
+              </motion.div> */}
             </div>
           </div>
           <div className="flex-shrink-0 flex-grow w-auto sm:h-full h-[52px] flex flex-col justify-center items-start overflow-visible relative p-0 content-start flex-nowrap gap-1 rounded-none">
@@ -118,8 +146,11 @@ const AttachmentsTable = () => {
             </p>
           </div>
           <div className="hidden sm:flex flex-shrink-0 w-min h-min justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
-            <FileUploadButton attachments={attachments} setAttachments={setAttachments} />
-            <motion.div
+            <FileUploadButton
+              attachments={currentAttachments}
+              setAttachments={setCurrentAttachments}
+            />
+            {/* <motion.div
               onClick={toggleOpen}
               className="btn btn-ghost box-border flex-shrink-0 w-min h-auto flex justify-center items-center py-[10px] px-[8px] shadow-cost-per-metrics bg-white overflow-hidden self-stretch relative content-center flex-nowrap gap-2 rounded-lg border border-solid border-[#cfd4dc]"
               initial={false}
@@ -140,7 +171,7 @@ const AttachmentsTable = () => {
                   d="M15.75 19.5L8.25 12l7.5-7.5"
                 />
               </svg>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
         <svg
@@ -164,7 +195,14 @@ const AttachmentsTable = () => {
             <tr className="border-box flex-shrink-0 w-full h-min bg-[#f8f9fb] overflow-visible relative content-center flex-nowrap gap-[5px] rounded-none border-b border-[#eaecf0]">
               <th
                 className={`cursor-pointer flex-shrink-0 w-[40%] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
-                onClick={() => handleSort("originalFilename", sortColumn, setSortColumn, setSortOrder)}
+                onClick={() =>
+                  handleSort(
+                    "originalFilename",
+                    sortColumn,
+                    setSortColumn,
+                    setSortOrder
+                  )
+                }
               >
                 <div className="flex justify-start items-center gap-6">
                   Nome do Arquivo
@@ -177,7 +215,14 @@ const AttachmentsTable = () => {
               </th>
               <th
                 className={`cursor-pointer flex-shrink-0 w-[calc(30%-45px)] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
-                onClick={() => handleSort("fileSize", sortColumn, setSortColumn, setSortOrder)}
+                onClick={() =>
+                  handleSort(
+                    "fileSize",
+                    sortColumn,
+                    setSortColumn,
+                    setSortOrder
+                  )
+                }
               >
                 <div className="flex justify-start items-center gap-6">
                   Tamanho
@@ -190,7 +235,14 @@ const AttachmentsTable = () => {
               </th>
               <th
                 className={`cursor-pointer flex-shrink-0 w-[calc(30%-45px)] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
-                onClick={() => handleSort("createdAt", sortColumn, setSortColumn, setSortOrder)}
+                onClick={() =>
+                  handleSort(
+                    "createdAt",
+                    sortColumn,
+                    setSortColumn,
+                    setSortOrder
+                  )
+                }
               >
                 <div className="flex justify-start items-center gap-6">
                   Data de Envio
@@ -209,11 +261,79 @@ const AttachmentsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {attachments.map((item) => {
+            {currentAttachments.map((item) => {
               return <AttachmentsTableRow data={item} key={item.id} />;
             })}
           </tbody>
         </table>
+      </div>
+      <div className={`${(attachments.length / itemsPerPage) < 1 ? 'hidden' : 'flex'} flex-shrink-0 w-full h-min flex justify-center items-center overflow-visible relative p-0 content-center flex-nowrap sm:gap-5 gap-0 rounded-none`}>
+        <div className="xl:inline-flex hidden join w-full justify-center items-center">
+          <button
+            className="join-item btn"
+            disabled={currentPage === 1}
+            onClick={() => handlePageChange(currentPage - 1)}
+          >
+            « Anterior
+          </button>
+          {/* <button className="join-item btn">1</button>
+          <button className="join-item btn">2</button>
+          <button className="join-item btn">3</button>
+          <button className="join-item btn btn-disabled">...</button>
+          <button className="join-item btn">8</button>
+          <button className="join-item btn">9</button>
+          <button className="join-item btn">10</button> */}
+          {Array.from({ length: totalPages }).map((_, index) => (
+            <button
+              key={index}
+              className={`join-item btn ${
+                currentPage === index + 1 ? "btn-active" : ""
+              }`}
+              onClick={() => handlePageChange(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
+          <button
+            className="join-item btn"
+            disabled={currentPage === totalPages}
+            onClick={() => handlePageChange(currentPage + 1)}
+          >
+            Proximo »
+          </button>
+        </div>
+        <div className="inline-flex xl:hidden join w-full justify-center items-center">
+          <button
+            className="join-item btn"
+            disabled={currentPage === 1}
+            onClick={() => handlePageChange(currentPage - 1)}
+          >
+            «
+          </button>
+          {Array.from({ length: totalPages }).map((_, index) => (
+            <button
+              key={index}
+              className={`join-item btn ${
+                currentPage === index + 1 ? "btn-active" : ""
+              }`}
+              onClick={() => handlePageChange(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
+          {/* <button className="join-item btn">1</button>
+          <button className="join-item btn">2</button>
+          <button className="join-item btn btn-disabled">...</button>
+          <button className="join-item btn">9</button>
+          <button className="join-item btn">10</button> */}
+          <button
+            className="join-item btn"
+            disabled={currentPage === totalPages}
+            onClick={() => handlePageChange(currentPage + 1)}
+          >
+            »
+          </button>
+        </div>
       </div>
     </motion.div>
   );
