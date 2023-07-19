@@ -267,7 +267,7 @@ const AttachmentsTable = () => {
           </tbody>
         </table>
       </div>
-      <div className={`${(attachments.length / itemsPerPage) < 1 ? 'hidden' : 'flex'} flex-shrink-0 w-full h-min flex justify-center items-center overflow-visible relative p-0 content-center flex-nowrap sm:gap-5 gap-0 rounded-none`}>
+      <div className={`${(attachments.length / itemsPerPage) < 1 ? 'hidden' : 'hidden'} flex-shrink-0 w-full h-min flex justify-center items-center overflow-visible relative p-0 content-center flex-nowrap sm:gap-5 gap-0 rounded-none`}>
         <div className="xl:inline-flex hidden join w-full justify-center items-center">
           <button
             className="join-item btn"
