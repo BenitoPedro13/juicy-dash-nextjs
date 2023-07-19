@@ -29,17 +29,6 @@ export interface Attachment {
   createdAt: string;
   updatedAt: string;
 }
-
-export interface campaign {
-  id: number;
-  name: string;
-  totalInitialInvestment: number;
-  estimatedExecutedInvestment: number;
-  createdAt?: string;
-  updatedAt?: string;
-  userId: number;
-}
-
 export interface Session {
   isAuthenticated: boolean;
   user: {
