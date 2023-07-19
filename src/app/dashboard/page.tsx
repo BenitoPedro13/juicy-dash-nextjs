@@ -4,6 +4,7 @@ import metricsIcon from "@/../public/metricsIcon.png";
 import buserLogo from "@/../public/buser-logo.webp";
 import Link from "next/link";
 import Image from "next/image";
+import { parseCookies } from "nookies";
 
 import Metrics from "@/components/Metrics";
 
@@ -40,8 +41,9 @@ export default function Home() {
   }, [router, session.isAuthenticated]);
 
   useEffect(() => {
-    fetchData();
-    fetchAttachment()
+    const { 'juicy-admin-token' :access_token} = parseCookies()
+    fetchData(access_token);
+    fetchAttachment(access_token)
   }, [fetchData, fetchAttachment]);
 
   const totalInfluencers = (data: Influencer[]) => `${data.length}`;

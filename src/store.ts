@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { create } from "zustand";
 import { setCookie } from "nookies";
 import Router from "next/router";
@@ -31,23 +31,23 @@ export interface Attachment {
 }
 
 export interface campaign {
-  id: number,
-  name: string,
-  totalInitialInvestment: number,
-  estimatedExecutedInvestment: number,
-  createdAt?: string,
-  updatedAt?: string,
-  userId: number,
+  id: number;
+  name: string;
+  totalInitialInvestment: number;
+  estimatedExecutedInvestment: number;
+  createdAt?: string;
+  updatedAt?: string;
+  userId: number;
 }
 
 export interface Session {
   isAuthenticated: boolean;
   user: {
-    name?: string,
-    email?: string,
-    campaign?: campaign,
-    userId?: number
-  }
+    name?: string;
+    email?: string;
+    campaign?: campaign;
+    userId?: number;
+  };
 }
 
 export type LoginFormData = {
@@ -61,18 +61,18 @@ interface DataState {
   getUserByToken: (access_token: string) => Promise<boolean>;
   data: Influencer[];
   attachments: Attachment[];
-  fetchData: () => Promise<void>;
-  fetchAttachment: () => Promise<void>;
+  fetchData: (access_token: string) => Promise<void>;
+  fetchAttachment: (access_token: string) => Promise<void>;
 }
 
 const useDataStore = create<DataState>((set) => ({
   session: {
     isAuthenticated: false,
-    user: {}
+    user: {},
   },
   signIn: async (loginFormData: LoginFormData) => {
     try {
-      const response = await fetch("http://localhost:3000/auth/login", {
+      const response = await fetch("https://benitopedro.tech/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -80,45 +80,47 @@ const useDataStore = create<DataState>((set) => ({
         body: JSON.stringify(loginFormData),
       });
 
-      if(!response.ok) {
+      if (!response.ok) {
         return false;
       }
 
       const data = await response.json();
 
-      setCookie(undefined, 'juicy-admin-token', data.access_token, {
-        maxAge: 60 * 60 * 1 // 1 hora
+      setCookie(undefined, "juicy-admin-token", data.access_token, {
+        maxAge: 60 * 60 * 1, // 1 hora
       });
 
-      set({session: {
-        isAuthenticated: true,
-        user: data.user,
-      }});
+      set({
+        session: {
+          isAuthenticated: true,
+          user: data.user,
+        },
+      });
 
-      return true
+      return true;
       // const router = useRouter();
       // if (router) {
       //   router.push('/dashboard');
       // }
     } catch (error) {
       console.log("sign error: ", error);
-      return false
+      return false;
     }
   },
   getUserByToken: async (access_token: string) => {
     try {
-      const response = await fetch("http://localhost:3000/auth/user", {
+      const response = await fetch("https://benitopedro.tech/auth/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${access_token}`, // Set the token in the Authorization header
+          Authorization: `Bearer ${access_token}`, // Set the token in the Authorization header
         },
       });
-  
+
       if (!response.ok) {
         return false;
       }
-  
+
       const data = await response.json();
 
       set({
@@ -127,7 +129,7 @@ const useDataStore = create<DataState>((set) => ({
           user: data.user,
         },
       });
-  
+
       return true;
     } catch (error) {
       console.log("sign error: ", error);
@@ -136,18 +138,28 @@ const useDataStore = create<DataState>((set) => ({
   },
   data: [],
   attachments: [],
-  fetchData: async () => {
+  fetchData: async (access_token: string) => {
     try {
-      const response = await fetch("https://benitopedro.tech/csvs/data"); // Replace with your API endpoint
+      const response = await fetch("https://benitopedro.tech/csvs/data", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${access_token}`, // Set the token in the Authorization header
+        },
+      });
       const data = await response.json();
       set({ data });
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   },
-  fetchAttachment: async () => {
+  fetchAttachment: async (access_token: string) => {
     try {
-      const response = await fetch("https://benitopedro.tech/attachments/"); // Replace with your API endpoint
+      const response = await fetch("https://benitopedro.tech/attachments/", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${access_token}`, // Set the token in the Authorization header
+        },
+      }); // Replace with your API endpoint
       const attachments: Attachment[] = await response.json();
       set({ attachments });
     } catch (error) {

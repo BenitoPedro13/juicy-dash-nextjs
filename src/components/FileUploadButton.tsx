@@ -1,13 +1,17 @@
 import useDataStore, { Attachment } from "@/store";
-import { motion } from "framer-motion";
 import React, { useRef } from "react";
+import { parseCookies } from "nookies";
 
 type FileUploadButtonProps = {
-  attachments: Attachment[],
-  setAttachments: React.Dispatch<React.SetStateAction<Attachment[]>>
-}
+  attachments: Attachment[];
+  setAttachments: React.Dispatch<React.SetStateAction<Attachment[]>>;
+};
 
-const FileUploadButton = ({attachments, setAttachments}: FileUploadButtonProps) => {
+const FileUploadButton = ({
+  attachments,
+  setAttachments,
+}: FileUploadButtonProps) => {
+  const { 'juicy-admin-token' :access_token} = parseCookies()
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const newAttachments = [...attachments];
 
@@ -27,14 +31,17 @@ const FileUploadButton = ({attachments, setAttachments}: FileUploadButtonProps) 
     formData.append("file", file);
 
     fetch("https://benitopedro.tech/attachments/", {
+      headers: {
+        Authorization: `Bearer ${access_token}`, // Set the token in the Authorization header
+      },
       method: "POST",
       body: formData,
     })
       .then(async (response) => {
         const res: Attachment = await response.json();
-        console.log('res json: ', res)
-        newAttachments.unshift(res)
-        setAttachments(newAttachments)
+        console.log("res json: ", res);
+        newAttachments.unshift(res);
+        setAttachments(newAttachments);
       })
       .catch((error) => {
         console.log("upload error:", error);
