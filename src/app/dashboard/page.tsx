@@ -23,6 +23,11 @@ import AttachmentsTable from "@/components/AttachmentsTable/AttachmentsTable";
 import { parseUpdatedAt } from "../../../utils/utils";
 import { useRouter } from "next/navigation";
 import Breadcrumb from "@/components/Breadcrumb";
+import WelcomeTitle from "@/components/WelcomeTitle";
+import TotalCreatorsIcon from "@/components/MetricsIcons/TotalCreatorsIcon";
+import TotalPostsIcon from "@/components/MetricsIcons/TotalPostsIcon";
+import TotalFeedIcon from "@/components/MetricsIcons/TotalFeedIcon";
+import TotalStoriesIcon from "@/components/MetricsIcons/TotalStoriesIcon";
 // import { Plus_Jakarta_Sans } from 'next/font/google'
 
 const inter = Inter({ subsets: ["latin"] });
@@ -32,19 +37,19 @@ export default function Home() {
   const session = useDataStore((state) => state.session);
   const fetchData = useDataStore((state) => state.fetchData);
   const fetchAttachment = useDataStore((state) => state.fetchAttachment);
-  const {data, updatedAt} = useDataStore((state) => state.data);
+  const { data, updatedAt } = useDataStore((state) => state.data);
   const router = useRouter();
 
   useEffect(() => {
-    if(!session.isAuthenticated) {
-      router.push('/')
+    if (!session.isAuthenticated) {
+      router.push("/");
     }
   }, [router, session.isAuthenticated]);
 
   useEffect(() => {
-    const { 'juicy-admin-token' :access_token} = parseCookies()
+    const { "juicy-admin-token": access_token } = parseCookies();
     fetchData(access_token);
-    fetchAttachment(access_token)
+    fetchAttachment(access_token);
   }, [fetchData, fetchAttachment]);
 
   const totalInfluencers = (data: Influencer[]) => `${data.length}`;
@@ -60,41 +65,30 @@ export default function Home() {
 
     return count.toLocaleString("PT-BR");
   };
-  
-    
-  return (<main>
+
+  return (
+    <main>
       <SidenavDesktop />
       <div className="w-full h-full flex xl:flex-row flex-col justify-start items-start bg-white overflow-hidden p-0 xl:pl-[82px] content-start flex-nowrap gap-0 rounded-none">
         <div className="box-border flex-shrink-0 xl:w-[calc(100%-379px)] w-full h-min flex flex-col justify-start items-center xl:pt-8 xl:pb-12 py-[15px] overflow-visible content-center flex-nowrap xl:gap-[28px] gap-[15px] rounded-none">
           <div className="box-border flex-shrink-0 w-full xl:h-auto h-min flex flex-col justify-center items-start xl:px-8 px-[15px] overflow-visible relative content-start flex-nowrap gap-3 rounded-none">
             <Breadcrumb />
-            <div className="">
-              <span className="flex-shrink-0 w-full h-auto whitespace-pre-wrap break-words relative font-Balgin-Text text-[#0f1728] text-[40px] font-semibold">
-                Bem vindo,{" "}
-              </span>
-              <span className="flex-shrink-0 w-full h-auto whitespace-pre-wrap break-words relative font-Balgin-Display text-[#0f1728] text-[40px] font-semibold capitalize">
-                {session.user.name}
-              </span>
-            </div>
+            <WelcomeTitle />
           </div>
           <div className="box-border flex-shrink-0 w-full xl:h-[97px] h-min flex flex-col xl:justify-center justify-start items-start xl:px-[22px] px-[15px] overflow-visible relative content-start flex-nowrap xl:gap-[22px] gap-6 rounded-none">
             <div className="flex-shrink-0 w-full xl:h-auto h-min xl:flex grid xl:justify-start xl:items-center grid-cols-metric auto-rows-fr grid-rows-2 p-0 overflow-visible relative content-center flex-nowrap xl:gap-5 gap-[10px] rounded-none">
-              <Metrics
-                icone={metricsIcon}
-                heading="Total Creators"
-                metric={totalInfluencers(data)}
-              />
-              <Metrics
-                icone={metricsIcon}
-                heading="Total Posts"
-                metric={total(data, "posts")}
-              />
-              <Metrics icone={metricsIcon} heading="Total Feed" metric={`6`} />
-              <Metrics
-                icone={metricsIcon}
-                heading="Total Stories"
-                metric={`11`}
-              />
+              <Metrics heading="Total Creators" metric={totalInfluencers(data)}>
+                <TotalCreatorsIcon />
+              </Metrics>
+              <Metrics heading="Total Posts" metric={total(data, "posts")}>
+                <TotalPostsIcon />
+              </Metrics>
+              <Metrics heading="Total Feed" metric={`6`}>
+                <TotalFeedIcon />
+              </Metrics>
+              <Metrics heading="Total Stories" metric={`11`}>
+                <TotalStoriesIcon />
+              </Metrics>
             </div>
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] p-0 content-start flex-nowrap gap-6 rounded-none">

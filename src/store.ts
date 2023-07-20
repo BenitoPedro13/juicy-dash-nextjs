@@ -1,7 +1,5 @@
-"use client";
 import { create } from "zustand";
 import { setCookie } from "nookies";
-import Router from "next/router";
 
 export interface Influencer {
   id: number;
@@ -38,6 +36,7 @@ export interface Attachment {
 export interface Session {
   isAuthenticated: boolean;
   user: {
+    color?: string;
     name?: string;
     email?: string;
     campaignName?: string;
@@ -68,6 +67,7 @@ const useDataStore = create<DataState>((set) => ({
   session: {
     isAuthenticated: false,
     user: {
+      color: '',
       name: '',
       email: '',
       campaignName: 'string',
