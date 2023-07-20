@@ -89,11 +89,6 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
   const alphaValue = alpha >= 0 && alpha <= 1 ? alpha : 1;
 
   const returnValue = `rgba(${r}, ${g}, ${result[3]}, ${alphaValue})`;
-  
-  console.log('b', b)
-  console.log('hex', hex)
-  console.log('result', result[3])
-  console.log('returnValue', returnValue)
 
   return returnValue;
 }
