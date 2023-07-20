@@ -7,6 +7,8 @@ import CreatorsTableRow from "./CreatorsTableRow";
 import useDataStore, { Influencer } from "@/store";
 import { handleSort, parseCurrencyString } from "../../../utils/utils";
 import TableSortingIcon from "../TableSortingIcon";
+import arrowLeft from "@/../public/arrow-left.svg";
+import arrowRight from "@/../public/arrow-right.svg";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
@@ -30,16 +32,32 @@ const inter = Inter({ subsets: ["latin"] });
 // }
 
 const CreatorsTable = () => {
-  const {data: globalData} = useDataStore((state) => state.data);
+  const { data: globalData } = useDataStore((state) => state.data);
   const [data, setData] = useState([...globalData]);
-  const [open, setOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+  
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const [currentData, setCurrentData] = useState(data.slice(indexOfFirstItem, indexOfLastItem));
+
+  // const [open, setOpen] = useState(false);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc"); // Initial sort order
   const [sortColumn, setSortColumn] = useState<keyof Influencer>("influencer"); // Initial sort column
 
-  const toggleOpen = () => setOpen(!open);
+  // const toggleOpen = () => setOpen(!open);
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   useEffect(() => {
-    const sortedData = [...globalData].sort((a, b) => {
+    // Update attachments whenever globalAttachments changes
+    setData([...globalData]);
+  }, [globalData]);
+
+  useEffect(() => {
+    const sortedData = data.sort((a, b) => {
       if (sortColumn === "influencer") {
         return a.influencer.localeCompare(b.influencer);
       } else if (sortColumn === "city") {
@@ -74,9 +92,9 @@ const CreatorsTable = () => {
       } else if (sortColumn === "ctr") {
         return parseFloat(a.ctr) - parseFloat(b.ctr);
       } else if (sortColumn === "cpc") {
-        parseCurrencyString(a.cpc, b.cpc)
+        parseCurrencyString(a.cpc, b.cpc);
       } else if (sortColumn === "cpv") {
-        parseCurrencyString(a.cpv, b.cpv)
+        parseCurrencyString(a.cpv, b.cpv);
       }
       return 0;
     });
@@ -85,8 +103,11 @@ const CreatorsTable = () => {
       sortedData.reverse();
     }
 
-    setData(sortedData);
-  }, [globalData, sortColumn, sortOrder]);
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentData = sortedData.slice(indexOfFirstItem, indexOfLastItem);
+    setCurrentData(currentData);
+  }, [data, sortColumn, sortOrder, currentPage, itemsPerPage]);
 
   return (
     <motion.div
@@ -94,7 +115,10 @@ const CreatorsTable = () => {
       initial={false}
       animate={{
         boxShadow: "2px 2px 2px 0px rgba(16, 24, 40, 0.06)",
-        height: open ? "fit-content" : "335px",
+        height:
+          currentData.length / itemsPerPage < 1
+            ? "fit-content"
+            : "fit-content",
       }}
       transition={{ duration: 0.3, ease: "linear" }}
       whileHover={{ boxShadow: "2px 2px 0px 0px #000000" }}
@@ -117,7 +141,7 @@ const CreatorsTable = () => {
               className="sm:hidden block"
             />
             <div className="flex-shrink-0 w-min h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
-              <motion.div
+              {/* <motion.div
                 onClick={toggleOpen}
                 className="btn btn-ghost box-border flex-shrink-0 w-min h-auto flex justify-center items-center py-[10px] px-[8px] shadow-cost-per-metrics bg-white overflow-hidden self-stretch relative content-center flex-nowrap gap-2 rounded-lg border border-solid border-[#cfd4dc]"
                 initial={false}
@@ -138,7 +162,7 @@ const CreatorsTable = () => {
                     d="M15.75 19.5L8.25 12l7.5-7.5"
                   />
                 </svg>
-              </motion.div>
+              </motion.div> */}
             </div>
           </div>
           <div className="flex-shrink-0 flex-grow w-auto sm:h-full h-[52px] flex flex-col justify-center items-start overflow-visible relative p-0 content-start flex-nowrap gap-1 rounded-none">
@@ -154,7 +178,7 @@ const CreatorsTable = () => {
             </p>
           </div>
           <div className="hidden sm:flex flex-shrink-0 w-min h-min justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
-            <motion.div
+            {/* <motion.div
               onClick={toggleOpen}
               className="btn btn-ghost box-border flex-shrink-0 w-min h-auto flex justify-center items-center py-[10px] px-[8px] shadow-cost-per-metrics bg-white overflow-hidden self-stretch relative content-center flex-nowrap gap-2 rounded-lg border border-solid border-[#cfd4dc]"
               initial={false}
@@ -175,7 +199,7 @@ const CreatorsTable = () => {
                   d="M15.75 19.5L8.25 12l7.5-7.5"
                 />
               </svg>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
         <svg
@@ -405,11 +429,91 @@ const CreatorsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item) => {
+            {currentData.map((item) => {
               return <CreatorsTableRow data={item} key={item.id} />;
             })}
           </tbody>
         </table>
+      </div>
+      <div
+        className={`${
+          data.length / itemsPerPage < 1 ? "hidden" : "flex"
+        } flex-shrink-0 w-full h-min flex flex-col justify-center items-center overflow-visible relative pt-3 pb-4 px-6 content-center flex-nowrap sm:gap-5 gap-2 self-stretch rounded-none border-t border-[#EAECF0]`}
+      >
+        <div className="flex items-start rounded-lg border border-[#D0D5DD] shadow-cost-per-metrics">
+          <div className="xl:inline-flex hidden join w-full justify-center items-center">
+            <button
+              className="join-item h-10 flex py-[10px] px-4 justify-center items-center gap-2 bg-white border-t-0 border-b-0 border-l-0 border-r-[2px] border-[#D0D5DD]"
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+            >
+              <Image src={arrowLeft} width={20} height={20} alt="Arrow Left" />
+              <p className="text-[#344054] text-sm font-semibold">Anterior</p>
+            </button>
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                key={index}
+                className={`join-item  flex w-10 max-h-10 p-[10px] flex-col justify-center items-center border-t-0 border-b-0 border-l-0 border-r-[2px] border-[#D0D5DD] ${
+                  currentPage === index + 1 ? "!bg-[#F9FAFB]" : "bg-white"
+                }`}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                <p className="text-[#344054] text-sm font-semibold">
+                  {" "}
+                  {index + 1}
+                </p>
+              </button>
+            ))}
+            <button
+              className="join-item h-10 flex py-[10px] px-4 justify-center items-center gap-2 bg-white border-0 border-[#D0D5DD]"
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+            >
+              <p className="text-[#344054] text-sm font-semibold">Proximo</p>
+              <Image
+                src={arrowRight}
+                width={20}
+                height={20}
+                alt="Arrow Right"
+              />
+            </button>
+          </div>
+          <div className="inline-flex xl:hidden join w-full justify-center items-center">
+            <button
+              className="join-item h-10 flex py-[10px] px-4 justify-center items-center gap-2 bg-white border-t-0 border-b-0 border-l-0 border-r-[2px] border-[#D0D5DD]"
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+            >
+              <Image src={arrowLeft} width={20} height={20} alt="Arrow Left" />
+            </button>
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                key={index}
+                className={`join-item  flex w-10 max-h-10 p-[10px] flex-col justify-center items-center border-t-0 border-b-0 border-l-0 border-r-[2px] border-[#D0D5DD] ${
+                  currentPage === index + 1 ? "!bg-[#F9FAFB]" : "bg-white"
+                }`}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                <p className="text-[#344054] text-sm font-semibold">
+                  {" "}
+                  {index + 1}
+                </p>
+              </button>
+            ))}
+            <button
+              className="join-item h-10 flex py-[10px] px-4 justify-center items-center gap-2 bg-white border-0 border-[#D0D5DD]"
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+            >
+              <Image
+                src={arrowRight}
+                width={20}
+                height={20}
+                alt="Arrow Right"
+              />
+            </button>
+          </div>
+        </div>
       </div>
     </motion.div>
   );
