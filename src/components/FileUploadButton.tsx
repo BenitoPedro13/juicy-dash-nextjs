@@ -39,7 +39,6 @@ const FileUploadButton = ({
     })
       .then(async (response) => {
         const res: Attachment = await response.json();
-        console.log("res json: ", res);
         newAttachments.unshift(res);
         setAttachments(newAttachments);
       })
