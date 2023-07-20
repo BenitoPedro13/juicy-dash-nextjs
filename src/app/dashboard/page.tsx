@@ -58,12 +58,33 @@ export default function Home() {
 
     for (let i = 0; i < data.length; i++) {
       const element = data[i];
+      console.log('element', element);
+      console.log('dataKey', dataKey);
+      console.log('elementDataKey', element[`${dataKey}`]);
+
       count += Number.parseInt(
         (element[`${dataKey}`] as string).replaceAll(".", "")
       );
     }
 
     return count.toLocaleString("PT-BR");
+  };
+
+  const costPerMetric = (data: Influencer[], dataKey: keyof Influencer, cost: number) => {
+    let count = 0;
+
+    for (let i = 0; i < data.length; i++) {
+      const element = data[i]
+
+      count += Number.parseInt(
+        (element[`${dataKey}`] as string).replaceAll(".", "")
+      );
+    }
+
+    return (count / cost).toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    });
   };
 
   return (
@@ -98,19 +119,19 @@ export default function Home() {
                   sigla="CPE"
                   heading="Engajamento"
                   metric={total(data, 'Engajamento')}
-                  costPerMetric={total(data, "CPE")} //TODO: Perguntar como e feito o calculo de CPE CPV CPC
+                  costPerMetric={!session.user.totalInitialInvestment ? '' : costPerMetric(data, 'Engajamento', session.user.totalInitialInvestment as number)}
                 />
                 <CostPerMetric
                   sigla="CPV"
                   heading="Views"
                   metric={total(data, "Video Views")}
-                  costPerMetric={`${data[0]?.CPV}`}
+                  costPerMetric={!session.user.totalInitialInvestment ? '' : costPerMetric(data, 'Video Views', session.user.totalInitialInvestment as number)}
                 />
                 <CostPerMetric
                   sigla="CPC"
                   heading="Cliques"
                   metric={total(data, "Cliques")}
-                  costPerMetric={`${data[0]?.CPC}`}
+                  costPerMetric={!session.user.totalInitialInvestment ? '' : costPerMetric(data, 'Cliques', session.user.totalInitialInvestment as number)}
                 />
               </div>
             </div>
@@ -133,7 +154,7 @@ export default function Home() {
                   metric={total(data, 'Cliques Tiktok')}
                 />
                 <Metrics
-                  heading="Impressoes"
+                  heading="Impressoes Tik Tok"
                   metric={total(data, 'Impressoes Tiktok')}
                 />
               </div>
@@ -151,7 +172,7 @@ export default function Home() {
           </div>
           <div className="xl:hidden box-border flex-shrink-0 xl:w-[379px] w-full flex-grow h-min flex flex-col justify-start items-center xl:pt-8 xl:pr-8 pb-10 px-[15px] bg-transparent overflow-visible content-center flex-nowrap xl:gap-[28px] gap-[15px] rounded-none z-10">
             <MetricsDoughnutGraph
-              heading="Alcance Bruto"
+              heading="Impressoes"
               metric={total(data, "Impressoes")}
             />
             <Metrics
@@ -202,7 +223,7 @@ export default function Home() {
             metric={`${session.user.estimatedExecutedInvestment}`}
           />
           <MetricsDoughnutGraph
-            heading="Alcance Bruto"
+            heading="Impressoes"
             metric={total(data, "Impressoes")}
           />
           <FinancialMetrics />
