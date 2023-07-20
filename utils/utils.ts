@@ -74,3 +74,26 @@ export const parseCurrencyString = (a: string, b: string) => {
         ))
   );
 };
+
+export function hexToRgba(hex: string, alpha: number = 1): string {
+  const hexPattern = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
+  const shortHexPattern = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+
+  const result = hexPattern.exec(hex) || shortHexPattern.exec(hex);
+
+  if (!result) {
+    return hexToRgba('#E624CF');
+  }
+
+  const [, r, g, b] = result.slice(1).map((x) => parseInt(x, 16));
+  const alphaValue = alpha >= 0 && alpha <= 1 ? alpha : 1;
+
+  const returnValue = `rgba(${r}, ${g}, ${result[3]}, ${alphaValue})`;
+  
+  console.log('b', b)
+  console.log('hex', hex)
+  console.log('result', result[3])
+  console.log('returnValue', returnValue)
+
+  return returnValue;
+}
