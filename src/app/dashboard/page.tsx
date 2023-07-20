@@ -59,9 +59,9 @@ export default function Home() {
 
     return count.toLocaleString("PT-BR");
   };
-
-  return (
-    <main>
+  
+    
+  return (<main>
       <SidenavDesktop />
       <div className="w-full h-full flex xl:flex-row flex-col justify-start items-start bg-white overflow-hidden p-0 xl:pl-[82px] content-start flex-nowrap gap-0 rounded-none">
         <div className="box-border flex-shrink-0 xl:w-[calc(100%-379px)] w-full h-min flex flex-col justify-start items-center xl:pt-8 xl:pb-12 py-[15px] overflow-visible content-center flex-nowrap xl:gap-[28px] gap-[15px] rounded-none">
