@@ -31,26 +31,26 @@ const TotalStoriesIcon = () => {
       <path
         d="M24.5 20L15.5 20"
         stroke="black"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
       <path
         d="M24.5 20L15.5 20"
         stroke="black"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
       <path
         d="M20 15.875L20 24.875"
         stroke="black"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
       <path
         d="M20 15.875L20 24.875"
         stroke="black"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
       <rect
         x="11.75"
@@ -59,7 +59,7 @@ const TotalStoriesIcon = () => {
         height="16.5"
         rx="4.5"
         stroke="black"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <rect x="1" y="0.5" width="39" height="39" rx="7.5" stroke="black" />
     </svg>

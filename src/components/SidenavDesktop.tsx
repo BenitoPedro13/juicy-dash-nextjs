@@ -3,8 +3,12 @@ import logo from "@/../public/favicon.png";
 import buserLogo from "@/../public/buser-logo.webp";
 import Link from "next/link";
 import Image from "next/image";
+import useDataStore from "@/store";
+import DashboardIcon from "./MetricsIcons/DashboardIcon";
 
 const SidenavDesktop = () => {
+  const session = useDataStore((state) => state.session);
+
   return (
     <div className="hidden w-[82px] h-[100vh] xl:flex flex-row justify-start items-start bg-white overflow-hidden z-1 p-0 content-start flex-nowrap gap-0 fixed rounded-none border-[#475466] border-solid border-r z-10">
       <div className="w-[81px] h-[100vh] flex flex-col justify-between items-start overflow-visible flex-grow flex-shrink-0 relative p-0 content-start flex-nowrap rounded-none">
@@ -31,12 +35,18 @@ const SidenavDesktop = () => {
                 ></path>
               </svg>
             </button>
-            <button className="btn btn-ghost box-border flex-shrink-0 w-12 h-12 flex flex-row justify-start items-start p-3 bg-[#ff77ef] hover:bg-[#ff77ef] overflow-hidden relative content-start flex-nowrap gap-2 rounded-full">
+            {/* <button
+              className={`btn btn-ghost box-border flex-shrink-0 w-12 h-12 flex flex-row justify-start items-start p-3 ${
+                session?.user?.color
+                  ? `bg-[${session.user.color}] hover:bg-[${session.user.color}]`
+                  : "bg-[#ff77ef] hover:bg-[#ff77ef]"
+              } overflow-hidden relative content-start flex-nowrap gap-2 rounded-full`}
+            >
               <svg
                 width="20"
                 height="21"
                 viewBox="-1 -1 20 21"
-                fill="none"
+                fill=""
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
@@ -54,7 +64,10 @@ const SidenavDesktop = () => {
                   strokeLinejoin="round"
                 ></path>
               </svg>
-            </button>
+            </button> */}
+            <DashboardIcon
+              className={`btn btn-ghost box-border flex-shrink-0 w-12 h-12 flex flex-row justify-start items-start p-0 bg-transparent hover:bg-transparent overflow-hidden relative content-start flex-nowrap gap-2 rounded-full`}
+            />
           </div>
         </nav>
         <div className="w-full h-[72px] flex flex-col justify-start items-start pb-[200px] px-4 overflow-visible relative content-start flex-nowrap gap-6 rounded-none">
