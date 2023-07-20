@@ -133,7 +133,7 @@ export default function LineGraph() {
         chartInstance.update();
       }
     }
-  }, []);
+  }, [user.color]);
 
   return (
     <>
