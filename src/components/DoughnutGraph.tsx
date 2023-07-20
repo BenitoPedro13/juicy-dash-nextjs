@@ -50,12 +50,11 @@ export default function DoughnutGraph() {
   const subVariations = generateShadesAndTints(mainColor, data.length);
 
   const chartData = {
-    labels: data.map((item) => item.influencer),
+    labels: data.map((item) => item.Influencer),
     datasets: [
       {
         label: "Impressões",
-        data: data.map((item) => Number.parseInt(item.impressions.replaceAll(".", ""))),
-
+        data: data.map((item) => Number.parseInt(item.Impressoes.replaceAll(".", ""))),
         backgroundColor: subVariations,
         borderColor: subVariations,
         borderWidth: 1,

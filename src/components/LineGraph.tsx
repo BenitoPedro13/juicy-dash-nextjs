@@ -40,12 +40,12 @@ export default function LineGraph() {
   const chartRef = useRef(null);
 
   const chartData = {
-    labels: data.map((item) => item.influencer),
+    labels: data.map((item) => item.Influencer),
     datasets: [
       {
         label: "Interações",
         data: data.map((item) =>
-          Number.parseInt(item.interactions.replaceAll(".", ""))
+          Number.parseInt(item.Interacoes.replaceAll(".", ""))
         ),
         fill: "start",
         borderColor: user?.color ? user.color : "#E624CF",
