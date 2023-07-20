@@ -45,12 +45,12 @@ const CreatorsTableRow = ({ data }: CreatorsTableRowProps) => {
             <h5
               className={`flex-shrink-0 w-auto h-auto whitespace-nowrap relative font-medium ${inter.className} text-[#0f1728] text-sm`}
             >
-              {data.influencer}
+              {data.Influencer}
             </h5>
             <p
               className={`flex-shrink-0 w-auto h-auto whitespace-nowrap relative ${inter.className} text-[#475466] text-sm`}
             >
-              @{data.username}
+              @{data.Username}
             </p>
           </div>
         </div>
@@ -59,70 +59,119 @@ const CreatorsTableRow = ({ data }: CreatorsTableRowProps) => {
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.city}
+          {data.Cidade}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.posts}
+          {data.Posts}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.impressions}
+          {data.Stories}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.interactions}
+          {data.Feed}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.clicks}
+          {data.Tiktok}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.videoViews}
+          {data.Impressoes}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.cpe}
+          {data.Interacoes}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.cpc}
+          {data.Cliques}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.cpv}
+          {data['Video Views']}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.ctr}
+          {data.Engajamento}
+        </p>
+      </td>
+      <td>
+        <p
+          className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
+        >
+          {data['Engajamento Tiktok']}
+        </p>
+      </td>
+      <td>
+        <p
+          className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
+        >
+          {data['Cliques Tiktok']}
+        </p>
+      </td>
+      <td>
+        <p
+          className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
+        >
+          {data['Impressoes Tiktok']}
+        </p>
+      </td>
+      <td>
+        <p
+          className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
+        >
+          {data.CPE}
+        </p>
+      </td>
+      <td>
+        <p
+          className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
+        >
+          {data.CPC}
+        </p>
+      </td>
+      <td>
+        <p
+          className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
+        >
+          {data.CPV}
+        </p>
+      </td>
+      <td>
+        <p
+          className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
+        >
+          {data.CTR}
         </p>
       </td>
       <th>

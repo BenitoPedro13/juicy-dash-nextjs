@@ -58,12 +58,33 @@ export default function Home() {
 
     for (let i = 0; i < data.length; i++) {
       const element = data[i];
+      console.log('element', element);
+      console.log('dataKey', dataKey);
+      console.log('elementDataKey', element[`${dataKey}`]);
+
       count += Number.parseInt(
         (element[`${dataKey}`] as string).replaceAll(".", "")
       );
     }
 
     return count.toLocaleString("PT-BR");
+  };
+
+  const costPerMetric = (data: Influencer[], dataKey: keyof Influencer, cost: number) => {
+    let count = 0;
+
+    for (let i = 0; i < data.length; i++) {
+      const element = data[i]
+
+      count += Number.parseInt(
+        (element[`${dataKey}`] as string).replaceAll(".", "")
+      );
+    }
+
+    return (count / cost).toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    });
   };
 
   return (
@@ -80,13 +101,13 @@ export default function Home() {
               <Metrics heading="Total Creators" metric={totalInfluencers(data)}>
                 <TotalCreatorsIcon />
               </Metrics>
-              <Metrics heading="Total Posts" metric={total(data, "posts")}>
+              <Metrics heading="Total Posts" metric={total(data, 'Posts')}>
                 <TotalPostsIcon />
               </Metrics>
-              <Metrics heading="Total Feed" metric={`6`}>
+              <Metrics heading="Total Feed" metric={total(data, 'Feed')}>
                 <TotalFeedIcon />
               </Metrics>
-              <Metrics heading="Total Stories" metric={`11`}>
+              <Metrics heading="Total Stories" metric={total(data, 'Stories')}>
                 <TotalStoriesIcon />
               </Metrics>
             </div>
@@ -97,20 +118,20 @@ export default function Home() {
                 <CostPerMetric
                   sigla="CPE"
                   heading="Engajamento"
-                  metric="0"
-                  costPerMetric={total(data, "cpe")}
+                  metric={total(data, 'Engajamento')}
+                  costPerMetric={!session.user.totalInitialInvestment ? '' : costPerMetric(data, 'Engajamento', session.user.totalInitialInvestment as number)}
                 />
                 <CostPerMetric
                   sigla="CPV"
                   heading="Views"
-                  metric={total(data, "videoViews")}
-                  costPerMetric={`${data[0]?.cpv}`}
+                  metric={total(data, "Video Views")}
+                  costPerMetric={!session.user.totalInitialInvestment ? '' : costPerMetric(data, 'Video Views', session.user.totalInitialInvestment as number)}
                 />
                 <CostPerMetric
                   sigla="CPC"
                   heading="Cliques"
-                  metric={total(data, "clicks")}
-                  costPerMetric={`${data[0]?.cpc}`}
+                  metric={total(data, "Cliques")}
+                  costPerMetric={!session.user.totalInitialInvestment ? '' : costPerMetric(data, 'Cliques', session.user.totalInitialInvestment as number)}
                 />
               </div>
             </div>
@@ -118,7 +139,7 @@ export default function Home() {
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] px-[15px] content-start flex-nowrap xl:gap-0 gap-6 rounded-none">
             <MetricsLineGraph
               heading="Interações"
-              metric={total(data, "interactions")}
+              metric={total(data, 'Interacoes')}
             />
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] p-0 content-start flex-nowrap gap-6 rounded-none">
@@ -126,15 +147,15 @@ export default function Home() {
               <div className="flex-shrink-0 w-full h-min flex xl:flex-row flex-col justify-start items-center overflow-visible relative p-0 content-center flex-nowrap xl:gap-5 gap-[15px] rounded-none">
                 <Metrics
                   heading="Engajamento Tik Tok"
-                  metric={total(data, "videoViews")}
+                  metric={total(data, 'Engajamento Tiktok')}
                 />
                 <Metrics
                   heading="Cliques no Link Tik Tok"
-                  metric={total(data, "clicks")}
+                  metric={total(data, 'Cliques Tiktok')}
                 />
                 <Metrics
-                  heading="Impressoes"
-                  metric={total(data, "impressions")}
+                  heading="Impressoes Tik Tok"
+                  metric={total(data, 'Impressoes Tiktok')}
                 />
               </div>
             </div>
@@ -151,8 +172,8 @@ export default function Home() {
           </div>
           <div className="xl:hidden box-border flex-shrink-0 xl:w-[379px] w-full flex-grow h-min flex flex-col justify-start items-center xl:pt-8 xl:pr-8 pb-10 px-[15px] bg-transparent overflow-visible content-center flex-nowrap xl:gap-[28px] gap-[15px] rounded-none z-10">
             <MetricsDoughnutGraph
-              heading="Alcance Bruto"
-              metric={total(data, "impressions")}
+              heading="Impressoes"
+              metric={total(data, "Impressoes")}
             />
             <Metrics
               heading="Investimento Total Inicial"
@@ -202,8 +223,8 @@ export default function Home() {
             metric={`${session.user.estimatedExecutedInvestment}`}
           />
           <MetricsDoughnutGraph
-            heading="Alcance Bruto"
-            metric={total(data, "impressions")}
+            heading="Impressoes"
+            metric={total(data, "Impressoes")}
           />
           <FinancialMetrics />
           <ContactCTA />
