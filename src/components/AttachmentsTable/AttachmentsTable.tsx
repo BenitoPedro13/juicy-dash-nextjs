@@ -7,6 +7,9 @@ import AttachmentsTableRow from "./AttachmentsTableRow";
 import useDataStore, { Attachment } from "@/store";
 import FileUploadButton from "../FileUploadButton";
 import TableSortingIcon from "../TableSortingIcon";
+import arrowLeft from "@/../public/arrow-left.svg";
+import arrowRight from "@/../public/arrow-right.svg";
+
 import { handleSort } from "../../../utils/utils";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
@@ -81,7 +84,10 @@ const AttachmentsTable = () => {
       initial={false}
       animate={{
         boxShadow: "2px 2px 2px 0px rgba(16, 24, 40, 0.06)",
-        height: (currentAttachments.length / itemsPerPage) < 1 ? "fit-content" : "fit-content",
+        height:
+          currentAttachments.length / itemsPerPage < 1
+            ? "fit-content"
+            : "fit-content",
       }}
       transition={{ duration: 0.3, ease: "linear" }}
       whileHover={{ boxShadow: "2px 2px 0px 0px #000000" }}
@@ -267,72 +273,86 @@ const AttachmentsTable = () => {
           </tbody>
         </table>
       </div>
-      <div className={`${(attachments.length / itemsPerPage) < 1 ? 'hidden' : 'hidden'} flex-shrink-0 w-full h-min flex justify-center items-center overflow-visible relative p-0 content-center flex-nowrap sm:gap-5 gap-0 rounded-none`}>
-        <div className="xl:inline-flex hidden join w-full justify-center items-center">
-          <button
-            className="join-item btn"
-            disabled={currentPage === 1}
-            onClick={() => handlePageChange(currentPage - 1)}
-          >
-            « Anterior
-          </button>
-          {/* <button className="join-item btn">1</button>
-          <button className="join-item btn">2</button>
-          <button className="join-item btn">3</button>
-          <button className="join-item btn btn-disabled">...</button>
-          <button className="join-item btn">8</button>
-          <button className="join-item btn">9</button>
-          <button className="join-item btn">10</button> */}
-          {Array.from({ length: totalPages }).map((_, index) => (
+      <div
+        className={`${
+          attachments.length / itemsPerPage < 1 ? "hidden" : "flex"
+        } flex-shrink-0 w-full h-min flex flex-col justify-center items-center overflow-visible relative pt-3 pb-4 px-6 content-center flex-nowrap sm:gap-5 gap-2 self-stretch rounded-none border-t border-[#EAECF0]`}
+      >
+        <div className="flex items-start rounded-lg border border-[#D0D5DD] shadow-cost-per-metrics">
+          <div className="xl:inline-flex hidden join w-full justify-center items-center">
             <button
-              key={index}
-              className={`join-item btn ${
-                currentPage === index + 1 ? "btn-active" : ""
-              }`}
-              onClick={() => handlePageChange(index + 1)}
+              className="join-item h-10 flex py-[10px] px-4 justify-center items-center gap-2 bg-white border-t-0 border-b-0 border-l-0 border-r-[2px] border-[#D0D5DD]"
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
             >
-              {index + 1}
+              <Image src={arrowLeft} width={20} height={20} alt="Arrow Left" />
+              <p className="text-[#344054] text-sm font-semibold">Anterior</p>
             </button>
-          ))}
-          <button
-            className="join-item btn"
-            disabled={currentPage === totalPages}
-            onClick={() => handlePageChange(currentPage + 1)}
-          >
-            Proximo »
-          </button>
-        </div>
-        <div className="inline-flex xl:hidden join w-full justify-center items-center">
-          <button
-            className="join-item btn"
-            disabled={currentPage === 1}
-            onClick={() => handlePageChange(currentPage - 1)}
-          >
-            «
-          </button>
-          {Array.from({ length: totalPages }).map((_, index) => (
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                key={index}
+                className={`join-item  flex w-10 max-h-10 p-[10px] flex-col justify-center items-center border-t-0 border-b-0 border-l-0 border-r-[2px] border-[#D0D5DD] ${
+                  currentPage === index + 1 ? "!bg-[#F9FAFB]" : "bg-white"
+                }`}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                <p className="text-[#344054] text-sm font-semibold">
+                  {" "}
+                  {index + 1}
+                </p>
+              </button>
+            ))}
             <button
-              key={index}
-              className={`join-item btn ${
-                currentPage === index + 1 ? "btn-active" : ""
-              }`}
-              onClick={() => handlePageChange(index + 1)}
+              className="join-item h-10 flex py-[10px] px-4 justify-center items-center gap-2 bg-white border-0 border-[#D0D5DD]"
+              disabled={currentPage === totalPages}
+              onClick={() =>
+                handlePageChange(currentPage + 1)
+              }
             >
-              {index + 1}
+              <p className="text-[#344054] text-sm font-semibold">Proximo</p>
+              <Image
+                src={arrowRight}
+                width={20}
+                height={20}
+                alt="Arrow Right"
+              />
             </button>
-          ))}
-          {/* <button className="join-item btn">1</button>
-          <button className="join-item btn">2</button>
-          <button className="join-item btn btn-disabled">...</button>
-          <button className="join-item btn">9</button>
-          <button className="join-item btn">10</button> */}
-          <button
-            className="join-item btn"
-            disabled={currentPage === totalPages}
-            onClick={() => handlePageChange(currentPage + 1)}
-          >
-            »
-          </button>
+          </div>
+          <div className="inline-flex xl:hidden join w-full justify-center items-center">
+            <button
+              className="join-item h-10 flex py-[10px] px-4 justify-center items-center gap-2 bg-white border-t-0 border-b-0 border-l-0 border-r-[2px] border-[#D0D5DD]"
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+            >
+              <Image src={arrowLeft} width={20} height={20} alt="Arrow Left" />
+            </button>
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                key={index}
+                className={`join-item  flex w-10 max-h-10 p-[10px] flex-col justify-center items-center border-t-0 border-b-0 border-l-0 border-r-[2px] border-[#D0D5DD] ${
+                  currentPage === index + 1 ? "!bg-[#F9FAFB]" : "bg-white"
+                }`}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                <p className="text-[#344054] text-sm font-semibold">
+                  {" "}
+                  {index + 1}
+                </p>
+              </button>
+            ))}
+            <button
+              className="join-item h-10 flex py-[10px] px-4 justify-center items-center gap-2 bg-white border-0 border-[#D0D5DD]"
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+            >
+              <Image
+                src={arrowRight}
+                width={20}
+                height={20}
+                alt="Arrow Right"
+              />
+            </button>
+          </div>
         </div>
       </div>
     </motion.div>
