@@ -22,6 +22,7 @@ import ContactCTA from "@/components/CTA/ContactCTA";
 import AttachmentsTable from "@/components/AttachmentsTable/AttachmentsTable";
 import { parseUpdatedAt } from "../../../utils/utils";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/useAuth";
 // import { Plus_Jakarta_Sans } from 'next/font/google'
 
 const inter = Inter({ subsets: ["latin"] });
@@ -31,20 +32,18 @@ export default function Home() {
   const session = useDataStore((state) => state.session);
   const fetchData = useDataStore((state) => state.fetchData);
   const fetchAttachment = useDataStore((state) => state.fetchAttachment);
-  const {data, updatedAt} = useDataStore((state) => state.data);
-  const router = useRouter();
+  const { data, updatedAt } = useDataStore((state) => state.data);
+  const isAuthenticated = useAuth();
 
   useEffect(() => {
-    if(!session.isAuthenticated) {
-      router.push('/')
-    }
-  }, [router, session.isAuthenticated]);
-
-  useEffect(() => {
-    const { 'juicy-admin-token' :access_token} = parseCookies()
+    const { "juicy-admin-token": access_token } = parseCookies();
     fetchData(access_token);
-    fetchAttachment(access_token)
+    fetchAttachment(access_token);
   }, [fetchData, fetchAttachment]);
+
+  if (!isAuthenticated) {
+    return null; // or show a loading spinner or placeholder content
+  }
 
   const totalInfluencers = (data: Influencer[]) => `${data.length}`;
   const total = (data: Influencer[], dataKey: keyof Influencer) => {
@@ -100,8 +99,8 @@ export default function Home() {
                   <p
                     className={`flex-shrink-0 w-auto h-auto whitespace-pre relative font-medium ${inter.className} xl:text-lg text-sm xl:leading-5]]`}
                   >
-                    {/* {session.user.campaign?.name} */}
-                    Experiências Buser
+                    {session.user.campaignName}
+                    {/* Experiências Buser */}
                   </p>
                 </li>
               </ul>
