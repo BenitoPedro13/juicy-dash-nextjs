@@ -1,4 +1,4 @@
-import useDataStore, { Attachment } from "@/store";
+import useDataStore, { Attachment, baseApiUrl } from "@/store";
 import React, { useRef } from "react";
 import { parseCookies } from "nookies";
 
@@ -30,7 +30,7 @@ const FileUploadButton = ({
     const formData = new FormData();
     formData.append("file", file);
 
-    fetch("https://benitopedro.tech/attachments/", {
+    fetch(`${baseApiUrl}/attachments`, {
       headers: {
         Authorization: `Bearer ${access_token}`, // Set the token in the Authorization header
       },

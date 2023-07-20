@@ -1,6 +1,8 @@
 import { create } from "zustand";
 import { setCookie } from "nookies";
 
+export const baseApiUrl = 'https://benitopedro.tech'
+
 export interface Influencer {
   id: number;
   influencer: string;
@@ -80,7 +82,7 @@ const useDataStore = create<DataState>((set) => ({
   },
   signIn: async (loginFormData: LoginFormData) => {
     try {
-      const response = await fetch("https://benitopedro.tech/auth/login", {
+      const response = await fetch(`${baseApiUrl}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -117,7 +119,7 @@ const useDataStore = create<DataState>((set) => ({
   },
   getUserByToken: async (access_token: string) => {
     try {
-      const response = await fetch("https://benitopedro.tech/auth/user", {
+      const response = await fetch(`${baseApiUrl}/auth/user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -151,7 +153,7 @@ const useDataStore = create<DataState>((set) => ({
   attachments: [],
   fetchData: async (access_token: string) => {
     try {
-      const response = await fetch("https://benitopedro.tech/csvs/data", {
+      const response = await fetch(`${baseApiUrl}/csvs/data`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${access_token}`, // Set the token in the Authorization header
@@ -165,7 +167,7 @@ const useDataStore = create<DataState>((set) => ({
   },
   fetchAttachment: async (access_token: string) => {
     try {
-      const response = await fetch("https://benitopedro.tech/attachments/", {
+      const response = await fetch(`${baseApiUrl}/attachments`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${access_token}`, // Set the token in the Authorization header
