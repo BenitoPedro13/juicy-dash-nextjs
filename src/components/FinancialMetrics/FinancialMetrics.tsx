@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import React from "react";
 import FinancialMetric from "./FinancialMetric";
+import PerformanceIcon from "../MetricsIcons/PerformanceIcon";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -17,13 +18,14 @@ const FinancialMetrics = () => {
       transition={{ duration: 0.3, ease: "linear" }}
     >
       <div className="box-border flex-shrink-0 flex-grow w-full h-fit flex justify-start items-center p-4 overflow-visible relative content-center flex-nowrap gap-[10px] rounded-none border-b border-solid border-[#222]">
-        <Image
+        {/* <Image
           src={performanceIcon}
           alt="Performance Icon"
           width={40}
           height={40}
           className="block"
-        />
+        /> */}
+        <PerformanceIcon className='block w-10 h-10 max-h-[40px] max-w-[40px] flex-grow flex-shrink-0' />
         <div className="flex-shrink-0 flex-grow w-full h-min flex flex-col justify-center items-start overflow-visible relative p-0 content-start flex-nowrap gap-1 rounded-none">
           <p
             className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative font-semibold ${jakarta.className} text-[#0f1728] text-lg`}

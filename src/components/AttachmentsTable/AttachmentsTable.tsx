@@ -11,6 +11,7 @@ import arrowLeft from "@/../public/arrow-left.svg";
 import arrowRight from "@/../public/arrow-right.svg";
 
 import { handleSort } from "../../../utils/utils";
+import AttachmentIcon from "../MetricsIcons/AttachmentIcon";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
@@ -94,21 +95,26 @@ const AttachmentsTable = () => {
     >
       <div className="flex-shrink-0 w-full h-min flex flex-col justify-start items-start overflow-visible relative p-0 content-start flex-nowrap sm:gap-5 gap-0 rounded-none">
         <div className="box-border flex-shrink-0 w-full h-min flex sm:flex-row flex-col justify-start sm:items-center items-start xl:pt-5 xl:pb-0 py-5 px-6 overflow-visible relative sm:content-center content-start flex-nowrap gap-4 rounded-none">
-          <Image
+          {/* <Image
             src={attachmentsIcon}
             alt="Performance Icon"
             width={40}
             height={40}
             className="hidden sm:block"
-          />
+          /> */}
+
+          <AttachmentIcon />
+
           <div className="sm:hidden flex w-full h-min flex-shrink-0 justify-between items-center flex-nowrap">
-            <Image
+            {/* <Image
               src={attachmentsIcon}
               alt="Performance Icon"
               width={40}
               height={40}
               className="sm:hidden block"
-            />
+            /> */}
+
+            <AttachmentIcon />
 
             <div className="flex-shrink-0 w-min h-min flex justify-start items-center overflow-visible relative p-0 content-center flex-nowrap gap-3 rounded-none">
               <FileUploadButton
@@ -305,9 +311,7 @@ const AttachmentsTable = () => {
             <button
               className="join-item h-10 flex py-[10px] px-4 justify-center items-center gap-2 bg-white border-0 border-[#D0D5DD]"
               disabled={currentPage === totalPages}
-              onClick={() =>
-                handlePageChange(currentPage + 1)
-              }
+              onClick={() => handlePageChange(currentPage + 1)}
             >
               <p className="text-[#344054] text-sm font-semibold">Proximo</p>
               <Image
