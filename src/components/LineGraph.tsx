@@ -114,8 +114,6 @@ export default function LineGraph() {
       const { chartArea, ctx } = chartInstance as any;
       const chartBackgroundColor = !user?.color ? "rgba(255,205,249" : hexToRgba(user.color).split(',', 3).join(',')
 
-      console.log('chartBackgroundColor', chartBackgroundColor)
-
       if (chartArea) {
         const gradient = ctx?.createLinearGradient(
           0,

@@ -49,8 +49,6 @@ export default function DoughnutGraph() {
   const mainColor = !user?.color ? '#FF77EF' : user.color; // Assuming user.color is the main color in hex format
   const subVariations = generateShadesAndTints(mainColor, data.length);
 
-  console.log('subVariations :', subVariations)
-
   const chartData = {
     labels: data.map((item) => item.influencer),
     datasets: [
