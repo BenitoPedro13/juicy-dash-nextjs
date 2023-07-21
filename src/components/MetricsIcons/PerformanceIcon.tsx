@@ -28,7 +28,7 @@ const PerformanceIcon = ( {className}: { className?: string}) => {
       viewBox="0 0 40 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={className + ' min-h-[40px] min-w-[40px] w-10 h-10 max-h-10 min-h-10'}
     >
       <rect x="0.5" y="0.5" width="39" height="39" rx="7.5" 
               fill={session?.user?.color ? session.user.color : "#FF77EF"}

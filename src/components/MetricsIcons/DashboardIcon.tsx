@@ -11,7 +11,7 @@ const DashboardIcon = ({className}: {className: string}) => {
       viewBox="0 0 48 49"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={className + ' min-h-[40px] min-w-[40px] w-10 h-10 max-h-10 min-h-10'}
     >
       <rect
         x="0.5"
