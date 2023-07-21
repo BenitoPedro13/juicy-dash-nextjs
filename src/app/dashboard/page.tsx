@@ -14,7 +14,7 @@ import MetricsLineGraph from "@/components/MetricsLineGraph";
 import SidenavDesktop from "@/components/SidenavDesktop";
 import MetricsDoughnutGraph from "@/components/MetricsDoughnutGraph";
 import CreatorsTable from "@/components/CreatorsTable/CreatorsTable";
-import useDataStore, { Influencer } from "@/store";
+import useDataStore, { Influencer, baseApiUrl } from "@/store";
 import { useEffect } from "react";
 import Footer from "@/components/Footer";
 import FinancialMetrics from "@/components/FinancialMetrics/FinancialMetrics";
@@ -58,9 +58,6 @@ export default function Home() {
 
     for (let i = 0; i < data.length; i++) {
       const element = data[i];
-      console.log('element', element);
-      console.log('dataKey', dataKey);
-      console.log('elementDataKey', element[`${dataKey}`]);
 
       count += Number.parseInt(
         (element[`${dataKey}`] as string).replaceAll(".", "")
@@ -70,20 +67,24 @@ export default function Home() {
     return count.toLocaleString("PT-BR");
   };
 
-  const costPerMetric = (data: Influencer[], dataKey: keyof Influencer, cost: number) => {
+  const costPerMetric = (
+    data: Influencer[],
+    dataKey: keyof Influencer,
+    cost: number
+  ) => {
     let count = 0;
 
     for (let i = 0; i < data.length; i++) {
-      const element = data[i]
+      const element = data[i];
 
       count += Number.parseInt(
         (element[`${dataKey}`] as string).replaceAll(".", "")
       );
     }
 
-    return (count / cost).toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
+    return (count / cost).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
     });
   };
 
@@ -101,13 +102,13 @@ export default function Home() {
               <Metrics heading="Total Creators" metric={totalInfluencers(data)}>
                 <TotalCreatorsIcon />
               </Metrics>
-              <Metrics heading="Total Posts" metric={total(data, 'Posts')}>
+              <Metrics heading="Total Posts" metric={total(data, "Posts")}>
                 <TotalPostsIcon />
               </Metrics>
-              <Metrics heading="Total Feed" metric={total(data, 'Feed')}>
+              <Metrics heading="Total Feed" metric={total(data, "Feed")}>
                 <TotalFeedIcon />
               </Metrics>
-              <Metrics heading="Total Stories" metric={total(data, 'Stories')}>
+              <Metrics heading="Total Stories" metric={total(data, "Stories")}>
                 <TotalStoriesIcon />
               </Metrics>
             </div>
@@ -118,20 +119,44 @@ export default function Home() {
                 <CostPerMetric
                   sigla="CPE"
                   heading="Engajamento"
-                  metric={total(data, 'Engajamento')}
-                  costPerMetric={!session.user.totalInitialInvestment ? '' : costPerMetric(data, 'Engajamento', session.user.totalInitialInvestment as number)}
+                  metric={total(data, "Engajamento")}
+                  costPerMetric={
+                    !session.user.totalInitialInvestment
+                      ? ""
+                      : costPerMetric(
+                          data,
+                          "Engajamento",
+                          session.user.totalInitialInvestment as number
+                        )
+                  }
                 />
                 <CostPerMetric
                   sigla="CPV"
                   heading="Views"
                   metric={total(data, "Video Views")}
-                  costPerMetric={!session.user.totalInitialInvestment ? '' : costPerMetric(data, 'Video Views', session.user.totalInitialInvestment as number)}
+                  costPerMetric={
+                    !session.user.totalInitialInvestment
+                      ? ""
+                      : costPerMetric(
+                          data,
+                          "Video Views",
+                          session.user.totalInitialInvestment as number
+                        )
+                  }
                 />
                 <CostPerMetric
                   sigla="CPC"
                   heading="Cliques"
                   metric={total(data, "Cliques")}
-                  costPerMetric={!session.user.totalInitialInvestment ? '' : costPerMetric(data, 'Cliques', session.user.totalInitialInvestment as number)}
+                  costPerMetric={
+                    !session.user.totalInitialInvestment
+                      ? ""
+                      : costPerMetric(
+                          data,
+                          "Cliques",
+                          session.user.totalInitialInvestment as number
+                        )
+                  }
                 />
               </div>
             </div>
@@ -139,7 +164,7 @@ export default function Home() {
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] px-[15px] content-start flex-nowrap xl:gap-0 gap-6 rounded-none">
             <MetricsLineGraph
               heading="Interações"
-              metric={total(data, 'Interacoes')}
+              metric={total(data, "Interacoes")}
             />
           </div>
           <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] p-0 content-start flex-nowrap gap-6 rounded-none">
@@ -147,15 +172,15 @@ export default function Home() {
               <div className="flex-shrink-0 w-full h-min flex xl:flex-row flex-col justify-start items-center overflow-visible relative p-0 content-center flex-nowrap xl:gap-5 gap-[15px] rounded-none">
                 <Metrics
                   heading="Engajamento Tik Tok"
-                  metric={total(data, 'Engajamento Tiktok')}
+                  metric={total(data, "Engajamento Tiktok")}
                 />
                 <Metrics
                   heading="Cliques no Link Tik Tok"
-                  metric={total(data, 'Cliques Tiktok')}
+                  metric={total(data, "Cliques Tiktok")}
                 />
                 <Metrics
                   heading="Impressoes Tik Tok"
-                  metric={total(data, 'Impressoes Tiktok')}
+                  metric={total(data, "Impressoes Tiktok")}
                 />
               </div>
             </div>
@@ -206,13 +231,32 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <Image
-              src={buserLogo}
-              width={67}
-              height={67}
-              alt="Buser Logo"
-              className="btn btn-circle btn-outline border-black border-[1px] border-solid"
-            />
+            {!session?.user?.urlProfilePicture ? (
+              <div className="btn btn-circle btn-outline border-black border-[1px] border-solid">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1}
+                  stroke="currentColor"
+                  className="w-[38px] h-[38px]"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </div>
+            ) : (
+              <img
+                src={`${baseApiUrl}${session.user.urlProfilePicture}`}
+                width="67"
+                height="67"
+                alt={`${session.user.name} Logo`}
+                className="btn btn-circle btn-outline border-black border-[1px] border-solid"
+              />
+            )}
           </div>
           <Metrics
             heading="Investimento Total Inicial"

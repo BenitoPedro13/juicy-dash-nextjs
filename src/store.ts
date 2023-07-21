@@ -53,6 +53,7 @@ export interface Session {
     userId?: number;
     estimatedExecutedInvestment?: number,
     totalInitialInvestment?: number,
+    urlProfilePicture?: string,
     createdAt: string;
     updatedAt: string;
   };
@@ -86,6 +87,7 @@ const useDataStore = create<DataState>((set) => ({
       totalInitialInvestment: 0,
       createdAt: '',
       updatedAt: '',
+      urlProfilePicture: '',
     },
   },
   signIn: async (loginFormData: LoginFormData) => {
