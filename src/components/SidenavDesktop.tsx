@@ -3,7 +3,7 @@ import logo from "@/../public/favicon.png";
 import buserLogo from "@/../public/buser-logo.webp";
 import Link from "next/link";
 import Image from "next/image";
-import useDataStore from "@/store";
+import useDataStore, { baseApiUrl } from "@/store";
 import DashboardIcon from "./MetricsIcons/DashboardIcon";
 
 const SidenavDesktop = () => {
@@ -110,13 +110,32 @@ const SidenavDesktop = () => {
               </svg>
             </button>
           </div>
-          <Image
-            src={buserLogo}
-            width={48}
-            height={48}
-            alt="Buser Logo"
-            className="btn btn-circle btn-outline border-black border-[1px] border-solid"
-          />
+          {!session?.user?.urlProfilePicture ? (
+              <div className="btn btn-circle btn-outline border-black border-[1px] border-solid">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1}
+                  stroke="currentColor"
+                  className="w-[38px] h-[38px]"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </div>
+            ) : (
+              <img
+                src={`${baseApiUrl}${session.user.urlProfilePicture}`}
+                width="48"
+                height="48"
+                alt={`${session.user.name} Logo`}
+                className="btn btn-circle btn-outline border-black border-[1px] border-solid"
+              />
+            )}
         </div>
       </div>
     </div>
