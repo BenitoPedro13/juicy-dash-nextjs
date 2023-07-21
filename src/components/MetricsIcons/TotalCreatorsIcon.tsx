@@ -11,6 +11,7 @@ const TotalCreatorsIcon = () => {
     viewBox="0 0 40 40"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className="min-h-[40px] min-w-[40px] w-10 h-10 max-h-10 min-h-10"
   >
     <rect
       x="0.5"
