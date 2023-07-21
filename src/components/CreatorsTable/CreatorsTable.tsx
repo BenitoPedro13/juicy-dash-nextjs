@@ -170,7 +170,7 @@ const CreatorsTable = () => {
             className="hidden sm:block"
           /> */}
 
-          <PerformanceIcon />
+          <PerformanceIcon className="hidden sm:block"/>
 
           <div className="sm:hidden flex w-full h-min flex-shrink-0 justify-between items-center flex-nowrap">
             {/* <Image
