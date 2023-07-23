@@ -1,8 +1,8 @@
 import { create } from "zustand";
 import { setCookie } from "nookies";
 
-// export const baseApiUrl = 'https://benitopedro.tech'
-export const baseApiUrl = 'http://localhost:3000'
+export const baseApiUrl = 'https://benitopedro.tech'
+// export const baseApiUrl = 'http://localhost:3000'
 
 export interface Influencer {
   id: number;
@@ -21,6 +21,7 @@ export interface Influencer {
   'Engajamento Tiktok': string;
   'Cliques Tiktok': string;
   'Impressoes Tiktok': string;
+  'Url Foto Perfil': string;
   CPE: string;
   CTR: string;
   CPC: string;
