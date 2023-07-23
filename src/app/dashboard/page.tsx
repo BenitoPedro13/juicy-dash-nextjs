@@ -202,11 +202,11 @@ export default function Home() {
             />
             <Metrics
               heading="Investimento Total Inicial"
-              metric={`${session.user.totalInitialInvestment}`}
+              metric={`R$${(session.user.totalInitialInvestment ?? 0)?.toLocaleString('pt-BR', {currency: 'BRL'})}`}
             />
             <Metrics
               heading="Investimento Executado Estimado"
-              metric={`${session.user.estimatedExecutedInvestment}`}
+              metric={`R$${(session.user.estimatedExecutedInvestment ?? 0)?.toLocaleString('pt-BR', {currency: 'BRL'})}`}
             />
             <FinancialMetrics />
             <ContactCTA />
@@ -258,14 +258,14 @@ export default function Home() {
               />
             )}
           </div>
-          <Metrics
-            heading="Investimento Total Inicial"
-            metric={`${session.user.totalInitialInvestment}`}
-          />
-          <Metrics
-            heading="Investimento Executado Estimado"
-            metric={`${session.user.estimatedExecutedInvestment}`}
-          />
+                      <Metrics
+              heading="Investimento Total Inicial"
+              metric={`R$${(session.user.totalInitialInvestment ?? 0)?.toLocaleString('pt-BR', {currency: 'BRL'})}`}
+            />
+            <Metrics
+              heading="Investimento Executado Estimado"
+              metric={`R$${(session.user.estimatedExecutedInvestment ?? 0)?.toLocaleString('pt-BR', {currency: 'BRL'})}`}
+            />
           <MetricsDoughnutGraph
             heading="Impressoes"
             metric={total(data, "Impressoes")}
