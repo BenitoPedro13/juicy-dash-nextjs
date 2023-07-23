@@ -5,9 +5,20 @@ import Link from "next/link";
 import Image from "next/image";
 import useDataStore, { baseApiUrl } from "@/store";
 import DashboardIcon from "./MetricsIcons/DashboardIcon";
+import { destroyCookie } from "nookies";
+import { useRouter } from "next/navigation";
 
 const SidenavDesktop = () => {
   const session = useDataStore((state) => state.session);
+  const router = useRouter()
+
+  const handleLogout = () => {
+        // Remove the authentication token or relevant cookie here
+        destroyCookie(null, 'juicy-admin-token');
+
+        // Redirect to the login page or any other page after logout
+        router.push('/'); // Change '/login' to the desired destination
+  }
 
   return (
     <div className="hidden w-[82px] h-[100vh] xl:flex flex-row justify-start items-start bg-white overflow-hidden z-1 p-0 content-start flex-nowrap gap-0 fixed rounded-none border-[#475466] border-solid border-r z-10">
@@ -70,7 +81,7 @@ const SidenavDesktop = () => {
             />
           </div>
         </nav>
-        <div className="w-full h-[72px] flex flex-col justify-start items-start pb-[200px] px-4 overflow-visible relative content-start flex-nowrap gap-6 rounded-none">
+        <div className="w-full h-[72px] flex flex-col justify-end items-start pb-4 px-4 overflow-visible relative content-start flex-nowrap gap-6 rounded-none">
           <div className="box-border flex-shrink-0 w-full h-min flex flex-col justify-center items-center px-4 overflow-visible relative content-start flex-nowrap gap-2 rounded-none">
             <button className="btn btn-ghost box-border flex-shrink-0 w-12 h-12 flex flex-row justify-start items-start p-3 bg-transparent overflow-hidden relative content-start flex-nowrap gap-2 rounded-full opacity-20 hover:opacity-80">
               <svg
@@ -109,33 +120,51 @@ const SidenavDesktop = () => {
                 />
               </svg>
             </button>
+            <button 
+            onClick={() => handleLogout()}
+            className="btn btn-ghost box-border flex-shrink-0 w-12 h-12 flex flex-row justify-start items-start p-3 bg-transparent overflow-hidden relative content-start flex-nowrap gap-2 rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="#000"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+                />
+              </svg>
+            </button>
           </div>
           {!session?.user?.urlProfilePicture ? (
-              <div className="btn btn-circle btn-outline border-black border-[1px] border-solid">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1}
-                  stroke="currentColor"
-                  className="w-[38px] h-[38px]"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-              </div>
-            ) : (
-              <img
-                src={`${baseApiUrl}${session.user.urlProfilePicture}`}
-                width="48"
-                height="48"
-                alt={`${session.user.name} Logo`}
-                className="btn btn-circle btn-outline border-black border-[1px] border-solid"
-              />
-            )}
+            <div className="btn btn-circle btn-outline border-black border-[1px] border-solid">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1}
+                stroke="currentColor"
+                className="w-[38px] h-[38px]"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+            </div>
+          ) : (
+            <img
+              src={`${baseApiUrl}${session.user.urlProfilePicture}`}
+              width="48"
+              height="48"
+              alt={`${session.user.name} Logo`}
+              className="btn btn-circle btn-outline border-black border-[1px] border-solid"
+            />
+          )}
         </div>
       </div>
     </div>
