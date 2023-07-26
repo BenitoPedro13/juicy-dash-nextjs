@@ -54,7 +54,11 @@ export default function Home() {
   }, [fetchData, fetchAttachment]);
 
   const totalInfluencers = (data: Influencer[]) => `${data.length}`;
-  const total = (data: Influencer[], dataKey: keyof Influencer) => {
+  const total = (
+    data: Influencer[],
+    dataKey: keyof Influencer,
+    currency = false
+  ) => {
     let count = 0;
 
     for (let i = 0; i < data.length; i++) {
@@ -65,7 +69,16 @@ export default function Home() {
       );
     }
 
-    return count.toLocaleString("PT-BR");
+    if (!currency) {
+      return count.toLocaleString("PT-BR");
+    }
+
+    const formattedCount = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(count); // Divide by 100 to account for cents
+
+    return formattedCount;
   };
 
   const costPerMetric = (
@@ -211,15 +224,16 @@ export default function Home() {
               />
               <Metrics
                 heading="Investimento Total Inicial"
-                metric={`R$ ${(
+                metric={(
                   session.user.totalInitialInvestment ?? 0
-                )?.toLocaleString("pt-BR", { currency: "BRL" })}`}
+                )?.toLocaleString("pt-BR", {
+                  currency: "BRL",
+                  style: "currency",
+                })}
               />
               <Metrics
                 heading="Investimento Executado Estimado"
-                metric={`R$ ${(
-                  session.user.estimatedExecutedInvestment ?? 0
-                )?.toLocaleString("pt-BR", { currency: "BRL" })}`}
+                metric={total(data, "Investimento", true)}
               />
               <FinancialMetrics />
               <ContactCTA />
@@ -273,15 +287,16 @@ export default function Home() {
             </div>
             <Metrics
               heading="Investimento Total Inicial"
-              metric={`R$ ${(
+              metric={(
                 session.user.totalInitialInvestment ?? 0
-              )?.toLocaleString("pt-BR", { currency: "BRL" })}`}
+              )?.toLocaleString("pt-BR", {
+                currency: "BRL",
+                style: "currency",
+              })}
             />
             <Metrics
               heading="Investimento Executado Estimado"
-              metric={`R$ ${(
-                session.user.estimatedExecutedInvestment ?? 0
-              )?.toLocaleString("pt-BR", { currency: "BRL" })}`}
+              metric={total(data, "Investimento", true)}
             />
             <MetricsDoughnutGraph
               heading="Impressoes"
