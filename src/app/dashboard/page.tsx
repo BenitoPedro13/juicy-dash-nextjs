@@ -211,13 +211,13 @@ export default function Home() {
               />
               <Metrics
                 heading="Investimento Total Inicial"
-                metric={`R$${(
+                metric={`R$ ${(
                   session.user.totalInitialInvestment ?? 0
                 )?.toLocaleString("pt-BR", { currency: "BRL" })}`}
               />
               <Metrics
                 heading="Investimento Executado Estimado"
-                metric={`R$${(
+                metric={`R$ ${(
                   session.user.estimatedExecutedInvestment ?? 0
                 )?.toLocaleString("pt-BR", { currency: "BRL" })}`}
               />
@@ -273,13 +273,13 @@ export default function Home() {
             </div>
             <Metrics
               heading="Investimento Total Inicial"
-              metric={`R$${(
+              metric={`R$ ${(
                 session.user.totalInitialInvestment ?? 0
               )?.toLocaleString("pt-BR", { currency: "BRL" })}`}
             />
             <Metrics
               heading="Investimento Executado Estimado"
-              metric={`R$${(
+              metric={`R$ ${(
                 session.user.estimatedExecutedInvestment ?? 0
               )?.toLocaleString("pt-BR", { currency: "BRL" })}`}
             />
