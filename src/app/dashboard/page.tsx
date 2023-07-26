@@ -54,6 +54,22 @@ export default function Home() {
   }, [fetchData, fetchAttachment]);
 
   const totalInfluencers = (data: Influencer[]) => `${data.length}`;
+  const totalCount = (
+    data: Influencer[],
+    dataKey: keyof Influencer
+  ) => {
+    let count = 0;
+
+    for (let i = 0; i < data.length; i++) {
+      const element = data[i];
+
+      count += Number.parseInt(
+        (element[`${dataKey}`] as string).replaceAll(".", "")
+      );
+    }
+
+    return count
+  };
   const total = (
     data: Influencer[],
     dataKey: keyof Influencer,
@@ -189,13 +205,10 @@ export default function Home() {
                     sigla="CPV"
                     heading="Views"
                     metric={total(data, "Video Views")}
-                    costPerMetric={
-                      !session.user.totalInitialInvestment
-                        ? ""
-                        : costPerMetric(
+                    costPerMetric={costPerMetric(
                             data,
                             "Video Views",
-                            session.user.totalInitialInvestment as number
+                            totalCount(data, 'Investimento')
                           )
                     }
                   />
@@ -203,13 +216,10 @@ export default function Home() {
                     sigla="CPC"
                     heading="Cliques"
                     metric={total(data, "Cliques")}
-                    costPerMetric={
-                      !session.user.totalInitialInvestment
-                        ? ""
-                        : costPerMetric(
+                    costPerMetric={costPerMetric(
                             data,
                             "Cliques",
-                            session.user.totalInitialInvestment as number
+                            totalCount(data, 'Investimento')
                           )
                     }
                   />

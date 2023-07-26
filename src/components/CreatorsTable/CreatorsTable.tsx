@@ -68,6 +68,11 @@ const CreatorsTable = () => {
           parseInt(a.Posts.replaceAll(".", "")) -
           parseInt(b.Posts.replaceAll(".", ""))
         );
+      } else if (sortColumn === "Investimento") {
+        return (
+          parseInt(a.Posts.replaceAll(".", "")) -
+          parseInt(b.Posts.replaceAll(".", ""))
+        );
       } else if (sortColumn === "Stories") {
         return (
           parseInt(a.Stories.replaceAll(".", "")) -
@@ -296,6 +301,21 @@ const CreatorsTable = () => {
                     sortColumn={sortColumn}
                     sortOrder={sortOrder}
                     actualColumn={"Cidade"}
+                  />
+                </div>
+              </th>
+              <th
+                className={`cursor-pointer flex-shrink-0 w-auto max-w-[215px] h-auto whitespace-pre-wrap break-words relative font-medium ${inter.className} text-[#475466] text-xs leading-[18px]`}
+                onClick={() =>
+                  handleSort("Investimento", sortColumn, setSortColumn, setSortOrder)
+                }
+              >
+                <div className="flex justify-start items-center gap-6">
+                  Investimento
+                  <TableSortingIcon
+                    sortColumn={sortColumn}
+                    sortOrder={sortOrder}
+                    actualColumn={"Investimento"}
                   />
                 </div>
               </th>
