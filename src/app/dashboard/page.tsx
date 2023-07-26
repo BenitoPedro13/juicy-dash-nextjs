@@ -76,7 +76,46 @@ export default function Home() {
     const formattedCount = new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",
-    }).format(count); // Divide by 100 to account for cents
+    }).format(count);
+
+    return formattedCount;
+  };
+  const totalPercentage = (
+    data: Influencer[],
+    dataKey: keyof Influencer
+  ) => {
+    let count = 0;
+
+    for (let i = 0; i < data.length; i++) {
+      const element = data[i];
+
+      count += Number.parseFloat(
+        (element[`${dataKey}`] as string).replaceAll(",", ".").replaceAll('%', '')
+      );
+    }
+
+    const formattedCount = new Intl.NumberFormat("pt-BR").format(count / +totalInfluencers(data)); // Divide by number of influencers
+
+    return `${formattedCount}%`;
+  };
+  const totalCPE = (
+    data: Influencer[],
+    dataKey: keyof Influencer
+  ) => {
+    let count = 0;
+
+    for (let i = 0; i < data.length; i++) {
+      const element = data[i];
+
+      count += Number.parseFloat(
+        (element[`${dataKey}`] as string).replaceAll("R$", "").replaceAll(",", ".").replaceAll(".", '')
+      );
+    }
+
+    const formattedCount = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(count / +totalInfluencers(data));
 
     return formattedCount;
   };
@@ -141,15 +180,9 @@ export default function Home() {
                   <CostPerMetric
                     sigla="CPE"
                     heading="Engajamento"
-                    metric={total(data, "Engajamento")}
+                    metric={totalPercentage(data, 'Engajamento')}
                     costPerMetric={
-                      !session.user.totalInitialInvestment
-                        ? ""
-                        : costPerMetric(
-                            data,
-                            "Engajamento",
-                            session.user.totalInitialInvestment as number
-                          )
+                      totalCPE(data, "CPE")
                     }
                   />
                   <CostPerMetric
@@ -194,7 +227,7 @@ export default function Home() {
                 <div className="flex-shrink-0 w-full h-min flex xl:flex-row flex-col justify-start items-center overflow-visible relative p-0 content-center flex-nowrap xl:gap-5 gap-[15px] rounded-none">
                   <Metrics
                     heading="Engajamento Tik Tok"
-                    metric={total(data, "Engajamento Tiktok")}
+                    metric={totalPercentage(data, "Engajamento Tiktok")}
                   />
                   <Metrics
                     heading="Cliques no Link Tik Tok"
