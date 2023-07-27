@@ -55,10 +55,10 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
     return hexToRgba('#E624CF');
   }
 
-  const [, r, g, b] = result.slice(1).map((x) => Number.parseInt(x, 16));
+  const [r, g, b] = result.slice(1).map((x) => Number.parseInt(x, 16));
   const alphaValue = alpha >= 0 && alpha <= 1 ? alpha : 1;
 
-  const returnValue = `rgba(${r}, ${g}, ${result[3]}, ${alphaValue})`;
+  const returnValue = `rgba(${r}, ${g}, ${b}, ${alphaValue})`;
 
   return returnValue;
 }
