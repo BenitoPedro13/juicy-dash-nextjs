@@ -124,7 +124,7 @@ export default function Home() {
       const element = data[i];
 
       count += Number.parseFloat(
-        (element[`${dataKey}`] as string).replaceAll("R$", "").replaceAll(",", ".").replaceAll(".", '')
+        (element[`${dataKey}`] as string).replaceAll("R$", "").replaceAll(".", '').replaceAll(",", ".")
       );
     }
 
