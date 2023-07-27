@@ -77,14 +77,12 @@ const CreatorsTable = () => {
         sortColumn === "Impressoes Tiktok"
       ) {
         return parseInt(a[sortColumn]) - parseInt(b[sortColumn]);
-      } else if (sortColumn === "Engajamento" || sortColumn === "Engajamento Tiktok") {
+      } else if (sortColumn === "Engajamento" || sortColumn === "Engajamento Tiktok" || sortColumn === "CTR") {
         return parsePercentageString(a[sortColumn]) - parsePercentageString(b[sortColumn]);
       } else if (sortColumn === "CPE" || sortColumn === "CPC" || sortColumn === "CPV") {
         return parseCurrencyString(a[sortColumn]) - parseCurrencyString(b[sortColumn]);
-      } else if (sortColumn === "CTR") {
-        return parseFloat(a[sortColumn]) - parseFloat(b[sortColumn]);
       }
-    
+
       return 0;
     });
 
