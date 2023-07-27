@@ -71,63 +71,66 @@ const CreatorsTableRow = ({ data }: CreatorsTableRowProps) => {
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-pre-wrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.Investimento}
+          {Number.parseFloat(data.Investimento).toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.Posts}
+          {Number.parseInt(data.Posts).toLocaleString("pt-BR")}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.Stories}
+          {Number.parseInt(data.Stories).toLocaleString("pt-BR")}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.Feed}
+          {Number.parseInt(data.Feed).toLocaleString("pt-BR")}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.Tiktok}
+          {Number.parseInt(data.Tiktok).toLocaleString("pt-BR")}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.Impressoes}
+          {Number.parseInt(data.Impressoes).toLocaleString("pt-BR")}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.Interacoes}
+          {Number.parseInt(data.Interacoes).toLocaleString("pt-BR")}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data.Cliques}
+          {Number.parseInt(data.Cliques).toLocaleString("pt-BR")}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data["Video Views"]}
+          {Number.parseInt(data["Video Views"]).toLocaleString("pt-BR")}
         </p>
       </td>
       <td>
@@ -148,14 +151,14 @@ const CreatorsTableRow = ({ data }: CreatorsTableRowProps) => {
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data["Cliques Tiktok"]}
+          {Number.parseInt(data["Cliques Tiktok"]).toLocaleString("pt-BR")}
         </p>
       </td>
       <td>
         <p
           className={`flex-shrink-0 flex-grow w-auto h-auto whitespace-nowrap break-words relative ${inter.className} text-[#475466] text-sm`}
         >
-          {data["Impressoes Tiktok"]}
+          {Number.parseInt(data["Impressoes Tiktok"]).toLocaleString("pt-BR")}
         </p>
       </td>
       <td>

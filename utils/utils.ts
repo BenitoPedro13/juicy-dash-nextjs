@@ -31,49 +31,19 @@ export const handleSort = (
   }
 };
 
-export const parseCurrencyString = (a: string, b: string) => {
-
-  return (
-    (Number.isNaN(
-      parseInt(
-        a
-          .replaceAll(".", "")
-          .replaceAll(",", "")
-          .replaceAll(" ", "")
-          .replaceAll("R$", "")
-          .replaceAll("-", "")
-      )
-    )
-      ? 0
-      : parseInt(
-          a
-            .replaceAll(".", "")
-            .replaceAll(",", "")
-            .replaceAll(" ", "")
-            .replaceAll("R$", "")
-            .replaceAll("-", "")
-        )) -
-    (Number.isNaN(
-      parseInt(
-        b
-          .replaceAll(".", "")
-          .replaceAll(",", "")
-          .replaceAll(" ", "")
-          .replaceAll("R$", "")
-          .replaceAll("-", "")
-      )
-    )
-      ? 0
-      : parseInt(
-          b
-            .replaceAll(".", "")
-            .replaceAll(",", "")
-            .replaceAll(" ", "")
-            .replaceAll("R$", "")
-            .replaceAll("-", "")
-        ))
+export const parseCurrencyString = (value: string) => {
+  const numericValue = Number(
+    value.replace(/[^\d,-]/g, '').replace(',', '.').replace('R$', '').replace('-', '')
   );
+
+  return Number.isNaN(numericValue) ? 0 : numericValue;
 };
+
+export const parsePercentageString = (value:string) => {
+  const numericValue = parseFloat(value.replace(/[^\d,.]/g, '').replace(',', '.'));
+  return Number.isNaN(numericValue) ? 0 : numericValue;
+};
+
 
 export function hexToRgba(hex: string, alpha: number = 1): string {
   const hexPattern = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
@@ -85,7 +55,7 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
     return hexToRgba('#E624CF');
   }
 
-  const [, r, g, b] = result.slice(1).map((x) => parseInt(x, 16));
+  const [, r, g, b] = result.slice(1).map((x) => Number.parseInt(x, 16));
   const alphaValue = alpha >= 0 && alpha <= 1 ? alpha : 1;
 
   const returnValue = `rgba(${r}, ${g}, ${result[3]}, ${alphaValue})`;
