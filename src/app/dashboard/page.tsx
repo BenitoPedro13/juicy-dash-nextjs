@@ -151,7 +151,7 @@ export default function Home() {
       );
     }
 
-    return (count / cost).toLocaleString("pt-BR", {
+    return (cost / count).toLocaleString("pt-BR", {
       style: "currency",
       currency: "BRL",
     });
