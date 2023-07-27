@@ -197,11 +197,11 @@ const AttachmentsTable = () => {
             fillRule="evenodd"
             clipRule="evenodd"
             d="M1096 1H0V0H1096V1Z"
-            fill="#EAECF0"
+            fill="transparent"
           ></path>
         </svg>
       </div>
-      <div className="overflow-x-auto w-full no-scrollbar">
+      <div className="overflow-x-auto w-full no-scrollbar border-t border-gray">
         <table className="table">
           <thead className="sticky top-0 z-10 bg-white">
             <tr className="border-box flex-shrink-0 w-full h-min bg-[#f8f9fb] overflow-visible relative content-center flex-nowrap gap-[5px] rounded-none border-b border-[#eaecf0]">
