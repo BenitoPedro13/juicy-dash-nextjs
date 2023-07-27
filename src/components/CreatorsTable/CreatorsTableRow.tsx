@@ -2,7 +2,7 @@ import React from "react";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import { Influencer, baseApiUrl } from "@/store";
 import Image from "next/image";
-import avatar from "@/../public/avatar.jpeg";
+import juicyLimoArt from "@/../public/juicy-artwork-limo.svg";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
@@ -17,31 +17,18 @@ const CreatorsTableRow = ({ data }: CreatorsTableRowProps) => {
       <td>
         <div className="flex-shrink-0 flex justify-start items-center overflow-visible content-center flex-nowrap p-0 gap-[6px]">
           <div className="avatar">
-            <div className="mask mask-squircle w-[38px] h-[38px] aspect-square block rounded-full">
+            <div className="mask mask-squircle w-[38px] h-[38px] aspect-square block rounded-full border-black border-[1px] border-solid bg-[url('/bg-contact-cta.webp')] bg-cover bg-no-repeat bg-center relative">
               {!data["Url Foto Perfil"] ? (
-                <div className="btn btn-circle btn-outline border-black border-[1px] border-solid">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1}
-                    stroke="currentColor"
-                    className="w-[38px] h-[38px]"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
+                <div className="">
+                  <Image src={juicyLimoArt} alt="Creator Avatar" width={38} height={38} className="absolute right-[2px]"/>
                 </div>
               ) : (
                 <img
                   src={`${data["Url Foto Perfil"]}`}
-                  width="67"
-                  height="67"
-                  alt={`${data} Logo`}
-                  className="btn btn-circle btn-outline border-black border-[1px] border-solid"
+                  width="38"
+                  height="38"
+                  alt='Creator Avatar'
+                  className=""
                 />
               )}
             </div>

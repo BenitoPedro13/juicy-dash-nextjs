@@ -61,30 +61,39 @@ const CreatorsTable = () => {
 
   useEffect(() => {
     const sortedData = data.sort((a, b) => {
-      if (sortColumn === "Influencer" || sortColumn === "Cidade") {
-        return a[sortColumn].localeCompare(b[sortColumn]);
-      } else if (
-        sortColumn === "Investimento" ||
-        sortColumn === "Posts" ||
-        sortColumn === "Stories" ||
-        sortColumn === "Feed" ||
-        sortColumn === "Tiktok" ||
-        sortColumn === "Impressoes" ||
-        sortColumn === "Interacoes" ||
-        sortColumn === "Cliques" ||
-        sortColumn === "Video Views" ||
-        sortColumn === "Cliques Tiktok" ||
-        sortColumn === "Impressoes Tiktok"
-      ) {
-        return parseInt(a[sortColumn]) - parseInt(b[sortColumn]);
-      } else if (sortColumn === "Engajamento" || sortColumn === "Engajamento Tiktok" || sortColumn === "CTR") {
-        return parsePercentageString(a[sortColumn]) - parsePercentageString(b[sortColumn]);
-      } else if (sortColumn === "CPE" || sortColumn === "CPC" || sortColumn === "CPV") {
-        return parseCurrencyString(a[sortColumn]) - parseCurrencyString(b[sortColumn]);
+      switch (sortColumn) {
+        case "Influencer":
+        case "Cidade":
+          return a[sortColumn].localeCompare(b[sortColumn]);
+    
+        case "Investimento":
+        case "Posts":
+        case "Stories":
+        case "Feed":
+        case "Tiktok":
+        case "Impressoes":
+        case "Interacoes":
+        case "Cliques":
+        case "Video Views":
+        case "Cliques Tiktok":
+        case "Impressoes Tiktok":
+          return parseInt(a[sortColumn]) - parseInt(b[sortColumn]);
+    
+        case "Engajamento":
+        case "Engajamento Tiktok":
+        case "CTR":
+          return parsePercentageString(a[sortColumn]) - parsePercentageString(b[sortColumn]);
+    
+        case "CPE":
+        case "CPC":
+        case "CPV":
+          return parseCurrencyString(a[sortColumn]) - parseCurrencyString(b[sortColumn]);
+    
+        default:
+          return 0;
       }
-
-      return 0;
     });
+    
 
     if (sortOrder === "desc") {
       sortedData.reverse();
