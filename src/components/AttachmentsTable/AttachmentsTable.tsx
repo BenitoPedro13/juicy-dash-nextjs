@@ -28,7 +28,7 @@ const AttachmentsTable = () => {
   const [attachments, setAttachments] = useState([...globalAttachments]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const itemsPerPage = 5; // Set the number of items per page
+  const itemsPerPage = 10; // Set the number of items per page
   const totalPages = Math.ceil(attachments.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;

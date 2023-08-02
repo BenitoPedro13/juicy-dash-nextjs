@@ -36,7 +36,7 @@ const CreatorsTable = () => {
   const { data: globalData } = useDataStore((state) => state.data);
   const [data, setData] = useState([...globalData]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const indexOfLastItem = currentPage * itemsPerPage;
