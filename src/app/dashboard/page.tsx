@@ -110,7 +110,7 @@ export default function Home() {
       );
     }
 
-    const formattedCount = new Intl.NumberFormat("pt-BR").format(count / +totalInfluencers(data)); // Divide by number of influencers
+    const formattedCount = new Intl.NumberFormat("pt-BR").format(+(count / +totalInfluencers(data)).toFixed(2)); // Divide by number of influencers
 
     return `${formattedCount}%`;
   };
@@ -124,14 +124,14 @@ export default function Home() {
       const element = data[i];
 
       count += Number.parseFloat(
-        (element[`${dataKey}`] as string).replaceAll("R$", "").replaceAll(".", '').replaceAll(",", ".")
+        (element[`${dataKey}`] as string).replaceAll("R$", "").replaceAll(",", ".")
       );
     }
 
     const formattedCount = new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",
-    }).format(count / +totalInfluencers(data));
+    }).format(+(count / +totalInfluencers(data)).toFixed(2));
 
     return formattedCount;
   };
