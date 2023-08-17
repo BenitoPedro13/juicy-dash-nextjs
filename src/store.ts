@@ -83,7 +83,7 @@ const useDataStore = create<DataState>((set) => ({
       color: '',
       name: '',
       email: '',
-      campaignName: 'string',
+      campaignName: '',
       userId: NaN,
       estimatedExecutedInvestment: 0,
       totalInitialInvestment: 0,
