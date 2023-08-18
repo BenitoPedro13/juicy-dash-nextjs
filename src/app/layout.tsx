@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Juicy Dashboard',
+  title: 'Juicy Dash',
   description: 'Monitore todos os seus projetos criativos em uma experiência mágica e suculenta',
 }
 
