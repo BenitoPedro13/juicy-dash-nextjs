@@ -333,7 +333,7 @@ const AttachmentsTable = () => {
             {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={index}
-                className={`join-item  flex w-10 max-h-10 p-[10px] flex-col justify-center items-center border-t-0 border-b-0 border-l-0 border-r-[2px] border-[#D0D5DD] ${
+                className={`join-item flex w-10 max-h-10 p-[10px] flex-col justify-center items-center border-t-0 border-b-0 border-l-0 border-r-[2px] border-[#D0D5DD] ${
                   currentPage === index + 1 ? "!bg-[#F9FAFB]" : "bg-white"
                 }`}
                 onClick={() => handlePageChange(index + 1)}
