@@ -54,10 +54,7 @@ export default function Home() {
   }, [fetchData, fetchAttachment]);
 
   const totalInfluencers = (data: Influencer[]) => `${data.length}`;
-  const totalCount = (
-    data: Influencer[],
-    dataKey: keyof Influencer
-  ) => {
+  const totalCount = (data: Influencer[], dataKey: keyof Influencer) => {
     let count = 0;
 
     for (let i = 0; i < data.length; i++) {
@@ -68,21 +65,35 @@ export default function Home() {
       );
     }
 
-    return count
+    return count;
   };
   const total = (
     data: Influencer[],
-    dataKey: keyof Influencer,
+    dataKey: keyof Influencer | (keyof Influencer)[],
     currency = false
   ) => {
     let count = 0;
 
-    for (let i = 0; i < data.length; i++) {
-      const element = data[i];
+    if (!Array.isArray(dataKey)) {
+      for (let i = 0; i < data.length; i++) {
+        const element = data[i];
 
-      count += Number.parseInt(
-        (element[`${dataKey}`] as string).replaceAll(".", "")
-      );
+        count += Number.parseInt(
+          (element[`${dataKey}`] as string).replaceAll(".", "")
+        );
+      }
+    } else {
+      for (let i = 0; i < data.length; i++) {
+        const element = data[i];
+
+        for (let j = 0; j < dataKey.length; j++) {
+          const key = dataKey[j];
+
+          count += Number.parseInt(
+            (element[`${key}`] as string).replaceAll(".", "")
+          );
+        }
+      }
     }
 
     if (!currency) {
@@ -96,35 +107,35 @@ export default function Home() {
 
     return formattedCount;
   };
-  const totalPercentage = (
-    data: Influencer[],
-    dataKey: keyof Influencer
-  ) => {
+  const totalPercentage = (data: Influencer[], dataKey: keyof Influencer) => {
     let count = 0;
 
     for (let i = 0; i < data.length; i++) {
       const element = data[i];
 
       count += Number.parseFloat(
-        (element[`${dataKey}`] as string).replaceAll(",", ".").replaceAll('%', '')
+        (element[`${dataKey}`] as string)
+          .replaceAll(",", ".")
+          .replaceAll("%", "")
       );
     }
 
-    const formattedCount = new Intl.NumberFormat("pt-BR").format(+(count / +totalInfluencers(data)).toFixed(2)); // Divide by number of influencers
+    const formattedCount = new Intl.NumberFormat("pt-BR").format(
+      +(count / +totalInfluencers(data)).toFixed(2)
+    ); // Divide by number of influencers
 
     return `${formattedCount}%`;
   };
-  const totalCPE = (
-    data: Influencer[],
-    dataKey: keyof Influencer
-  ) => {
+  const totalCPE = (data: Influencer[], dataKey: keyof Influencer) => {
     let count = 0;
 
     for (let i = 0; i < data.length; i++) {
       const element = data[i];
 
       count += Number.parseFloat(
-        (element[`${dataKey}`] as string).replaceAll("R$", "").replaceAll(",", ".")
+        (element[`${dataKey}`] as string)
+          .replaceAll("R$", "")
+          .replaceAll(",", ".")
       );
     }
 
@@ -176,10 +187,10 @@ export default function Home() {
                 >
                   <TotalCreatorsIcon />
                 </Metrics>
-                <Metrics heading="Total Posts" metric={total(data, "Posts")}>
+                <Metrics heading="Total Publicações" metric={total(data, "Posts")}>
                   <TotalPostsIcon />
                 </Metrics>
-                <Metrics heading="Total Feed" metric={total(data, "Feed")}>
+                <Metrics heading="Total Feed" metric={total(data, ["Feed", "Tiktok"])}>
                   <TotalFeedIcon />
                 </Metrics>
                 <Metrics
@@ -196,40 +207,38 @@ export default function Home() {
                   <CostPerMetric
                     sigla="CPE"
                     heading="Engajamento"
-                    metric={totalPercentage(data, 'Engajamento')}
-                    costPerMetric={
-                      totalCPE(data, "CPE")
-                    }
+                    metric={totalPercentage(data, "Engajamento")}
+                    costPerMetric={totalCPE(data, "CPE")}
                   />
                   <CostPerMetric
                     sigla="CPV"
                     heading="Views"
                     metric={total(data, "Video Views")}
                     costPerMetric={costPerMetric(
-                            data,
-                            "Video Views",
-                            totalCount(data, 'Investimento')
-                          )
-                    }
+                      data,
+                      "Video Views",
+                      totalCount(data, "Investimento")
+                    )}
                   />
                   <CostPerMetric
                     sigla="CPC"
                     heading="Cliques"
                     metric={total(data, "Cliques")}
                     costPerMetric={costPerMetric(
-                            data,
-                            "Cliques",
-                            totalCount(data, 'Investimento')
-                          )
-                    }
+                      data,
+                      "Cliques",
+                      totalCount(data, "Investimento")
+                    )}
                   />
                 </div>
               </div>
             </div>
             <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] px-[15px] content-start flex-nowrap xl:gap-0 gap-6 rounded-none">
               <MetricsLineGraph
-                heading="Interações"
-                metric={total(data, "Interacoes")}
+                heading="Interações + Views"
+                metric={
+                  total(data, ["Interacoes", "Video Views"])
+                }
               />
             </div>
             <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] p-0 content-start flex-nowrap gap-6 rounded-none">
@@ -317,7 +326,11 @@ export default function Home() {
                       d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg> */}
-                  <img src="/juicy-artwork-limo.svg" alt="Default Juicy Avatar" className="absolute right-[3px]"/>
+                  <img
+                    src="/juicy-artwork-limo.svg"
+                    alt="Default Juicy Avatar"
+                    className="absolute right-[3px]"
+                  />
                 </div>
               ) : (
                 <img

@@ -13,7 +13,7 @@ import {
   Filler,
 } from "chart.js";
 import useDataStore from "@/store";
-import { hexToRgba } from "../../utils/utils";
+import { generateShadesAndTints, hexToRgba } from "../../utils/utils";
 
 ChartJS.register(
   ArcElement,
@@ -39,6 +39,9 @@ export default function LineGraph() {
 
   const chartRef = useRef(null);
 
+  const mainColor = !user?.color ? '#E624CF' : user.color; // Assuming user.color is the main color in hex format
+  const subVariations = generateShadesAndTints(mainColor, 8);
+
   const chartData = {
     labels: data.map((item) => item.Influencer),
     datasets: [
@@ -48,7 +51,16 @@ export default function LineGraph() {
           Number.parseInt(item.Interacoes.replaceAll(".", ""))
         ),
         fill: "start",
-        borderColor: user?.color ? user.color : "#E624CF",
+        borderColor: subVariations[0],
+        borderWidth: 8,
+      },
+      {
+        label: "Views",
+        data: data.map((item) =>
+          Number.parseInt(item['Video Views'].replaceAll(".", ""))
+        ),
+        fill: "start",
+        borderColor: subVariations[7],
         borderWidth: 8,
       },
     ],
@@ -58,7 +70,8 @@ export default function LineGraph() {
     responsive: true,
     plugins: {
       legend: {
-        display: false,
+        display: true,
+        position: 'bottom'
       },
       background: {
         color: "black",
