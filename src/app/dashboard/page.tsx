@@ -20,7 +20,7 @@ import Footer from "@/components/Footer";
 import FinancialMetrics from "@/components/FinancialMetrics/FinancialMetrics";
 import ContactCTA from "@/components/CTA/ContactCTA";
 import AttachmentsTable from "@/components/AttachmentsTable/AttachmentsTable";
-import { parseUpdatedAt } from "../../../utils/utils";
+import { parseUpdatedAt, total } from "../../../utils/utils";
 import { useRouter } from "next/navigation";
 import Breadcrumb from "@/components/Breadcrumb";
 import WelcomeTitle from "@/components/WelcomeTitle";
@@ -67,46 +67,7 @@ export default function Home() {
 
     return count;
   };
-  const total = (
-    data: Influencer[],
-    dataKey: keyof Influencer | (keyof Influencer)[],
-    currency = false
-  ) => {
-    let count = 0;
 
-    if (!Array.isArray(dataKey)) {
-      for (let i = 0; i < data.length; i++) {
-        const element = data[i];
-
-        count += Number.parseInt(
-          (element[`${dataKey}`] as string).replaceAll(".", "")
-        );
-      }
-    } else {
-      for (let i = 0; i < data.length; i++) {
-        const element = data[i];
-
-        for (let j = 0; j < dataKey.length; j++) {
-          const key = dataKey[j];
-
-          count += Number.parseInt(
-            (element[`${key}`] as string).replaceAll(".", "")
-          );
-        }
-      }
-    }
-
-    if (!currency) {
-      return count.toLocaleString("PT-BR");
-    }
-
-    const formattedCount = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(count);
-
-    return formattedCount;
-  };
   const totalPercentage = (data: Influencer[], dataKey: keyof Influencer) => {
     let count = 0;
 
@@ -235,10 +196,11 @@ export default function Home() {
             </div>
             <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] px-[15px] content-start flex-nowrap xl:gap-0 gap-6 rounded-none">
               <MetricsLineGraph
-                heading="Interações + Views"
-                metric={
-                  total(data, ["Interacoes", "Video Views"])
-                }
+                // heading="Interações + Views"
+                // metric={
+                //   total(data, ["Interacoes", "Video Views"])
+                // }
+                data={data}
               />
             </div>
             <div className="w-full flex-shrink-0 h-min flex flex-col justify-start items-start overflow-visible relative xl:px-[22px] p-0 content-start flex-nowrap gap-6 rounded-none">

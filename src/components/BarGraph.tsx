@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import {
+  BarElement,
   Chart as ChartJS,
   ArcElement,
   CategoryScale,
@@ -18,6 +19,7 @@ import { GraphTypes } from "./MetricsLineGraph";
 
 ChartJS.register(
   ArcElement,
+  BarElement,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -25,7 +27,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
 );
 
 const css = `.chartContainer::-webkit-scrollbar {
@@ -34,54 +36,53 @@ const css = `.chartContainer::-webkit-scrollbar {
                     scrollbar-width: none;  /* Firefox */
                 }`;
 
-export default function LineGraph({ typeOfGraph }: {typeOfGraph: GraphTypes}) {
+export default function BarGraph({ typeOfGraph }: {typeOfGraph: GraphTypes}) {
   const { data } = useDataStore((state) => state.data);
   const { user } = useDataStore((state) => state.session);
 
   const chartRef = useRef(null);
 
-  const mainColor = !user?.color ? "#E624CF" : user.color; // Assuming user.color is the main color in hex format
-  const subVariations = generateShadesAndTints(mainColor, 8);
+  const mainColor = !user?.color ? '#E624CF' : user.color; // Assuming user.color is the main color in hex format
 
-const getChartData = (typeOfGraph: GraphTypes, data: Influencer[]) => {
-  switch (typeOfGraph) {
-    case 'Video Views':
-      return data.map((item) =>
-        Number.parseInt(item['Video Views'].replaceAll('.', ''))
-      );
-    case 'Interacoes':
-      return data.map((item) =>
-        Number.parseInt(item.Interacoes.replaceAll('.', ''))
-      );
-    case 'Total':
-      return data.map((item) =>
-        Number.parseInt(item.Interacoes.replaceAll('.', '')) +
-        Number.parseInt(item['Video Views'].replaceAll('.', ''))
-      );
-    default:
-      return [];
-  }
-};
+  const getChartData = (typeOfGraph: GraphTypes, data: Influencer[]) => {
+    switch (typeOfGraph) {
+      case 'Video Views':
+        return data.map((item) =>
+          Number.parseInt(item['Video Views'].replaceAll('.', ''))
+        );
+      case 'Interacoes':
+        return data.map((item) =>
+          Number.parseInt(item.Interacoes.replaceAll('.', ''))
+        );
+      case 'Total':
+        return data.map((item) =>
+          Number.parseInt(item.Interacoes.replaceAll('.', '')) +
+          Number.parseInt(item['Video Views'].replaceAll('.', ''))
+        );
+      default:
+        return [];
+    }
+  };
 
-const chartData = {
-  labels: data.map((item) => item.Influencer),
-  datasets: [
-    {
-      label: typeOfGraph === 'Total' ? 'Interações + Views' : typeOfGraph,
-      data: getChartData(typeOfGraph, data), // here the data is set based on typeOfGraph
-      fill: 'start',
-      borderColor: subVariations[0],
-      borderWidth: 8,
-    },
-  ],
-};
+  const chartData = {
+    labels: data.map((item) => item.Influencer),
+    datasets: [
+      {
+        label: typeOfGraph === 'Total' ? 'Interações + Views' : typeOfGraph,
+        data: getChartData(typeOfGraph, data), // here the data is set based on typeOfGraph
+        fill: 'start',
+        borderColor: mainColor,
+        borderWidth: 2,
+      },
+    ],
+  };
 
   const chartOptions = {
     responsive: true,
     plugins: {
       legend: {
         display: false,
-        position: "bottom",
+        position: 'bottom'
       },
       background: {
         color: "black",
@@ -102,42 +103,40 @@ const chartData = {
       axis: "x",
       intersect: false,
     },
-    scales: {
-      y: {
-        grid: {
-          color: "rgba(255, 255,255, 0.2)",
-          borderColor: "grey",
-          drawTicks: false,
-        },
-        border: {
-          dash: [6, 4],
-        },
-        ticks: {
-          padding: 24,
-          maxTicksLimit: 6,
-        },
-      },
-      x: {
-        grid: {
-          color: "rgba(255, 255,255, 0)",
-          borderColor: "transparent",
-          drawTicks: false,
-        },
-        ticks: {
-          padding: 12,
-          align: "inner",
-        },
-      },
-    },
+    // scales: {
+    //   y: {
+    //     grid: {
+    //       color: "rgba(255, 255,255, 0.2)",
+    //       borderColor: "grey",
+    //       drawTicks: false,
+    //     },
+    //     border: {
+    //       dash: [6, 4],
+    //     },
+    //     ticks: {
+    //       padding: 24,
+    //       maxTicksLimit: 6,
+    //     },
+    //   },
+    //   x: {
+    //     grid: {
+    //       color: "rgba(255, 255,255, 0)",
+    //       borderColor: "transparent",
+    //       drawTicks: false,
+    //     },
+    //     ticks: {
+    //       padding: 12,
+    //       align: "inner",
+    //     },
+    //   },
+    // },
   };
 
   useEffect(() => {
     const chartInstance = chartRef.current as any;
     if (chartInstance) {
       const { chartArea, ctx } = chartInstance as any;
-      const chartBackgroundColor = !user?.color
-        ? "rgba(255,205,249"
-        : hexToRgba(user.color).split(",", 3).join(",");
+      const chartBackgroundColor = !user?.color ? "rgba(255,205,249" : hexToRgba(user.color).split(',', 3).join(',')
 
       if (chartArea) {
         const gradient = ctx?.createLinearGradient(
@@ -156,7 +155,7 @@ const chartData = {
         chartInstance.update();
       }
     }
-  }, [user.color]);
+  }, [user.color, typeOfGraph]);
 
   return (
     <>
@@ -171,7 +170,7 @@ const chartData = {
             width: "100%",
           }}
         >
-          <Line
+          <Bar
             ref={chartRef}
             id="chart-1"
             data={chartData}

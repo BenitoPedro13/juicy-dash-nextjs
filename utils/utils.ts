@@ -96,3 +96,44 @@ export function generateShadesAndTints(mainColor: string, count: number): string
 
   return subVariations;
 }
+
+export const total = (
+  data: Influencer[],
+  dataKey: keyof Influencer | (keyof Influencer)[],
+  currency = false
+) => {
+  let count = 0;
+
+  if (!Array.isArray(dataKey)) {
+    for (let i = 0; i < data.length; i++) {
+      const element = data[i];
+
+      count += Number.parseInt(
+        (element[`${dataKey}`] as string).replaceAll(".", "")
+      );
+    }
+  } else {
+    for (let i = 0; i < data.length; i++) {
+      const element = data[i];
+
+      for (let j = 0; j < dataKey.length; j++) {
+        const key = dataKey[j];
+
+        count += Number.parseInt(
+          (element[`${key}`] as string).replaceAll(".", "")
+        );
+      }
+    }
+  }
+
+  if (!currency) {
+    return count.toLocaleString("PT-BR");
+  }
+
+  const formattedCount = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(count);
+
+  return formattedCount;
+};
