@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { setCookie } from "nookies";
 
-export const baseApiUrl = 'https://benitopedro.tech'
+export const baseApiUrl = "https://hijuicy.me";
 // export const baseApiUrl = 'http://localhost:3000'
 
 export interface Influencer {
@@ -17,12 +17,12 @@ export interface Influencer {
   Impressoes: string;
   Interacoes: string;
   Cliques: string;
-  'Video Views': string;
+  "Video Views": string;
   Engajamento: string;
-  'Engajamento Tiktok': string;
-  'Cliques Tiktok': string;
-  'Impressoes Tiktok': string;
-  'Url Foto Perfil': string;
+  "Engajamento Tiktok": string;
+  "Cliques Tiktok": string;
+  "Impressoes Tiktok": string;
+  "Url Foto Perfil": string;
   CPE: string;
   CTR: string;
   CPC: string;
@@ -34,7 +34,7 @@ export interface Influencer {
 type InfluencerData = {
   data: Influencer[];
   updatedAt: string;
-}
+};
 
 export interface Attachment {
   id: number;
@@ -53,9 +53,9 @@ export interface Session {
     email?: string;
     campaignName?: string;
     userId?: number;
-    estimatedExecutedInvestment?: number,
-    totalInitialInvestment?: number,
-    urlProfilePicture?: string,
+    estimatedExecutedInvestment?: number;
+    totalInitialInvestment?: number;
+    urlProfilePicture?: string;
     createdAt: string;
     updatedAt: string;
   };
@@ -80,16 +80,16 @@ const useDataStore = create<DataState>((set) => ({
   session: {
     isAuthenticated: false,
     user: {
-      color: '',
-      name: '',
-      email: '',
-      campaignName: '',
+      color: "",
+      name: "",
+      email: "",
+      campaignName: "",
       userId: NaN,
       estimatedExecutedInvestment: 0,
       totalInitialInvestment: 0,
-      createdAt: '',
-      updatedAt: '',
-      urlProfilePicture: '',
+      createdAt: "",
+      updatedAt: "",
+      urlProfilePicture: "",
     },
   },
   signIn: async (loginFormData: LoginFormData) => {
@@ -159,8 +159,8 @@ const useDataStore = create<DataState>((set) => ({
     }
   },
   data: {
-    updatedAt: '',
-    data: []
+    updatedAt: "",
+    data: [],
   },
   attachments: [],
   fetchData: async (access_token: string) => {
