@@ -148,10 +148,16 @@ export default function Home() {
                 >
                   <TotalCreatorsIcon />
                 </Metrics>
-                <Metrics heading="Total Publicações" metric={total(data, "Posts")}>
+                <Metrics
+                  heading="Total Publicações"
+                  metric={total(data, "Posts")}
+                >
                   <TotalPostsIcon />
                 </Metrics>
-                <Metrics heading="Total Feed" metric={total(data, ["Feed", "Tiktok"])}>
+                <Metrics
+                  heading="Total Feed"
+                  metric={total(data, ["Feed", "Tiktok"])}
+                >
                   <TotalFeedIcon />
                 </Metrics>
                 <Metrics

@@ -1,8 +1,8 @@
 import { create } from "zustand";
 import { setCookie } from "nookies";
 
-export const baseApiUrl = "https://hijuicy.me";
-// export const baseApiUrl = 'http://localhost:3000'
+export const baseApiUrl = "http://dashapi.juicy.space";
+// export const baseApiUrl = "http://localhost:3000";
 
 export interface Influencer {
   id: number;
